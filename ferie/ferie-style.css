@@ -64,24 +64,23 @@ html, body {
 .fiera-back:hover { background: var(--edc-ink); border-color: var(--edc-ink); color: #ffffff; transform: translateY(-1px); }
 .fiera-back--bottom { margin: 3rem 0 0; }
 .fiera-lang {
-  display: flex; align-items: center; gap: 0.15rem;
-  font-family: var(--edc-f-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.1rem;
+  font-size: 1rem;
   border: 1px solid var(--edc-line);
   border-radius: 999px;
   padding: 0.2rem;
 }
 .fiera-lang button {
   border: none; cursor: pointer; background: transparent;
-  color: var(--edc-ink-soft);
-  padding: 0.3rem 0.55rem;
+  line-height: 1;
+  padding: 0.3rem 0.4rem;
   border-radius: 999px;
+  opacity: 0.5;
   transition: all .2s ease;
-  font: inherit; letter-spacing: inherit; text-transform: inherit;
+  font: inherit;
 }
-.fiera-lang button.is-active { background: var(--edc-ink); color: var(--edc-bg); }
+.fiera-lang button:hover { opacity: 0.8; }
+.fiera-lang button.is-active { background: var(--edc-ink); opacity: 1; }
 
 .fiera-eyebrow {
   display: inline-flex; align-items: center; gap: 0.7rem;

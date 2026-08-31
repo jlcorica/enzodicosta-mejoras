@@ -343,24 +343,23 @@
 
 .edc-nav__right { display: flex; align-items: center; gap: 0.6rem; }
 .edc-lang {
-  display: flex; align-items: center; gap: 0.15rem;
-  font-family: var(--edc-f-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.1rem;
+  font-size: 1rem;
   border: 1px solid var(--edc-line);
   border-radius: 999px;
   padding: 0.2rem;
 }
 .edc-lang button {
   border: none; cursor: pointer; background: transparent;
-  color: var(--edc-ink-soft);
-  padding: 0.3rem 0.55rem;
+  line-height: 1;
+  padding: 0.3rem 0.4rem;
   border-radius: 999px;
+  opacity: 0.5;
   transition: all .2s ease;
-  font: inherit; letter-spacing: inherit; text-transform: inherit;
+  font: inherit;
 }
-.edc-lang button.is-active { background: var(--edc-ink); color: var(--edc-bg); }
+.edc-lang button:hover { opacity: 0.8; }
+.edc-lang button.is-active { background: var(--edc-ink); opacity: 1; }
 
 .edc-menu-btn {
   width: 40px; height: 40px; border-radius: 50%;
@@ -1252,11 +1251,11 @@
 
       <div class="edc-nav__right">
         <div class="edc-lang" role="group" aria-label="Lingua">
-          <button data-lang-btn="it" class="is-active" type="button">it</button>
-          <button data-lang-btn="en" type="button">en</button>
-          <button data-lang-btn="es" type="button">es</button>
-          <button data-lang-btn="de" type="button">de</button>
-          <button data-lang-btn="pt" type="button">pt</button>
+          <button data-lang-btn="it" class="is-active" type="button" title="Italiano" aria-label="Italiano">🇮🇹</button>
+          <button data-lang-btn="en" type="button" title="English" aria-label="English">🇺🇸</button>
+          <button data-lang-btn="es" type="button" title="Español" aria-label="Español">🇦🇷</button>
+          <button data-lang-btn="de" type="button" title="Deutsch" aria-label="Deutsch">🇩🇪</button>
+          <button data-lang-btn="pt" type="button" title="Português" aria-label="Português">🇧🇷</button>
         </div>
         <button class="edc-menu-btn" id="edc-menu-btn" type="button" aria-label="Apri menu" aria-controls="edc-menu" aria-expanded="false">
           <span class="edc-menu-btn__icon" aria-hidden="true"><span></span><span></span></span>
