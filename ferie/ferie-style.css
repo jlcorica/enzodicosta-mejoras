@@ -1,0 +1,149 @@
+/* =========================================================
+   ENZO DI COSTA — pagine ferie (sotto-pagine)
+   Stessi token visivi del sito principale (enzodicosta_v06.html)
+   ========================================================= */
+
+* { box-sizing: border-box; }
+
+:root {
+  --edc-bg:        #f3ead9;
+  --edc-bg-soft:   #ece1c9;
+  --edc-bg-card:   #f8f1e2;
+  --edc-bg-deep:   #1d130c;
+  --edc-ink:       #1a120c;
+  --edc-ink-soft:  #4a3a2c;
+  --edc-ink-mute:  #7a6a59;
+  --edc-line:      #d8c5a0;
+  --edc-line-soft: #e3d2b2;
+  --edc-accent:    #b25a2c;
+  --edc-accent-2:  #8a2a1f;
+
+  --edc-f-serif: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  --edc-f-sans:  "Public Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --edc-f-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html, body {
+  margin: 0;
+  background: var(--edc-bg);
+  color: var(--edc-ink);
+  font-family: var(--edc-f-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.fiera-page { padding: 3rem 1.25rem 5rem; }
+@media (min-width: 720px) { .fiera-page { padding: 4.5rem 2rem 6rem; } }
+
+.fiera-wrap { max-width: 760px; margin: 0 auto; }
+
+.fiera-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.8rem;
+  margin: 0 0 1.8rem;
+}
+.fiera-back {
+  display: table;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--edc-f-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid var(--edc-accent);
+  border-radius: 999px;
+  padding: 0.85rem 1.3rem;
+  background: var(--edc-accent);
+  margin: 0 0 1.8rem;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.fiera-topbar .fiera-back { margin: 0; }
+.fiera-back:hover { background: var(--edc-ink); border-color: var(--edc-ink); color: #ffffff; transform: translateY(-1px); }
+.fiera-back--bottom { margin: 3rem 0 0; }
+.fiera-lang {
+  display: flex; align-items: center; gap: 0.15rem;
+  font-family: var(--edc-f-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--edc-line);
+  border-radius: 999px;
+  padding: 0.2rem;
+}
+.fiera-lang button {
+  border: none; cursor: pointer; background: transparent;
+  color: var(--edc-ink-soft);
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  transition: all .2s ease;
+  font: inherit; letter-spacing: inherit; text-transform: inherit;
+}
+.fiera-lang button.is-active { background: var(--edc-ink); color: var(--edc-bg); }
+
+.fiera-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  font-family: var(--edc-f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--edc-accent);
+  margin: 0 0 1rem;
+}
+.fiera-eyebrow::before { content: ""; width: 1.6rem; height: 1px; background: var(--edc-accent); }
+
+.fiera-title {
+  font-family: var(--edc-f-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.8rem;
+  text-wrap: balance;
+}
+.fiera-title em { font-style: italic; font-weight: 400; color: var(--edc-accent); }
+
+.fiera-meta {
+  font-family: var(--edc-f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--edc-ink-mute);
+  margin: 0 0 2.4rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--edc-line);
+}
+
+.fiera-block { margin-bottom: 2.2rem; }
+.fiera-block h2 {
+  font-family: var(--edc-f-serif);
+  font-weight: 400;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  margin: 0 0 0.7rem;
+}
+.fiera-block p {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--edc-ink-soft);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.fiera-figure {
+  margin: 2.4rem 0 0;
+  border: 1px solid var(--edc-line);
+  background: var(--edc-bg-soft);
+  overflow: hidden;
+}
+.fiera-figure img { display: block; width: 100%; height: auto; }
+.fiera-figure figcaption {
+  padding: 0.9rem 1.1rem;
+  font-family: var(--edc-f-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--edc-ink-mute);
+  border-top: 1px solid var(--edc-line);
+}

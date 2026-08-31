@@ -1,0 +1,2851 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Vincenzo "Enzo" Di Costa — Il Re del Cioccolato Siciliano</title>
+<meta name="description" content="Imprenditore siciliano, fondatore di Di Costa S.p.A. e Marie Ange. Storia, valori, ferie internazionali e voce nel mondo del calcio." />
+
+<!--
+=========================================================
+  ENZO DI COSTA · sito vetrina personale — stato di lavoro
+=========================================================
+
+  ULTIMO AGGIORNAMENTO: maggio 2026
+  FILE: Enzo Di Costa.html (single-file vanilla HTML/CSS/JS)
+  LINGUE: IT (principale) · EN · ES — switcher attivo (stub)
+
+  ─────────────────────────────────────────────────────────
+  SEZIONI ATTIVE (in ordine di scroll)
+  ─────────────────────────────────────────────────────────
+   01  Hero
+   02  Tre passioni (cards: cioccolato · famiglia · calcio)
+   03  Biografia
+   04  Impresa / Di Costa S.p.A.
+   05  Anna Di Costa
+   06  Ferie & mercati internazionali (54 paesi)
+   07  Calcio & TV  →  include il modulo
+                       "Opinionista · panelista"
+                       con embed in-page dell'intervista
+                       di Alfredo Pedullà (2024).
+   08  Pensiero (4 citazioni)
+   09  Stampa (rassegna)
+   10  Contatto (form + dati diretti)
+   11  Footer
+
+  ─────────────────────────────────────────────────────────
+  STATO ATTUALE
+  ─────────────────────────────────────────────────────────
+   ✓ Layout, type system, palette, tweaks panel, switcher
+     lingua, modal embed, form contatto (stub) → OK
+   ✓ Sezione Calcio & TV ampliata con cards
+     "Opinionista · panelista":
+       · Intervista Pedullà (featured, con riassunto IT
+         e bottone che apre il modal con iframe)
+       · Video Panorama
+       · Estratto tattico "cioccolato / 3-5-2"
+       · 3 cards placeholder "da completare…" per
+         future apparizioni TV, reels IG e podcast.
+
+  ─────────────────────────────────────────────────────────
+  DA COMPLETARE — dati da fornire all'IA per il prossimo giro
+  ─────────────────────────────────────────────────────────
+
+   ▸ CONTATTI (sezione #contatto)
+     Tutte le righe sono marcate "da completare…".
+     Servono:
+       □ email diretta
+       □ email ufficio stampa
+       □ email commerciale & distribuzione
+       □ telefono stabilimento Di Costa S.p.A.
+         (NB: NON inserire il numero personale di Enzo)
+       □ sito corporativo (www.dicosta.it ?)
+       □ Instagram ufficiale (handle reale)
+       □ Facebook
+       □ YouTube
+       □ indirizzo legale completo (via + CAP)
+       □ P.IVA / C.F.
+       □ manager sport & TV — nome + email
+       □ ufficio stampa — nome + email
+     NB: niente LinkedIn, niente TikTok, niente numero
+         di telefono personale.
+
+   ▸ FORM CONTATTO
+     Attualmente è uno stub (mostra messaggio di successo
+     senza inviare). Decidere se collegare a Formspree /
+     Web3Forms / mailto: o a un backend.
+
+   ▸ OPINIONISTA · PANELISTA (sezione #calcio → #opinionista)
+     □ titoli reali dei programmi TV con date di messa in onda
+     □ link/permalink ai reel Instagram da embeddare
+     □ titoli + link dei podcast in cui Enzo è stato ospite
+     □ eventuali screenshot o foto di scena per i media
+
+   ▸ LEGALI
+     □ testi di Privacy Policy / Cookie Policy / GDPR
+       (oggi i link nel footer puntano a "#")
+
+   ▸ ASSET MANCANTI (placeholder presenti)
+     □ foto Enzo (hero, biografia, calcio)
+     □ foto Anna
+     □ foto stabilimento / linee produttive
+     □ logo Di Costa S.p.A. + logo Marie Ange (vettoriali)
+
+  ─────────────────────────────────────────────────────────
+  NOTE TECNICHE
+  ─────────────────────────────────────────────────────────
+   · Embed Pedullà: usa iframe in modal. Se il dominio
+     blocca l'inclusione (X-Frame-Options / CSP), il
+     fallback automatico mostra il pulsante "Apri ↗".
+     Alternativa: ri-pubblicare il testo come pagina
+     interna con citazione di fonte.
+   · Tweaks panel: palette / densità / tema chiaro-scuro /
+     sticker hero — già funzionante, persistente via
+     postMessage editor.
+   · Speaker notes: non previste (sito, non deck).
+
+=========================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Public+Sans:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style id="edc-styles">
+/* =========================================================
+   ENZO DI COSTA — single-file vanilla design
+   All selectors prefixed `.edc-` so WordPress theme CSS
+   cannot override us. Drop the whole <style> + <body> markup
+   into a WP Custom HTML block or a page template.
+   ========================================================= */
+
+.edc * { box-sizing: border-box; }
+.edc {
+  /* tokens — overwritten at runtime by the Tweaks panel */
+  --edc-bg:        #f3ead9;
+  --edc-bg-soft:   #ece1c9;
+  --edc-bg-card:   #f8f1e2;
+  --edc-bg-deep:   #1d130c;
+  --edc-ink:       #1a120c;
+  --edc-ink-soft:  #4a3a2c;
+  --edc-ink-mute:  #7a6a59;
+  --edc-line:      #d8c5a0;
+  --edc-line-soft: #e3d2b2;
+  --edc-accent:    #b25a2c;
+  --edc-accent-2:  #8a2a1f;
+  --edc-pad:       1.25rem;
+
+  --edc-f-serif: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  --edc-f-sans:  "Public Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --edc-f-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  background: var(--edc-bg);
+  color: var(--edc-ink);
+  font-family: var(--edc-f-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background .3s ease, color .3s ease;
+}
+.edc[data-theme="dark"] {
+  --edc-bg:        #14100b;
+  --edc-bg-soft:   #1f1812;
+  --edc-bg-card:   #1a140e;
+  --edc-bg-deep:   #0b0805;
+  --edc-ink:       #f3ead9;
+  --edc-ink-soft:  #d9c8a6;
+  --edc-ink-mute:  #8a7a60;
+  --edc-line:      #3a2e22;
+  --edc-line-soft: #2a2118;
+  --edc-accent:    #d97a45;
+  --edc-accent-2:  #c84a36;
+}
+
+.edc ::selection { background: var(--edc-accent); color: #fff; }
+.edc a { color: inherit; text-decoration: none; }
+.edc img { display: block; max-width: 100%; }
+.edc h1, .edc h2, .edc h3, .edc h4 { font-family: var(--edc-f-serif); font-weight: 500; letter-spacing: -0.01em; margin: 0; }
+.edc p { margin: 0; }
+.edc button { font: inherit; color: inherit; }
+.edc ul, .edc ol { margin: 0; padding: 0; list-style: none; }
+
+@media (min-width: 720px)  { .edc { --edc-pad: 2rem; } }
+@media (min-width: 1100px) { .edc { --edc-pad: 3rem; } }
+
+/* layout primitives */
+.edc-wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 var(--edc-pad); }
+.edc-wrap-narrow { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 var(--edc-pad); }
+.edc-section { padding: 4rem 0; position: relative; }
+.edc-section + .edc-section { border-top: 1px solid var(--edc-line); }
+@media (min-width: 720px) { .edc-section { padding: 6rem 0; } }
+
+.edc-mono {
+  font-family: var(--edc-f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.edc-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  font-family: var(--edc-f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--edc-accent);
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.edc-eyebrow::before {
+  content: ""; width: 1.6rem; height: 1px; background: var(--edc-accent);
+}
+.edc h2.edc-display, .edc .edc-display {
+  font-family: var(--edc-f-serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 5.5vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.edc .edc-kicker {
+  font-family: var(--edc-f-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+  color: var(--edc-ink-soft);
+  line-height: 1.45;
+  max-width: 620px;
+  text-wrap: pretty;
+  margin-top: 1.1rem;
+}
+.edc-accent-italic { color: var(--edc-accent); font-style: italic; }
+
+/* CTA */
+.edc a.edc-cta,
+.edc .edc-cta {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--edc-f-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--edc-accent);
+  background: var(--edc-accent);
+  color: #ffffff;
+  transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  cursor: pointer;
+}
+.edc a.edc-cta .edc-cta__arrow,
+.edc .edc-cta .edc-cta__arrow {
+  color: #ffffff;
+}
+.edc a.edc-cta--ghost,
+.edc .edc-cta--ghost {
+  background: transparent;
+  color: var(--edc-ink);
+  border-color: var(--edc-ink);
+}
+.edc a.edc-cta--ghost .edc-cta__arrow,
+.edc .edc-cta--ghost .edc-cta__arrow { color: var(--edc-ink); }
+.edc a.edc-cta:hover,
+.edc .edc-cta:hover { transform: translateY(-1px); }
+.edc a.edc-cta:hover:not(.edc-cta--ghost),
+.edc .edc-cta:hover:not(.edc-cta--ghost) { background: var(--edc-ink); border-color: var(--edc-ink); color: var(--edc-bg); }
+.edc a.edc-cta:hover:not(.edc-cta--ghost) .edc-cta__arrow,
+.edc .edc-cta:hover:not(.edc-cta--ghost) .edc-cta__arrow { color: var(--edc-bg); }
+.edc a.edc-cta--ghost:hover,
+.edc .edc-cta--ghost:hover { background: var(--edc-ink); border-color: var(--edc-ink); color: var(--edc-bg); }
+.edc a.edc-cta--ghost:hover .edc-cta__arrow,
+.edc .edc-cta--ghost:hover .edc-cta__arrow { color: var(--edc-bg); }
+.edc-cta__arrow { font-family: var(--edc-f-serif); font-style: italic; font-size: 1.05em; transform: translateY(-1px); }
+
+/* placeholder (striped SVG-style) */
+.edc-ph {
+  position: relative;
+  background: var(--edc-bg-soft);
+  background-image: repeating-linear-gradient(135deg, transparent 0 22px, rgba(120,80,40,.08) 22px 23px);
+  border: 1px solid var(--edc-line);
+  display: flex; align-items: flex-end; justify-content: flex-start;
+  overflow: hidden;
+}
+.edc-ph--deep {
+  background: var(--edc-bg-deep);
+  background-image: repeating-linear-gradient(135deg, transparent 0 22px, rgba(255,236,200,.07) 22px 23px);
+  border-color: rgba(255,236,200,.08);
+}
+.edc-ph__label {
+  font-family: var(--edc-f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--edc-ink-mute);
+  padding: 0.75rem 0.9rem;
+  max-width: 88%;
+  line-height: 1.4;
+}
+.edc-ph__corner {
+  position: absolute; top: 0.9rem; right: 0.9rem;
+  font-family: var(--edc-f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--edc-ink-mute);
+}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+.edc-nav {
+  position: sticky; top: 0; z-index: 80;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .25s ease, border-color .25s ease, backdrop-filter .25s ease;
+}
+.edc-nav.is-scrolled {
+  background: color-mix(in oklab, var(--edc-bg) 88%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border-bottom-color: var(--edc-line-soft);
+}
+.edc-nav__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.edc-logo { display: flex; align-items: center; gap: 0.6rem; }
+.edc-logo__mark {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--edc-ink); color: var(--edc-bg);
+  display: grid; place-items: center;
+  font-family: var(--edc-f-serif); font-style: italic;
+  font-size: 0.95rem; font-weight: 500;
+}
+.edc-logo__word { font-family: var(--edc-f-serif); font-size: 1.05rem; letter-spacing: -0.01em; }
+
+.edc-nav__links { display: none; align-items: center; gap: 1.3rem; }
+@media (min-width: 1080px) { .edc-nav__links { display: flex; } }
+.edc-nav__link {
+  font-size: 0.84rem;
+  color: var(--edc-ink-soft);
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color .2s ease;
+}
+.edc-nav__link.is-active,
+.edc-nav__link:hover { color: var(--edc-accent); }
+.edc-nav__link.is-active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1px; background: var(--edc-accent);
+}
+
+.edc-nav__right { display: flex; align-items: center; gap: 0.6rem; }
+.edc-lang {
+  display: flex; align-items: center; gap: 0.15rem;
+  font-family: var(--edc-f-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--edc-line);
+  border-radius: 999px;
+  padding: 0.2rem;
+}
+.edc-lang button {
+  border: none; cursor: pointer; background: transparent;
+  color: var(--edc-ink-soft);
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  transition: all .2s ease;
+  font: inherit; letter-spacing: inherit; text-transform: inherit;
+}
+.edc-lang button.is-active { background: var(--edc-ink); color: var(--edc-bg); }
+
+.edc-menu-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--edc-line);
+  background: transparent; color: var(--edc-ink);
+  cursor: pointer; display: grid; place-items: center;
+}
+.edc-menu-btn__icon {
+  display: block; width: 16px; height: 10px; position: relative;
+}
+.edc-menu-btn__icon span {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: currentColor;
+  transition: transform .2s ease, top .2s ease;
+}
+.edc-menu-btn__icon span:nth-child(1) { top: 0; }
+.edc-menu-btn__icon span:nth-child(2) { top: 9px; }
+.edc-menu-btn.is-open .edc-menu-btn__icon span:nth-child(1) { top: 4px; transform: rotate(45deg); }
+.edc-menu-btn.is-open .edc-menu-btn__icon span:nth-child(2) { top: 4px; transform: rotate(-45deg); }
+
+/* sliding menu panel */
+.edc-menu {
+  position: fixed; inset: 0; z-index: 75;
+  background: var(--edc-bg);
+  transform: translateY(-100%);
+  transition: transform .45s cubic-bezier(.7,0,.2,1);
+  padding-top: 64px;
+  overflow: auto;
+}
+.edc-menu.is-open { transform: translateY(0); }
+.edc-menu__inner { padding-top: 1.6rem; padding-bottom: 3rem; }
+.edc-menu__label { color: var(--edc-ink-mute); margin-bottom: 1.4rem; }
+.edc-menu__list { display: grid; gap: 0.2rem; }
+.edc-menu__item { border-top: 1px solid var(--edc-line-soft); }
+.edc-menu__item a {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.8rem 0;
+  font-family: var(--edc-f-serif);
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+.edc-menu__item a:hover { color: var(--edc-accent); }
+.edc-menu__item small {
+  font-family: var(--edc-f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--edc-ink-mute);
+}
+.edc-menu__contact {
+  margin-top: 3rem; padding-top: 1.4rem;
+  border-top: 1px solid var(--edc-line);
+  display: grid; gap: 0.8rem;
+}
+.edc-menu__contact a {
+  font-family: var(--edc-f-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+}
+.edc-menu__contact a:hover { color: var(--edc-accent); }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.edc-hero { padding-top: 7rem; padding-bottom: 3rem; }
+@media (min-width: 720px) { .edc-hero { padding-top: 9rem; } }
+.edc-hero__grid {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.4rem;
+}
+@media (min-width: 860px) {
+  .edc-hero__grid { grid-template-columns: 1.05fr 0.95fr; gap: 4rem; align-items: end; }
+}
+.edc-hero__text { display: grid; gap: 1.4rem; align-content: start; }
+.edc-hero__h1 {
+  font-family: var(--edc-f-serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 11vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.edc-hero__h1 em { font-style: italic; font-weight: 400; color: var(--edc-accent); }
+.edc-hero__lema {
+  font-family: var(--edc-f-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.15rem, 3.5vw, 1.55rem);
+  color: var(--edc-ink-soft);
+  line-height: 1.4;
+  max-width: 560px;
+  text-wrap: pretty;
+}
+.edc-hero__ctas { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 0.3rem; }
+.edc-hero__meta {
+  margin-top: 1.5rem;
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 0.8rem;
+  border-top: 1px solid var(--edc-line);
+  padding-top: 1.1rem;
+}
+.edc-hero__meta-label { color: var(--edc-ink-mute); font-size: 0.62rem; margin-bottom: 0.3rem; }
+.edc-hero__meta-val { font-family: var(--edc-f-serif); font-size: 1.05rem; font-weight: 400; }
+.edc-hero__image { position: relative; }
+.edc-hero__sticker {
+  position: absolute; left: -0.6rem; bottom: -1rem;
+  padding: 0.7rem 1rem;
+  background: var(--edc-accent); color: #fff;
+  font-family: var(--edc-f-serif); font-style: italic; font-weight: 400;
+  font-size: 0.95rem;
+  transform: rotate(-2deg);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,.25);
+}
+
+/* =========================================================
+   GENERIC CARDS / GRIDS
+   ========================================================= */
+.edc-grid-auto {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.edc-grid-2 { display: grid; gap: 2rem; grid-template-columns: minmax(0,1fr); }
+@media (min-width: 900px) { .edc-grid-2 { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+
+.edc-card {
+  padding: 2rem 1.6rem;
+  background: var(--edc-bg-card);
+  border: 1px solid var(--edc-line-soft);
+  display: flex; flex-direction: column; gap: 1.1rem;
+  position: relative;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.edc-card:hover { transform: translateY(-3px); border-color: var(--edc-accent); }
+.edc-card__head { display: flex; align-items: center; justify-content: space-between; }
+.edc-card__num { color: var(--edc-ink-mute); font-family: var(--edc-f-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.edc-card__glyph {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--edc-accent);
+  color: var(--edc-accent);
+  display: grid; place-items: center;
+  font-family: var(--edc-f-serif); font-style: italic; font-size: 1.2rem;
+}
+.edc-card h3 {
+  font-family: var(--edc-f-serif); font-weight: 400;
+  font-size: clamp(1.4rem, 3.8vw, 1.7rem);
+  line-height: 1.1; text-wrap: balance;
+}
+.edc-card p {
+  color: var(--edc-ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.edc-card__quote {
+  font-family: var(--edc-f-serif); font-style: italic; font-weight: 300;
+  font-size: 1.05rem; line-height: 1.45;
+  color: var(--edc-ink-soft);
+  text-wrap: pretty;
+}
+.edc-card__link {
+  font-family: var(--edc-f-mono); font-size: 0.7rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--edc-accent);
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--edc-line-soft);
+}
+
+/* stat block */
+.edc-stat { border-top: 1px solid var(--edc-line); padding-top: 1.4rem; }
+.edc-stat__num {
+  font-family: var(--edc-f-serif); font-weight: 300;
+  font-size: clamp(3rem, 9vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  display: flex; align-items: baseline; gap: 0.2rem;
+}
+.edc-stat__suffix { font-size: 0.45em; color: var(--edc-accent); }
+.edc-stat__label { margin-top: 0.6rem; font-size: 0.95rem; color: var(--edc-ink-soft); max-width: 240px; }
+.edc-stat__foot { margin-top: 0.7rem; color: var(--edc-ink-mute); font-family: var(--edc-f-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* pullquote */
+.edc-pull {
+  margin: 0;
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--edc-line);
+  border-bottom: 1px solid var(--edc-line);
+}
+.edc-pull p {
+  font-family: var(--edc-f-serif); font-style: italic; font-weight: 300;
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.edc-pull--accent p { color: var(--edc-accent); }
+.edc-pull cite {
+  display: block; margin-top: 1rem;
+  font-family: var(--edc-f-mono);
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--edc-ink-mute);
+  font-style: normal;
+}
+
+/* dark section helpers */
+.edc-section--dark {
+  background: var(--edc-bg-deep);
+  --edc-ink: #f3ead9;
+  --edc-ink-soft: #d0bf9d;
+  --edc-ink-mute: #8d7e64;
+  --edc-line: #3b2d1f;
+  --edc-line-soft: #2a2018;
+  --edc-bg-card: #251a11;
+  /* Re-resolve the inherited color cascade — custom-property changes do NOT
+     reflow already-resolved computed colors farther up the tree. */
+  color: var(--edc-ink);
+}
+.edc-section--dark h1,
+.edc-section--dark h2,
+.edc-section--dark h3,
+.edc-section--dark h4,
+.edc-section--dark strong,
+.edc-section--dark cite,
+.edc-section--dark blockquote p { color: var(--edc-ink); }
+.edc-section--dark .edc-eyebrow { color: #e0a26d; }
+.edc-section--dark .edc-eyebrow::before { background: #e0a26d; }
+.edc-section--dark .edc-accent-italic { color: #e0a26d; }
+
+/* bio chapter rows */
+.edc-bio__grid { display: grid; gap: 3rem; }
+@media (min-width: 980px) {
+  .edc-bio__grid { grid-template-columns: 1fr 1.2fr; gap: 5rem; }
+  .edc-bio__aside { position: sticky; top: 90px; align-self: start; }
+}
+.edc-chapter { border-top: 1px solid var(--edc-line); padding-top: 1.4rem; display: grid; gap: 0.8rem; }
+.edc-chapter__head { display: flex; align-items: baseline; gap: 0.9rem; }
+.edc-chapter__num { color: var(--edc-accent); font-family: var(--edc-f-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.edc-chapter h3 {
+  font-family: var(--edc-f-serif); font-weight: 400;
+  font-size: clamp(1.4rem, 3.6vw, 1.9rem);
+  line-height: 1.1; text-wrap: balance;
+}
+.edc-chapter p { font-size: 1.05rem; line-height: 1.65; color: var(--edc-ink-soft); text-wrap: pretty; }
+
+/* fair row */
+.edc-fair {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem; padding: 1.3rem 0;
+  border-bottom: 1px solid var(--edc-line-soft);
+  align-items: center;
+  transition: padding-left .25s ease, color .25s ease;
+}
+.edc-fair:hover { padding-left: 0.6rem; color: var(--edc-accent); }
+.edc-fair__num { color: var(--edc-ink-mute); font-family: var(--edc-f-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; min-width: 26px; }
+.edc-fair__title {
+  font-family: var(--edc-f-serif);
+  font-size: clamp(1.3rem, 3.6vw, 1.8rem);
+  font-weight: 400; line-height: 1.1; letter-spacing: -0.01em;
+}
+.edc-fair__title em { font-style: italic; font-weight: 300; color: var(--edc-ink-mute); }
+.edc-fair__event { font-size: 0.9rem; color: var(--edc-ink-soft); margin-top: 0.2rem; }
+.edc-fair__meta { text-align: right; display: grid; gap: 0.2rem; }
+.edc-fair__month { color: var(--edc-accent); font-family: var(--edc-f-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.edc-fair__year { color: var(--edc-ink-mute); font-family: var(--edc-f-mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* press */
+.edc-press { padding: 1.6rem 0; border-top: 1px solid var(--edc-line); display: grid; gap: 0.5rem; }
+.edc-press:last-child { border-bottom: 1px solid var(--edc-line); }
+.edc-press__head { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
+.edc-press__source { font-family: var(--edc-f-serif); font-style: italic; font-size: 1.15rem; color: var(--edc-accent); }
+.edc-press__year { color: var(--edc-ink-mute); font-family: var(--edc-f-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.edc-press h3 {
+  font-family: var(--edc-f-serif); font-weight: 400;
+  font-size: clamp(1.2rem, 3.4vw, 1.6rem);
+  line-height: 1.15; text-wrap: balance;
+}
+.edc-press p { font-size: 0.94rem; color: var(--edc-ink-soft); }
+
+/* contact form */
+.edc-contact__grid { display: grid; gap: 2.6rem; }
+@media (min-width: 980px) { .edc-contact__grid { grid-template-columns: 1fr 1.1fr; gap: 5rem; } }
+.edc-contact__lines { display: grid; gap: 0; margin-top: 1.6rem; }
+.edc-contact__line {
+  display: grid; gap: 0.25rem; padding: 0.9rem 0;
+  border-top: 1px solid var(--edc-line);
+  transition: padding-left .25s ease;
+}
+.edc-contact__line:hover { padding-left: 0.4rem; }
+.edc-contact__line .edc-mono { color: var(--edc-ink-mute); }
+.edc-contact__line strong {
+  font-family: var(--edc-f-serif); font-style: italic;
+  font-size: clamp(1.15rem, 3.4vw, 1.55rem);
+  font-weight: 400;
+}
+.edc-contact__line strong a { color: inherit; }
+/* email links: built via JS (not present in raw HTML) to deter spam-harvesting bots.
+   On mouse/trackpad devices they render as plain selectable text (most desktop
+   mail clients aren't configured); on touch devices they stay tappable mailto: links. */
+.edc-email {
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+@media (hover: hover) and (pointer: fine) {
+  .edc-email { pointer-events: none; cursor: text; border-bottom: none; }
+}
+.edc-map {
+  display: block;
+  margin-top: 1.1rem;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--edc-line);
+}
+.edc-map iframe { width: 100%; height: 100%; border: 0; display: block; pointer-events: none; }
+.edc-map::after {
+  content: "Apri in Google Maps ↗";
+  position: absolute; right: 0.8rem; bottom: 0.8rem;
+  background: var(--edc-accent); color: #fff;
+  font-family: var(--edc-f-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.55rem 1rem; border-radius: 999px;
+  transition: background .2s ease;
+}
+.edc-map:hover::after { background: var(--edc-ink); }
+[data-lang="en"] .edc-map::after { content: "Open in Google Maps ↗"; }
+[data-lang="es"] .edc-map::after { content: "Abrir en Google Maps ↗"; }
+[data-lang="de"] .edc-map::after { content: "In Google Maps öffnen ↗"; }
+[data-lang="pt"] .edc-map::after { content: "Abrir no Google Maps ↗"; }
+.edc-contact__line--todo { cursor: default; }
+.edc-contact__line--todo:hover { padding-left: 0; }
+.edc-contact__line--todo strong {
+  color: var(--edc-ink-mute);
+  font-style: italic;
+  opacity: 0.85;
+}
+.edc-contact__line--todo strong::before {
+  content: "\2192 ";
+  font-family: var(--edc-f-mono);
+  font-style: normal;
+  font-size: 0.75em;
+  margin-right: 0.3em;
+  color: var(--edc-accent);
+  opacity: 0.7;
+}
+.edc-todo-inline {
+  font-family: var(--edc-f-mono);
+  font-style: normal;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--edc-accent);
+  opacity: 0.75;
+  display: inline-block;
+  margin-top: 0.3rem;
+}
+.edc-menu__contact a[data-todo] {
+  color: var(--edc-ink-mute);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* opinionista — embeds */
+.edc-opinion {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--edc-line);
+}
+.edc-opinion__head {
+  display: grid;
+  gap: 0.6rem;
+  margin-bottom: 2.4rem;
+  max-width: 720px;
+}
+.edc-opinion__title {
+  font-family: var(--edc-f-serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.edc-opinion__grid {
+  display: grid;
+  gap: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.edc-opinion__card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1.1rem;
+  padding: 1.6rem;
+  background: var(--edc-bg-card);
+  border: 1px solid var(--edc-line);
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  position: relative;
+}
+.edc-opinion__card:hover {
+  transform: translateY(-3px);
+  border-color: var(--edc-accent);
+  box-shadow: 0 18px 40px -28px rgba(0,0,0,0.35);
+}
+.edc-opinion__card[data-kind="featured"] {
+  grid-column: 1 / -1;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto;
+  align-items: start;
+  padding: 2.2rem;
+  gap: 2rem;
+}
+@media (max-width: 880px) {
+  .edc-opinion__card[data-kind="featured"] { grid-template-columns: 1fr; gap: 1.4rem; padding: 1.8rem; }
+}
+.edc-opinion__meta {
+  display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap;
+  font-family: var(--edc-f-mono);
+  font-size: 0.64rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--edc-ink-mute);
+}
+.edc-opinion__source {
+  color: var(--edc-accent);
+}
+.edc-opinion__type {
+  padding: 0.18rem 0.55rem;
+  border: 1px solid var(--edc-line);
+  border-radius: 999px;
+  font-size: 0.6rem;
+}
+.edc-opinion__headline {
+  font-family: var(--edc-f-serif);
+  font-weight: 400;
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0;
+}
+.edc-opinion__card[data-kind="featured"] .edc-opinion__headline {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-style: italic;
+}
+.edc-opinion__quote {
+  font-family: var(--edc-f-serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  color: var(--edc-ink-soft);
+  border-left: 2px solid var(--edc-accent);
+  padding-left: 1rem;
+  margin: 0;
+  text-wrap: pretty;
+}
+.edc-opinion__excerpt {
+  font-size: 0.92rem;
+  color: var(--edc-ink-soft);
+  line-height: 1.55;
+  margin: 0;
+  text-wrap: pretty;
+}
+.edc-opinion__cta {
+  font-family: var(--edc-f-mono);
+  font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--edc-accent);
+}
+.edc-opinion__card[data-kind="todo"] {
+  border-style: dashed;
+  background: transparent;
+}
+.edc-opinion__card[data-kind="todo"]:hover {
+  transform: none;
+  border-color: var(--edc-accent);
+  box-shadow: none;
+}
+.edc-opinion__card[data-kind="todo"] .edc-opinion__headline {
+  color: var(--edc-ink-mute);
+  font-style: italic;
+}
+.edc-opinion__featured-media {
+  background: linear-gradient(135deg, var(--edc-bg-soft) 0%, var(--edc-bg) 100%);
+  border: 1px solid var(--edc-line);
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 1.6rem;
+  min-height: 220px;
+}
+.edc-opinion__featured-body {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+.edc-opinion__cover {
+  font-family: var(--edc-f-serif);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.05;
+  color: var(--edc-ink);
+}
+.edc-opinion__byline {
+  font-family: var(--edc-f-mono);
+  font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--edc-ink-mute);
+  margin-top: 0.8rem;
+}
+
+/* summary inside featured card */
+.edc-opinion__summary {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem 0 0.2rem;
+  border-top: 1px solid var(--edc-line);
+}
+.edc-opinion__summary p {
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--edc-ink-soft);
+  margin: 0;
+  text-wrap: pretty;
+}
+.edc-opinion__summary p strong {
+  color: var(--edc-ink);
+  font-weight: 500;
+}
+.edc-opinion__summary-eyebrow {
+  color: var(--edc-accent) !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: var(--edc-f-mono);
+  margin-bottom: 0.1rem !important;
+}
+.edc-opinion__open {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--edc-accent);
+  color: var(--edc-accent);
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--edc-f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  justify-self: start;
+  transition: background .2s ease, color .2s ease;
+}
+.edc-opinion__open:hover {
+  background: var(--edc-accent);
+  color: #fff;
+}
+
+/* embed modal */
+.edc-embed {
+  position: fixed; inset: 0;
+  display: none;
+  z-index: 1000;
+  background: rgba(20, 16, 12, 0.78);
+  backdrop-filter: blur(4px);
+  padding: clamp(1rem, 4vw, 2.4rem);
+}
+.edc-embed.is-on { display: grid; place-items: center; }
+.edc-embed__shell {
+  width: min(1100px, 100%);
+  height: min(820px, 92vh);
+  background: var(--edc-bg);
+  border: 1px solid var(--edc-line);
+  border-radius: 6px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+}
+.edc-embed__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid var(--edc-line);
+  background: var(--edc-bg-card);
+}
+.edc-embed__title {
+  font-family: var(--edc-f-mono);
+  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--edc-ink-mute);
+  display: flex; align-items: center; gap: 0.6rem;
+  min-width: 0;
+}
+.edc-embed__title span {
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.edc-embed__title::before {
+  content: "";
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--edc-accent);
+  flex: 0 0 auto;
+}
+.edc-embed__actions { display: flex; gap: 0.5rem; align-items: center; }
+.edc-embed__btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--edc-line);
+  color: var(--edc-ink-soft);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--edc-f-mono);
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color .2s ease, color .2s ease;
+}
+.edc-embed__btn:hover { border-color: var(--edc-accent); color: var(--edc-accent); }
+.edc-embed__close {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--edc-line);
+  background: transparent;
+  color: var(--edc-ink);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: border-color .2s ease, color .2s ease;
+}
+.edc-embed__close:hover { border-color: var(--edc-accent); color: var(--edc-accent); }
+.edc-embed__frame-wrap {
+  position: relative;
+  background: var(--edc-bg-soft);
+  overflow: hidden;
+}
+.edc-embed__frame {
+  width: 100%; height: 100%;
+  border: 0;
+  background: var(--edc-bg);
+}
+.edc-embed__fallback {
+  position: absolute; inset: 0;
+  display: none;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: var(--edc-bg);
+}
+.edc-embed.is-blocked .edc-embed__fallback { display: grid; }
+.edc-embed.is-blocked .edc-embed__frame { display: none; }
+.edc-embed__fallback-inner {
+  max-width: 460px; display: grid; gap: 1rem; justify-items: center;
+}
+.edc-embed__fallback h4 {
+  font-family: var(--edc-f-serif);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+.edc-embed__fallback p {
+  font-size: 0.92rem;
+  color: var(--edc-ink-soft);
+  line-height: 1.5;
+}
+.edc-embed__foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding: 0.7rem 1.2rem;
+  border-top: 1px solid var(--edc-line);
+  background: var(--edc-bg-card);
+  font-family: var(--edc-f-mono);
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--edc-ink-mute);
+}
+.edc-embed__foot a { color: var(--edc-accent); text-decoration: none; }
+.edc-form { display: grid; gap: 1rem; align-content: start; }
+.edc-form-row { display: grid; gap: 1rem; grid-template-columns: minmax(0,1fr); }
+@media (min-width: 720px) { .edc-form-row { grid-template-columns: 1fr 1fr; } }
+.edc-form label { display: grid; gap: 0.35rem; }
+.edc-form label > span:first-child {
+  font-family: var(--edc-f-mono);
+  font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--edc-ink-mute);
+}
+.edc-form input, .edc-form textarea, .edc-form select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--edc-line);
+  padding: 0.8rem 0;
+  font-family: var(--edc-f-sans);
+  font-size: 1rem;
+  color: var(--edc-ink);
+  outline: none;
+  transition: border-color .2s ease;
+}
+.edc-form input:focus, .edc-form textarea:focus, .edc-form select:focus {
+  border-bottom-color: var(--edc-accent);
+}
+.edc-form textarea { resize: vertical; min-height: 120px; }
+.edc-form select option { background: var(--edc-bg-card); color: var(--edc-ink); }
+.edc-form__submit {
+  border: 1px solid var(--edc-accent);
+  background: var(--edc-accent);
+  color: #fff;
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--edc-f-sans); font-size: 0.95rem; font-weight: 500;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.edc-form__submit:hover { background: transparent; color: var(--edc-accent); }
+.edc-form__success {
+  font-family: var(--edc-f-serif); font-style: italic; color: var(--edc-accent);
+  margin-left: 0.6rem; display: none;
+}
+.edc-form__success.is-on { display: inline; }
+
+/* footer */
+.edc-foot { padding: 3rem 0 2rem; background: var(--edc-bg); border-top: 1px solid var(--edc-line); }
+.edc-foot__grid { display: grid; gap: 1.6rem; grid-template-columns: minmax(0,1fr); }
+@media (min-width: 800px) { .edc-foot__grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; } }
+.edc-foot__col h4 { color: var(--edc-ink-mute); font-family: var(--edc-f-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.6rem; }
+.edc-foot__col a { display: block; color: var(--edc-ink-soft); padding: 0.2rem 0; }
+.edc-foot__col a:hover { color: var(--edc-accent); }
+.edc-foot__rule {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 1.4rem; margin-top: 1.6rem;
+  border-top: 1px solid var(--edc-line-soft);
+  font-family: var(--edc-f-mono);
+  font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--edc-ink-mute);
+  flex-wrap: wrap; gap: 0.6rem;
+}
+.edc-foot__claim {
+  font-family: var(--edc-f-serif); font-style: italic; font-size: 1.4rem; line-height: 1.2;
+  max-width: 360px; color: var(--edc-ink); margin-bottom: 0.4rem;
+}
+
+/* density tweak */
+.edc[data-density="airy"]  .edc-section { padding: 5rem 0; }
+.edc[data-density="airy"]  .edc-card { padding: 2.6rem 2rem; }
+.edc[data-density="dense"] .edc-section { padding: 3rem 0; }
+.edc[data-density="dense"] .edc-card { padding: 1.4rem 1.2rem; }
+@media (min-width: 720px) {
+  .edc[data-density="airy"]  .edc-section { padding: 8rem 0; }
+  .edc[data-density="dense"] .edc-section { padding: 4.5rem 0; }
+}
+
+/* tweaks panel */
+.edc-tweaks-toggle { display: none; }
+.edc-tweaks {
+  position: fixed; bottom: 1rem; right: 1rem; z-index: 90;
+  width: 280px; max-width: calc(100vw - 2rem);
+  background: var(--edc-bg-card);
+  border: 1px solid var(--edc-line);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,.18);
+  font-family: var(--edc-f-sans);
+  display: none;
+}
+.edc-tweaks.is-open { display: grid; gap: 0.9rem; }
+.edc-tweaks__head { display: flex; justify-content: space-between; align-items: center; }
+.edc-tweaks__head h4 { font-family: var(--edc-f-serif); font-size: 1.1rem; font-weight: 400; }
+.edc-tweaks__close { background: transparent; border: none; cursor: pointer; color: var(--edc-ink-mute); font-size: 1.2rem; line-height: 1; }
+.edc-tweaks__group { display: grid; gap: 0.4rem; }
+.edc-tweaks__group label {
+  font-family: var(--edc-f-mono); font-size: 0.6rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--edc-ink-mute);
+}
+.edc-tweaks__swatches { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.edc-tweaks__swatch {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--edc-line); cursor: pointer;
+  padding: 0; outline-offset: 2px;
+}
+.edc-tweaks__swatch.is-active { outline: 2px solid var(--edc-accent); }
+.edc-tweaks__seg {
+  display: flex; gap: 0; border: 1px solid var(--edc-line); border-radius: 999px; padding: 2px;
+}
+.edc-tweaks__seg button {
+  flex: 1; border: none; background: transparent; cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-family: var(--edc-f-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--edc-ink-soft);
+  border-radius: 999px;
+}
+.edc-tweaks__seg button.is-active { background: var(--edc-ink); color: var(--edc-bg); }
+
+/* =========================================================
+   FIGURES — real photos + caption describing the ideal shot
+   ========================================================= */
+.edc-figure {
+  margin: 0;
+  display: grid;
+  gap: 0.7rem;
+  position: relative;
+}
+.edc-figure__frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--edc-line);
+  background: var(--edc-bg-soft);
+}
+.edc-figure__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.edc-figure__corner {
+  position: absolute; top: 0.7rem; right: 0.7rem;
+  padding: 0.3rem 0.55rem;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-family: var(--edc-f-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.edc-figcaption {
+  font-family: var(--edc-f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--edc-ink-mute);
+  line-height: 1.5;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--edc-line);
+}
+.edc-figcaption strong {
+  font-family: var(--edc-f-serif);
+  font-weight: 400;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
+  color: var(--edc-accent);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.edc-figcaption a {
+  color: var(--edc-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Instagram embed grid */
+.edc-ig {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .edc-ig { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+}
+.edc-ig blockquote.instagram-media {
+  margin: 0 !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: 1px solid var(--edc-line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: var(--edc-bg-card) !important;
+}
+
+/* SR-only */
+.edc-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+</style>
+</head>
+<body>
+
+<div class="edc" id="edc-root" data-theme="light" data-density="normal" data-lang="it">
+
+  <!-- ============ NAV ============ -->
+  <header class="edc-nav" id="edc-nav">
+    <div class="edc-wrap edc-nav__inner">
+      <a class="edc-logo" href="#home">
+        <span class="edc-logo__mark" aria-hidden="true">e</span>
+        <span class="edc-logo__word">Enzo Di Costa</span>
+      </a>
+
+      <nav class="edc-nav__links" aria-label="Navigazione principale">
+        <a class="edc-nav__link" href="#bio" data-anchor="bio" data-i18n="nav_bio">Biografia</a>
+        <a class="edc-nav__link" href="#empresa" data-anchor="empresa" data-i18n="nav_empresa">Impresa</a>
+        <a class="edc-nav__link" href="#marie" data-anchor="marie">Marie Ange</a>
+        <a class="edc-nav__link" href="#anna" data-anchor="anna">Anna</a>
+        <a class="edc-nav__link" href="#ferias" data-anchor="ferias" data-i18n="nav_ferias">Ferie</a>
+        <a class="edc-nav__link" href="#calcio" data-anchor="calcio" data-i18n="nav_calcio">Calcio &amp; TV</a>
+        <a class="edc-nav__link" href="#pensiero" data-anchor="pensiero" data-i18n="nav_pensiero">Pensiero</a>
+        <a class="edc-nav__link" href="#stampa" data-anchor="stampa" data-i18n="nav_stampa">Stampa</a>
+        <a class="edc-nav__link" href="#contatto" data-anchor="contatto" data-i18n="nav_contatto">Contatti</a>
+      </nav>
+
+      <div class="edc-nav__right">
+        <div class="edc-lang" role="group" aria-label="Lingua">
+          <button data-lang-btn="it" class="is-active" type="button">it</button>
+          <button data-lang-btn="en" type="button">en</button>
+          <button data-lang-btn="es" type="button">es</button>
+          <button data-lang-btn="de" type="button">de</button>
+          <button data-lang-btn="pt" type="button">pt</button>
+        </div>
+        <button class="edc-menu-btn" id="edc-menu-btn" type="button" aria-label="Apri menu" aria-controls="edc-menu" aria-expanded="false">
+          <span class="edc-menu-btn__icon" aria-hidden="true"><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MENU OVERLAY ============ -->
+  <aside class="edc-menu" id="edc-menu" aria-hidden="true">
+    <div class="edc-wrap edc-menu__inner">
+      <div class="edc-mono edc-menu__label" data-i18n="menu_label">— Menu</div>
+      <ol class="edc-menu__list">
+        <li class="edc-menu__item"><a href="#home"><span data-i18n="menu_home">Home</span> <small>/00</small></a></li>
+        <li class="edc-menu__item"><a href="#bio"><span data-i18n="menu_bio">Biografia</span> <small>/01</small></a></li>
+        <li class="edc-menu__item"><a href="#empresa"><span data-i18n="menu_empresa">Impresa</span> <small>/02</small></a></li>
+        <li class="edc-menu__item"><a href="#marie">Marie Ange <small>/03</small></a></li>
+        <li class="edc-menu__item"><a href="#anna"><span data-i18n="menu_anna">Anna Di Costa</span> <small>/04</small></a></li>
+        <li class="edc-menu__item"><a href="#ferias"><span data-i18n="menu_ferias">Ferie &amp; mercati</span> <small>/05</small></a></li>
+        <li class="edc-menu__item"><a href="#calcio"><span data-i18n="menu_calcio">Calcio &amp; TV</span> <small>/06</small></a></li>
+        <li class="edc-menu__item"><a href="#pensiero"><span data-i18n="menu_pensiero">Pensiero</span> <small>/07</small></a></li>
+        <li class="edc-menu__item"><a href="#stampa"><span data-i18n="menu_stampa">Stampa</span> <small>/08</small></a></li>
+        <li class="edc-menu__item"><a href="#contatto"><span data-i18n="menu_contatto">Contatti</span> <small>/09</small></a></li>
+      </ol>
+      <div class="edc-menu__contact">
+        <div class="edc-mono" data-i18n="menu_contact_label">— Contatti diretti</div>
+        <a class="edc-email" href="#" data-user="info" data-domain="dicosta.it">···</a>
+        <a href="https://www.dicosta.it" target="_blank" rel="noopener">www.dicosta.it</a>
+        <a href="https://instagram.com/marieangedicosta" target="_blank" rel="noopener">@marieangedicosta</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ HERO ============ -->
+  <section class="edc-section edc-hero" id="home" data-screen-label="01 Hero">
+    <div class="edc-wrap">
+      <div class="edc-hero__grid">
+        <div class="edc-hero__text">
+          <div class="edc-eyebrow" data-i18n="hero_eyebrow">Francavilla di Sicilia · IT</div>
+          <h1 class="edc-hero__h1">
+            Vincenzo<br>
+            <em>“Enzo”</em><br>
+            Di Costa
+          </h1>
+          <p class="edc-hero__lema" data-i18n="hero_lema">Il Re del Cioccolato Siciliano. Leadership, famiglia e la passione per portare la bellezza dolce della Sicilia al mondo.</p>
+          <div class="edc-hero__ctas">
+            <a class="edc-cta" href="#bio"><span data-i18n="hero_cta1">Conosci la mia storia</span><span class="edc-cta__arrow" aria-hidden="true">→</span></a>
+            <a class="edc-cta edc-cta--ghost" href="#marie"><span data-i18n="hero_cta2">Visita Marie Ange</span><span class="edc-cta__arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="edc-hero__meta">
+            <div>
+              <div class="edc-mono edc-hero__meta-label" data-i18n="hero_meta_fondato">Fondato</div>
+              <div class="edc-hero__meta-val">1986</div>
+            </div>
+            <div>
+              <div class="edc-mono edc-hero__meta-label" data-i18n="hero_meta_mercati">Mercati</div>
+              <div class="edc-hero__meta-val" data-i18n="hero_meta_mercati_val">54 paesi</div>
+            </div>
+            <div>
+              <div class="edc-mono edc-hero__meta-label" data-i18n="hero_meta_marchio">Marchio</div>
+              <div class="edc-hero__meta-val">Marie Ange</div>
+            </div>
+          </div>
+        </div>
+        <div class="edc-hero__image">
+          <figure class="edc-figure">
+            <div class="edc-figure__frame" style="aspect-ratio: 4/5;">
+              <img src="fotos recibidas/FOTO PERSONALI/IMG_8495 copia.jpg" alt="Vincenzo &quot;Enzo&quot; Di Costa — ritratto ufficiale" loading="eager" style="object-position: 38% center;" data-i18n-alt="hero_img" />
+              <span class="edc-figure__corner">01 / hero</span>
+            </div>
+            <figcaption class="edc-figcaption">
+              <strong data-i18n="hero_fig_caption">Ritratto ufficiale di Enzo Di Costa</strong>
+            </figcaption>
+          </figure>
+          <div class="edc-hero__sticker" data-i18n="hero_sticker">dalla Sicilia al mondo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PENSIERO ============ -->
+  <section class="edc-section" id="pensiero" data-screen-label="12 Pensiero">
+    <div class="edc-wrap-narrow">
+      <header style="text-align: center;">
+        <div class="edc-eyebrow" style="justify-content: center;" data-i18n="pensiero_eyebrow">Pensiero</div>
+        <h2 class="edc-display" data-i18n="pensiero_title">In <em class="edc-accent-italic">poche parole</em>.</h2>
+      </header>
+      <div style="margin-top: 3rem; display: grid; gap: 0;">
+        <article style="padding: 1.6rem 0; border-top: 1px solid var(--edc-line); display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+          <span class="edc-mono" style="color: var(--edc-accent); margin-top: 0.5rem; min-width: 100px;" data-i18n="pensiero_label1">Sull'impresa</span>
+          <p style="font-family: var(--edc-f-serif); font-style: italic; font-weight: 300; font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 1.35; text-wrap: pretty;" data-i18n="pensiero_quote1">“Il successo non è frutto del caso, ma del merito, del lavoro duro e del rifiuto di qualunque forma di vittimismo.”</p>
+        </article>
+        <article style="padding: 1.6rem 0; border-top: 1px solid var(--edc-line); display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+          <span class="edc-mono" style="color: var(--edc-accent); margin-top: 0.5rem; min-width: 100px;" data-i18n="pensiero_label2">Sulla materia</span>
+          <p style="font-family: var(--edc-f-serif); font-style: italic; font-weight: 300; font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 1.35; text-wrap: pretty;" data-i18n="pensiero_quote2">“La materia viva si seleziona, si lavora, si rispetta. Tutto il resto viene dopo.”</p>
+        </article>
+        <article style="padding: 1.6rem 0; border-top: 1px solid var(--edc-line); display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+          <span class="edc-mono" style="color: var(--edc-accent); margin-top: 0.5rem; min-width: 100px;" data-i18n="pensiero_label3">Sulla famiglia</span>
+          <p style="font-family: var(--edc-f-serif); font-style: italic; font-weight: 300; font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 1.35; text-wrap: pretty;" data-i18n="pensiero_quote3">“Mia sorella Anna, la nostra terra, le nostre persone. Senza di loro non avrebbe senso.”</p>
+        </article>
+        <article style="padding: 1.6rem 0; border-top: 1px solid var(--edc-line); border-bottom: 1px solid var(--edc-line); display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;">
+          <span class="edc-mono" style="color: var(--edc-accent); margin-top: 0.5rem; min-width: 100px;" data-i18n="pensiero_label4">Sul calcio</span>
+          <p style="font-family: var(--edc-f-serif); font-style: italic; font-weight: 300; font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 1.35; text-wrap: pretty;" data-i18n="pensiero_quote4">“L'Inter è una fede. Il calcio, una conversazione che amo.”</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRE PASSIONI ============ -->
+  <section class="edc-section" id="passioni" data-screen-label="02 Tre Passioni">
+    <div class="edc-wrap">
+      <header>
+        <div class="edc-eyebrow" data-i18n="passioni_eyebrow">Tre passioni</div>
+        <h2 class="edc-display" data-i18n="passioni_title">Una vita organizzata <em class="edc-accent-italic">attorno</em> a ciò che conta.</h2>
+        <p class="edc-kicker" data-i18n="passioni_kicker">Cioccolato, famiglia e calcio: tre fili che attraversano ogni decisione, da Francavilla di Sicilia ai mercati internazionali.</p>
+      </header>
+      <div class="edc-grid-auto" style="margin-top: 3rem;">
+        <article class="edc-card">
+          <div class="edc-card__head">
+            <div class="edc-card__glyph" aria-hidden="true">C</div>
+            <span class="edc-card__num">01</span>
+          </div>
+          <h3 data-i18n="passioni_card1_title">Cioccolato</h3>
+          <p class="edc-card__quote" data-i18n="passioni_card1_quote">“Materia viva. Selezionata, lavorata, rispettata.”</p>
+          <a class="edc-card__link" href="#empresa" data-i18n="passioni_card1_link">Impresa →</a>
+        </article>
+        <article class="edc-card">
+          <div class="edc-card__head">
+            <div class="edc-card__glyph" aria-hidden="true">F</div>
+            <span class="edc-card__num">02</span>
+          </div>
+          <h3 data-i18n="passioni_card2_title">Famiglia</h3>
+          <p class="edc-card__quote" data-i18n="passioni_card2_quote">“Mia sorella Anna, la nostra terra, le nostre persone.”</p>
+          <a class="edc-card__link" href="#anna">Anna Di Costa →</a>
+        </article>
+        <article class="edc-card">
+          <div class="edc-card__head">
+            <div class="edc-card__glyph" aria-hidden="true">I</div>
+            <span class="edc-card__num">03</span>
+          </div>
+          <h3 data-i18n="passioni_card3_title">Calcio</h3>
+          <p class="edc-card__quote" data-i18n="passioni_card3_quote">“L'Inter è una fede. Il calcio, una conversazione che amo.”</p>
+          <a class="edc-card__link" href="#calcio" data-i18n="passioni_card3_link">Calcio &amp; TV →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NUMERI ============ -->
+  <section class="edc-section" id="numeri" data-screen-label="03 Numeri">
+    <div class="edc-wrap">
+      <header>
+        <div class="edc-eyebrow" data-i18n="numeri_eyebrow">Numeri che raccontano</div>
+        <h2 class="edc-display" data-i18n="numeri_title">Una storia lunga <em class="edc-accent-italic">quattro decenni</em>.</h2>
+      </header>
+      <div style="margin-top: 3rem; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        <div class="edc-stat">
+          <div class="edc-stat__num"><span>1986</span></div>
+          <div class="edc-stat__label" data-i18n="numeri_stat1_label">Anno di fondazione dell'azienda</div>
+        </div>
+        <div class="edc-stat">
+          <div class="edc-stat__num"><span>54</span><span class="edc-stat__suffix" data-i18n="numeri_stat2_suffix">paesi</span></div>
+          <div class="edc-stat__label" data-i18n="numeri_stat2_label">Mercati di esportazione attivi</div>
+        </div>
+        <div class="edc-stat">
+          <div class="edc-stat__num"><span>40+</span></div>
+          <div class="edc-stat__label" data-i18n="numeri_stat3_label">Anni di esperienza nel settore</div>
+          <div class="edc-stat__foot">Di Costa S.p.A.</div>
+        </div>
+        <div class="edc-stat">
+          <div class="edc-stat__num"><span>1</span><span class="edc-stat__suffix" data-i18n="numeri_stat4_suffix">visione</span></div>
+          <div class="edc-stat__label" data-i18n="numeri_stat4_label">Portare la bellezza dolce di Sicilia al mondo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIDERAZGO ============ -->
+  <section class="edc-section" id="liderazgo" data-screen-label="04 Liderazgo">
+    <div class="edc-wrap">
+      <div class="edc-grid-2" style="align-items: center;">
+        <div>
+          <div class="edc-eyebrow" data-i18n="lead_eyebrow">Un leadership forgiata nello sforzo</div>
+          <h2 class="edc-display" data-i18n="lead_title">Il successo non è frutto del caso, ma del <em class="edc-accent-italic">merito</em>.</h2>
+          <p style="margin-top: 1.4rem; font-size: 1.05rem; line-height: 1.65; color: var(--edc-ink-soft); max-width: 560px; text-wrap: pretty;" data-i18n="lead_p1">
+            Dai primi passi a Nuova York, dove conobbe il valore del sacrificio e la rinuncia, fino al consolidamento di Di Costa S.p.A. come azienda multinazionale presente in più di 50 paesi — la traiettoria di Enzo Di Costa è una testimonianza di costanza.
+          </p>
+          <p style="margin-top: 1rem; font-size: 1.05rem; line-height: 1.65; color: var(--edc-ink-soft); max-width: 560px; text-wrap: pretty;" data-i18n="lead_p2">
+            La sua visione imprenditoriale dimostra che il risultato è frutto del lavoro duro e del rifiuto di qualunque forma di vittimismo.
+          </p>
+        </div>
+        <blockquote class="edc-pull edc-pull--accent">
+          <p data-i18n="pensiero_quote1">“Il successo non è frutto del caso, ma del merito, del lavoro duro e del rifiuto di qualunque forma di vittimismo.”</p>
+          <cite>— Enzo Di Costa</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PILASTRI ============ -->
+  <section class="edc-section" id="pilastri" data-screen-label="05 Pilastri">
+    <div class="edc-wrap">
+      <header>
+        <div class="edc-eyebrow" data-i18n="pilastri_eyebrow">Pilastri di una vita</div>
+        <h2 class="edc-display" data-i18n="pilastri_title">Tre fondamenta, una <em class="edc-accent-italic">sola direzione</em>.</h2>
+      </header>
+      <div class="edc-grid-auto" style="margin-top: 3rem;">
+        <article class="edc-card">
+          <div class="edc-card__head"><span class="edc-card__num">01</span><div class="edc-card__glyph">F</div></div>
+          <h3 data-i18n="pillar1_title">La famiglia come motore</h3>
+          <p data-i18n="pillar1_p">Insieme a mia sorella e socia, Anna Di Costa, ho costruito un'eredità industriale senza abbandonare le mie radici a Francavilla di Sicilia.</p>
+        </article>
+        <article class="edc-card">
+          <div class="edc-card__head"><span class="edc-card__num">02</span><div class="edc-card__glyph">E</div></div>
+          <h3 data-i18n="pillar2_title">La ricerca dell'eccellenza</h3>
+          <p data-i18n="pillar2_p">Selezione personale di materie prime e creazione di ricette esclusive che combinano tradizione e innovazione.</p>
+        </article>
+        <article class="edc-card">
+          <div class="edc-card__head"><span class="edc-card__num">03</span><div class="edc-card__glyph">I</div></div>
+          <h3 data-i18n="pillar3_title">Passione e sport</h3>
+          <p data-i18n="pillar3_p">Profondo conoscitore del calcio italiano e fervente tifoso dell'Inter, partecipo abitualmente come opinionista in televisione.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BIO ============ -->
+  <section class="edc-section" id="bio" data-screen-label="06 Biografia">
+    <div class="edc-wrap">
+      <div class="edc-bio__grid">
+        <aside class="edc-bio__aside">
+          <div class="edc-mono" style="color: var(--edc-accent); margin-bottom: 1rem;" data-i18n="bio_label">— Sobre di me</div>
+          <h2 style="font-family: var(--edc-f-serif); font-weight: 300; font-size: clamp(2.2rem, 6.5vw, 4rem); line-height: 1; letter-spacing: -0.02em; text-wrap: balance;" data-i18n="bio_h2">
+            Di Sicilia al mondo:<br>
+            <em class="edc-accent-italic" style="font-weight: 400;">una vita dedicata</em><br>
+            alla “Dolce Bellezza”
+          </h2>
+          <figure class="edc-figure" style="margin-top: 2rem; max-width: 380px;">
+            <div class="edc-figure__frame" style="aspect-ratio: 3/4;">
+              <img src="fotos recibidas/Enzo black and white.jpg" alt="Enzo Di Costa — ritratto in bianco e nero" loading="lazy" data-i18n-alt="bio_img" />
+              <span class="edc-figure__corner">ritratto</span>
+            </div>
+            <figcaption class="edc-figcaption">
+              <strong>Enzo Di Costa</strong>
+              <span data-i18n="bio_fig_caption">Ritratto in bianco e nero.</span>
+            </figcaption>
+          </figure>
+        </aside>
+
+        <div style="display: grid; gap: 2.4rem;">
+          <article class="edc-chapter">
+            <div class="edc-chapter__head"><span class="edc-chapter__num">01</span><h3 data-i18n="ch1_title">L'origine di un sogno</h3></div>
+            <p data-i18n="ch1_p">La storia di Enzo (Vincenzo) Di Costa comincia con una vocazione precoce. A 17 anni decise di concentrare tutta la sua forza e passione nel mondo della confetteria. Lontano dal conformarsi con il locale, intraprese un viaggio di apprendistato per <em>Belgio, Francia e nord d'Italia</em> per dominare i segreti del cioccolato e della pasticceria. Al suo rientro in Sicilia, fondò un piccolo laboratorio artigianale che, con il tempo, si sarebbe trasformato in un riferimento dell'industria.</p>
+          </article>
+          <article class="edc-chapter">
+            <div class="edc-chapter__head"><span class="edc-chapter__num">02</span><h3 data-i18n="ch2_title">La costruzione di un impero familiare</h3></div>
+            <p data-i18n="ch2_p">Nel <strong>1986</strong> nasce formalmente l'azienda che oggi conosciamo come Di Costa S.p.A. La decisione più valiente di Enzo e della sua famiglia fu apostar per la sua terra natale: invece di trasladar la propria attività in poli industriali tradizionali, nel <strong>1995</strong> inauguraron una moderna pianta a Francavilla di Sicilia, nel Valle dell'Alcantara.</p>
+          </article>
+          <article class="edc-chapter">
+            <div class="edc-chapter__head"><span class="edc-chapter__num">03</span><h3 data-i18n="ch3_title">Un riferimento internazionale</h3></div>
+            <p data-i18n="ch3_p">Quattro decenni dopo, l'azienda esporta in <strong>54 paesi</strong>, con Marie Ange come marchio premium e una squadra unita dal rispetto per la materia prima.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EMPRESA (dark) ============ -->
+  <section class="edc-section edc-section--dark" id="empresa" data-screen-label="07 Empresa">
+    <div class="edc-wrap">
+      <header>
+        <div class="edc-eyebrow" data-i18n="imp_eyebrow">Impresa · Di Costa S.p.A.</div>
+        <h2 class="edc-display" data-i18n="imp_title">Una multinazionale dolce con il cuore <em class="edc-accent-italic">a Francavilla di Sicilia</em>.</h2>
+        <p class="edc-kicker" data-i18n="imp_kicker">Dal 1986 produciamo cioccolato e specialità dolci con un'attenzione ossessiva alla materia prima e ai processi tradizionali. Una pianta moderna nel Valle dell'Alcantara, una rete commerciale in 54 paesi.</p>
+      </header>
+
+      <div style="margin-top: 3rem; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="edc-stat">
+          <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 0.6rem;" data-i18n="imp_stat1_label">Sede</div>
+          <div class="edc-stat__num" style="font-size: clamp(1.5rem, 4vw, 2rem);">Francavilla di Sicilia</div>
+          <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--edc-ink-soft);" data-i18n="imp_stat1_sub">Valle dell'Alcantara, IT</div>
+        </div>
+        <div class="edc-stat">
+          <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 0.6rem;" data-i18n="imp_stat2_label">Pianta industriale</div>
+          <div class="edc-stat__num" style="font-size: clamp(1.5rem, 4vw, 2rem);" data-i18n="imp_stat2_val">dal 1995</div>
+          <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--edc-ink-soft);" data-i18n="imp_stat2_sub">Moderna, integrata</div>
+        </div>
+        <div class="edc-stat">
+          <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 0.6rem;" data-i18n="imp_stat3_label">Esportazione</div>
+          <div class="edc-stat__num" style="font-size: clamp(1.5rem, 4vw, 2rem);" data-i18n="hero_meta_mercati_val">54 paesi</div>
+          <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--edc-ink-soft);" data-i18n="imp_stat3_sub">Europa · Americhe · Asia</div>
+        </div>
+        <div class="edc-stat">
+          <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 0.6rem;" data-i18n="imp_stat4_label">Categoria</div>
+          <div class="edc-stat__num" style="font-size: clamp(1.5rem, 4vw, 2rem);">Premium</div>
+          <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--edc-ink-soft);" data-i18n="imp_stat4_sub">Tradizione + innovazione</div>
+        </div>
+      </div>
+
+      <div class="edc-grid-2" style="margin-top: 3rem; align-items: end;">
+        <p style="font-family: var(--edc-f-serif); font-style: italic; font-weight: 300; font-size: clamp(1.2rem, 3.2vw, 1.8rem); line-height: 1.35; text-wrap: balance; max-width: 720px;" data-i18n="imp_quote">
+          “La materia è viva. Selezionata, lavorata, rispettata: ogni passo è una scelta, e ogni scelta racconta chi siamo.”
+        </p>
+        <figure class="edc-figure">
+          <div class="edc-figure__frame" style="aspect-ratio: 16/10;">
+            <img src="fotos recibidas/foto aerea dicosta.webp" alt="Vista aerea dello stabilimento Di Costa S.p.A. a Francavilla di Sicilia" loading="lazy" data-i18n-alt="imp_img" />
+            <span class="edc-figure__corner">stabilimento</span>
+          </div>
+          <figcaption class="edc-figcaption" style="color: #d0bf9d; border-color: #3b2d1f;">
+            <strong style="color: #e0a26d;" data-i18n="imp_fig_strong">Stabilimento Di Costa S.p.A. · Francavilla di Sicilia</strong>
+            <span data-i18n="imp_fig_caption">Vista aerea reale della pianta produttiva, Valle dell'Alcantara.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARIE ANGE ============ -->
+  <section class="edc-section" id="marie" data-screen-label="08 Marie Ange">
+    <div class="edc-wrap">
+      <div class="edc-grid-2" style="align-items: stretch;">
+        <div>
+          <div class="edc-ig">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/marieangedicosta/" data-instgrm-version="14" style="width: 100%;"></blockquote>
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CsVs1-ZsZYN/" data-instgrm-version="14" style="width: 100%;"></blockquote>
+          </div>
+          <div class="edc-figcaption" style="margin-top: 1rem;">
+            <strong data-i18n="marie_ig_strong">Feed ufficiale @marieangedicosta</strong>
+            <span data-i18n="marie_ig_caption">Embed live di Instagram (124k follower). Il feed si aggiorna automaticamente con i post più recenti del marchio. Per WordPress: l'embed funziona con il plugin "Instagram Feed" o pegando il codice in un blocco HTML personalizzato.</span>
+          </div>
+        </div>
+        <div style="display: grid; gap: 1.3rem; align-content: center;">
+          <header>
+            <div class="edc-eyebrow" data-i18n="marie_eyebrow">Il marchio premium</div>
+            <h2 class="edc-display" data-i18n="marie_title">Marie Ange,<br><em class="edc-accent-italic">la dolcezza</em> firmata.</h2>
+            <p class="edc-kicker" data-i18n="marie_kicker">Il marchio premium del progetto Di Costa: ricette esclusive, materie prime selezionate personalmente, packaging che racconta la Sicilia con voce contemporanea.</p>
+          </header>
+          <ul style="display: grid; gap: 0; border-top: 1px solid var(--edc-line); padding-top: 0.4rem;">
+            <li style="display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid var(--edc-line-soft);">
+              <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--edc-accent); transform: translateY(-2px);"></span>
+              <span style="color: var(--edc-ink-soft); font-size: 0.98rem;" data-i18n="marie_li1">Ricette esclusive, sviluppate personalmente da Enzo</span>
+            </li>
+            <li style="display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid var(--edc-line-soft);">
+              <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--edc-accent); transform: translateY(-2px);"></span>
+              <span style="color: var(--edc-ink-soft); font-size: 0.98rem;" data-i18n="marie_li2">Selezione personale di materie prime</span>
+            </li>
+            <li style="display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid var(--edc-line-soft);">
+              <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--edc-accent); transform: translateY(-2px);"></span>
+              <span style="color: var(--edc-ink-soft); font-size: 0.98rem;" data-i18n="marie_li3">Distribuzione in 54 paesi</span>
+            </li>
+            <li style="display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid var(--edc-line-soft);">
+              <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--edc-accent); transform: translateY(-2px);"></span>
+              <span style="color: var(--edc-ink-soft); font-size: 0.98rem;" data-i18n="marie_li4">Storia su Instagram · @marieangedicosta</span>
+            </li>
+          </ul>
+          <div style="display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 0.4rem;">
+            <a class="edc-cta" href="https://instagram.com/marieangedicosta" target="_blank" rel="noopener"><span>@marieangedicosta</span><span class="edc-cta__arrow" aria-hidden="true">→</span></a>
+            <a class="edc-cta edc-cta--ghost" href="https://www.dicosta.it" target="_blank" rel="noopener"><span>www.dicosta.it</span><span class="edc-cta__arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANNA ============ -->
+  <section class="edc-section" id="anna" data-screen-label="09 Anna">
+    <div class="edc-wrap">
+      <div class="edc-grid-2" style="align-items: stretch;">
+        <div style="display: grid; gap: 1.4rem; align-content: center;">
+          <header>
+            <div class="edc-eyebrow" data-i18n="anna_eyebrow">Famiglia &amp; società</div>
+            <h2 class="edc-display" data-i18n="anna_title">Anna Di Costa<br><em class="edc-accent-italic">— sorella e socia</em></h2>
+            <p class="edc-kicker" data-i18n="anna_kicker">La famiglia come motore. Insieme a sua sorella e socia Anna Di Costa, Enzo ha costruito un'eredità industriale senza abbandonare le proprie radici a Francavilla di Sicilia.</p>
+          </header>
+          <blockquote class="edc-pull">
+            <p data-i18n="anna_quote">“Mia sorella Anna, la nostra terra, le nostre persone. Senza di loro, niente di tutto questo avrebbe senso.”</p>
+            <cite>— Enzo Di Costa</cite>
+          </blockquote>
+        </div>
+        <figure class="edc-figure" style="min-height: 360px;">
+          <div class="edc-figure__frame" style="aspect-ratio: 4/5; height: 100%;">
+            <img src="fotos recibidas/FOTO PERSONALI/IMG_4713 copia.jpg" alt="Anna Di Costa" loading="lazy" style="object-position: center bottom;" />
+            <span class="edc-figure__corner">ritratto</span>
+          </div>
+          <figcaption class="edc-figcaption">
+            <strong>Anna Di Costa</strong>
+            <span data-i18n="anna_fig_caption">Anna Di Costa, sorella e socia di Enzo.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FERIE ============ -->
+  <section class="edc-section" id="ferias" data-screen-label="10 Ferie">
+    <div class="edc-wrap">
+      <header>
+        <div class="edc-eyebrow" data-i18n="ferie_eyebrow">Ferie &amp; mercati</div>
+        <h2 class="edc-display" data-i18n="ferie_title">54 paesi, <em class="edc-accent-italic">un solo standard</em>.</h2>
+        <p class="edc-kicker" data-i18n="ferie_kicker">Le fiere internazionali dove racconto la nostra dolce bellezza. Voce italiana nel mondo del cioccolato premium.</p>
+      </header>
+      <div style="margin-top: 3rem; border-top: 1px solid var(--edc-line);">
+        <a class="edc-fair" href="ferie/marca-bologna.html">
+          <span class="edc-fair__num">01</span>
+          <div><div class="edc-fair__title" data-i18n="fair1_place">Bologna, <em>Italia</em></div><div class="edc-fair__event">Marca by BolognaFiere</div></div>
+          <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="fair1_month">Gennaio</div><div class="edc-fair__year" data-i18n="freq_annuale">annuale</div></div>
+        </a>
+        <a class="edc-fair" href="ferie/ism-koln.html">
+          <span class="edc-fair__num">02</span>
+          <div><div class="edc-fair__title" data-i18n="fair2_place">Köln, <em>Germania</em></div><div class="edc-fair__event" data-i18n="fair2_event">ISM · Salone Mondiale Dolciumi</div></div>
+          <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="fair2_month">Gennaio / Febbraio</div><div class="edc-fair__year" data-i18n="freq_annuale">annuale</div></div>
+        </a>
+        <a class="edc-fair" href="ferie/ism-shanghai.html">
+          <span class="edc-fair__num">03</span>
+          <div><div class="edc-fair__title" data-i18n="fair3_place">Shanghai, <em>Cina</em></div><div class="edc-fair__event">ISM · China Candy Festival</div></div>
+          <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="fair3_month">Primavera</div><div class="edc-fair__year" data-i18n="freq_periodica">periodica</div></div>
+        </a>
+        <a class="edc-fair" href="ferie/cibus-parma.html">
+          <span class="edc-fair__num">04</span>
+          <div><div class="edc-fair__title" data-i18n="fair4_place">Parma, <em>Italia</em></div><div class="edc-fair__event" data-i18n="fair4_event">Cibus · Salone Internazionale dell'Alimentazione</div></div>
+          <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="fair4_month">Maggio</div><div class="edc-fair__year" data-i18n="freq_biennale">biennale</div></div>
+        </a>
+        <a class="edc-fair" href="ferie/tuttofood-milano.html">
+          <span class="edc-fair__num">05</span>
+          <div><div class="edc-fair__title" data-i18n="fair5_place">Milano, <em>Italia</em></div><div class="edc-fair__event">TUTTOFOOD</div></div>
+          <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="fair4_month">Maggio</div><div class="edc-fair__year" data-i18n="freq_biennale">biennale</div></div>
+        </a>
+        <a class="edc-fair" href="ferie/sial-parigi.html">
+          <span class="edc-fair__num">06</span>
+          <div><div class="edc-fair__title" data-i18n="fair6_place">Parigi, <em>Francia</em></div><div class="edc-fair__event">SIAL Paris</div></div>
+          <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="fair6_month">Ottobre</div><div class="edc-fair__year" data-i18n="freq_biennale">biennale</div></div>
+        </a>
+      </div>
+
+      <div style="margin-top: 3.5rem;">
+        <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 1.2rem;" data-i18n="agenda_label">— Agenda di partecipazione</div>
+        <div style="border-top: 1px solid var(--edc-line);">
+          <div class="edc-fair" style="cursor: default; opacity: 0.65;">
+            <span class="edc-fair__num">→</span>
+            <div><div class="edc-fair__title" data-i18n="fair6_place">Parigi, <em>Francia</em></div><div class="edc-fair__event">Salon du Chocolat</div></div>
+            <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="ag1_month">Ottobre / Novembre</div><div class="edc-fair__year" data-i18n="freq_agenda">in agenda</div></div>
+          </div>
+          <div class="edc-fair" style="cursor: default; opacity: 0.65;">
+            <span class="edc-fair__num">→</span>
+            <div><div class="edc-fair__title" data-i18n="ag2_place">Dubai, <em>UAE</em></div><div class="edc-fair__event">Gulfood</div></div>
+            <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="fair3_month_alt">Febbraio</div><div class="edc-fair__year" data-i18n="freq_agenda">in agenda</div></div>
+          </div>
+          <div class="edc-fair" style="cursor: default; opacity: 0.65;">
+            <span class="edc-fair__num">→</span>
+            <div><div class="edc-fair__title" data-i18n="ag3_place">Tokyo, <em>Giappone</em></div><div class="edc-fair__event">Foodex Japan</div></div>
+            <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="ag3_month">Marzo</div><div class="edc-fair__year" data-i18n="freq_agenda">in agenda</div></div>
+          </div>
+          <div class="edc-fair" style="cursor: default; opacity: 0.65;">
+            <span class="edc-fair__num">→</span>
+            <div><div class="edc-fair__title" data-i18n="ag4_place">Chicago, <em>USA</em></div><div class="edc-fair__event">Sweets &amp; Snacks Expo</div></div>
+            <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="fair4_month">Maggio</div><div class="edc-fair__year" data-i18n="freq_agenda">in agenda</div></div>
+          </div>
+          <div class="edc-fair" style="cursor: default; opacity: 0.65;">
+            <span class="edc-fair__num">→</span>
+            <div><div class="edc-fair__title" data-i18n="ag5_place">São Paulo, <em>Brasile</em></div><div class="edc-fair__event">FISPAL Food Service</div></div>
+            <div class="edc-fair__meta"><div class="edc-fair__month" data-i18n="ag5_month">Giugno</div><div class="edc-fair__year" data-i18n="freq_agenda">in agenda</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CALCIO ============ -->
+  <section class="edc-section" id="calcio" data-screen-label="11 Calcio" style="background: var(--edc-bg-soft);">
+    <div class="edc-wrap">
+      <div class="edc-grid-2" style="align-items: center;">
+        <div>
+          <div class="edc-eyebrow" data-i18n="calcio_eyebrow">Calcio &amp; TV</div>
+          <h2 class="edc-display" data-i18n="calcio_title">Una fede chiamata <em class="edc-accent-italic">Inter</em>.</h2>
+          <p class="edc-kicker" data-i18n="calcio_kicker">Profondo conoscitore del calcio italiano e fervente tifoso dell'Inter. Partecipo abitualmente come opinionista in televisione, dove racconto il gioco come si racconta una storia di famiglia.</p>
+        </div>
+        <div style="display: grid; gap: 1.4rem;">
+          <blockquote class="edc-pull edc-pull--accent">
+            <p data-i18n="passioni_card3_quote_full">“L'Inter è una fede. Il calcio, una conversazione che amo.”</p>
+            <cite>— Enzo Di Costa</cite>
+          </blockquote>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+            <div class="edc-stat" style="padding-top: 0.9rem;">
+              <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 0.4rem;" data-i18n="calcio_stat1_label">Squadra del cuore</div>
+              <div style="font-family: var(--edc-f-serif); font-size: 1.05rem; line-height: 1.25;">F.C. Internazionale Milano</div>
+            </div>
+            <div class="edc-stat" style="padding-top: 0.9rem;">
+              <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 0.4rem;" data-i18n="calcio_stat2_label">Ruolo TV</div>
+              <div style="font-family: var(--edc-f-serif); font-size: 1.05rem; line-height: 1.25;" data-i18n="calcio_stat2_val">Opinionista · panelista</div>
+            </div>
+            <div class="edc-stat" style="padding-top: 0.9rem;">
+              <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 0.4rem;" data-i18n="calcio_stat3_label">Argomenti</div>
+              <div style="font-family: var(--edc-f-serif); font-size: 1.05rem; line-height: 1.25;" data-i18n="calcio_stat3_val">Tattiche · cultura calcistica</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- opinionista · panelista — embedded press & TV -->
+      <div class="edc-opinion" id="opinionista">
+        <div class="edc-opinion__head">
+          <div class="edc-eyebrow" data-i18n="opin_eyebrow">Opinionista · panelista</div>
+          <h3 class="edc-opinion__title" data-i18n="opin_title">La voce di Enzo sul <em class="edc-accent-italic">calcio italiano</em>: stampa, TV, podcast.</h3>
+          <p class="edc-kicker" style="margin-top: 0.4rem;" data-i18n="opin_kicker">Raccolta delle pubblicazioni e degli interventi in cui racconto l'Inter, la Serie A e la cultura calcistica italiana.</p>
+        </div>
+
+        <div class="edc-opinion__grid">
+
+          <!-- Featured: Pedullà long interview (opens in in-page modal) -->
+          <article class="edc-opinion__card" data-kind="featured">
+            <div class="edc-opinion__featured-media" style="padding: 1.2rem; display: block; min-height: 0; background: var(--edc-bg-soft);">
+              <div style="width: 100%; margin: 0 auto; aspect-ratio: 210 / 297; background: #fff; box-shadow: 0 12px 30px -12px rgba(0,0,0,.35); overflow: hidden;">
+                <img src="fotos recibidas/Stampa/pedulla-inter-fullpage.png" alt="Cattura della pagina completa — Alfredo Pedullà, agosto 2024" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: contain; object-position: center;" />
+              </div>
+              <div style="text-align: center; padding-top: 0.8rem;">
+                <div class="edc-opinion__byline" style="margin-top: 0;">Alfredo Pedullà · agosto 2024</div>
+              </div>
+            </div>
+            <div class="edc-opinion__featured-body">
+              <div class="edc-opinion__meta">
+                <span class="edc-opinion__source">alfredopedulla.com</span>
+                <span class="edc-opinion__type" data-i18n="opin1_type">Intervista · long-form</span>
+                <span>2024</span>
+              </div>
+              <h4 class="edc-opinion__headline" data-i18n="opin1_headline">Enzo Di Costa, il re del cioccolato che ha reso più dolce la sua passione per l'Inter</h4>
+              <blockquote class="edc-opinion__quote" data-i18n="opin1_quote">“La mia passione per l'Inter nasce da lontano e ora è diventata una religione, purissima fede.”</blockquote>
+              <div class="edc-opinion__summary">
+                <p class="edc-mono edc-opinion__summary-eyebrow" data-i18n="opin1_summary_eyebrow">In breve — per chi non ha tempo di leggerla tutta</p>
+                <p data-i18n="opin1_p1">Reportage-intervista firmato dal giornalista di mercato <strong>Alfredo Pedullà</strong> (Sportitalia) nell'estate 2024. Il pezzo racconta il doppio amore di Enzo: il cioccolato e l'Inter — “due passioni, un'unica fede: metterci sempre il cuore”.</p>
+                <p data-i18n="opin1_p2">Enzo si definisce <em>tifoso doc</em>: guarda le partite in silenzio assoluto e da solo, perché “le partite della tua squadra si soffrono da soli”. Niente folklore: la fede nerazzurra come religione privata, vissuta dentro.</p>
+                <p data-i18n="opin1_p3">Pedullà costruisce un parallelo continuo tra l'azienda dolciaria di Francavilla — altamente meccanizzata, ma con le materie prime selezionate personalmente — e il <strong>3-5-2 di Inzaghi</strong>: ogni tassello al suo posto, attenzione ossessiva ai particolari. Un cioccolatino come una conclusione di Calhanoglu, una pralina come una veronica di Mkhitaryan, i torroncini come i gol di Lautaro.</p>
+                <p data-i18n="opin1_p4">Sul futuro nerazzurro Enzo è netto: <strong>la doppia stella è gioia immensa, ma non basta</strong>. Sogna di seguire l'Inter in giro per l'Europa, di vederla dal vivo in una vigilia di Super Champions — lui che già viaggia metà dell'anno tra New York, il Sud America e i mercati internazionali.</p>
+              </div>
+              <a class="edc-opinion__cta edc-opinion__open" href="stampa/pedulla-inter.html" data-i18n="opin1_cta">Leggi l'intervista integrale qui →</a>
+            </div>
+          </article>
+
+          <!-- Panorama TV interview -->
+          <a class="edc-opinion__card" href="https://www.panorama.it/video/dalla-sicilia-multinazionale-del-gusto-di-costa-racconta" target="_blank" rel="noopener">
+            <div class="edc-opinion__meta">
+              <span class="edc-opinion__source">Panorama</span>
+              <span class="edc-opinion__type" data-i18n="opin2_type">TV · video-intervista</span>
+            </div>
+            <h4 class="edc-opinion__headline" data-i18n="opin2_headline">Dalla Sicilia a multinazionale del gusto: Di Costa racconta</h4>
+            <p class="edc-opinion__excerpt" data-i18n="opin2_excerpt">Intervista video sul percorso imprenditoriale e sulle passioni che lo accompagnano — tra cui il calcio italiano e la fede interista — andata in onda sul portale televisivo di Panorama.</p>
+            <span class="edc-opinion__cta" data-i18n="opin_cta_video">Guarda il video →</span>
+          </a>
+
+          <!-- Generic / themed card highlighting Inter analogies -->
+          <article class="edc-opinion__card" style="cursor: default;">
+            <div class="edc-opinion__meta">
+              <span class="edc-opinion__source" data-i18n="opin3_source">Estratto</span>
+              <span class="edc-opinion__type" data-i18n="opin3_type">Lettura tattica</span>
+            </div>
+            <h4 class="edc-opinion__headline" data-i18n="opin3_headline">Cioccolato e 3-5-2: la lettura nerazzurra di Enzo</h4>
+            <blockquote class="edc-opinion__quote" data-i18n="opin3_quote">“Un cioccolatino è come una bordata di Calhanoglu sotto l'incrocio. La pralina dal cuore tenero è una veronica di Mkhitaryan: puro sapore all'improvviso.”</blockquote>
+            <span class="edc-opinion__cta" style="opacity:.6;" data-i18n="opin3_cta">Estratto · A. Pedullà, 2024</span>
+          </article>
+
+          <!-- Sportitalia Mercato TV panel -->
+          <a class="edc-opinion__card" href="stampa/sportitalia-mercato.html">
+            <div class="edc-opinion__meta">
+              <span class="edc-opinion__source">Sportitalia</span>
+              <span class="edc-opinion__type" data-i18n="opin4_type">TV · panel calciomercato</span>
+            </div>
+            <h4 class="edc-opinion__headline" data-i18n="opin4_headline">Ospite di Sportitalia Mercato</h4>
+            <p class="edc-opinion__excerpt" data-i18n="opin4_excerpt">Al tavolo del panel condotto da Michele Criscitiello, tra le voci ricorrenti su calciomercato e attualità nerazzurra. Estratto video del 28 maggio 2025.</p>
+            <span class="edc-opinion__cta" data-i18n="opin_cta_video">Guarda il video →</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STAMPA ============ -->
+  <section class="edc-section" id="stampa" data-screen-label="13 Stampa">
+    <div class="edc-wrap">
+      <header>
+        <div class="edc-eyebrow" data-i18n="stampa_eyebrow">Stampa</div>
+        <h2 class="edc-display" data-i18n="stampa_title">Come ne <em class="edc-accent-italic">parlano</em>.</h2>
+      </header>
+      <div style="margin-top: 3rem;">
+        <article class="edc-press">
+          <div class="edc-press__head"><span class="edc-press__source" data-i18n="stampa1_source">TV nazionale</span><span class="edc-press__year" data-i18n="stampa1_year">in corso</span></div>
+          <h3 data-i18n="stampa1_h3">Opinionista calcistico — panelista su Inter e Serie A</h3>
+          <p data-i18n="stampa1_p">Partecipazioni regolari.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTATTO (dark) ============ -->
+  <section class="edc-section edc-section--dark" id="contatto" data-screen-label="14 Contatto">
+    <div class="edc-wrap-narrow">
+      <header>
+        <div class="edc-eyebrow" data-i18n="contatto_eyebrow">Contatti</div>
+        <h2 class="edc-display" data-i18n="contatto_title">Parliamo di <em class="edc-accent-italic">cioccolato</em>.</h2>
+        <p class="edc-kicker" data-i18n="contatto_kicker">Per richieste commerciali, di stampa o di partecipazione a programmi sportivi, scrivetemi direttamente.</p>
+      </header>
+      <div class="edc-contact__lines">
+        <div class="edc-contact__line">
+          <span class="edc-mono" data-i18n="contatto_line1_label">Email — diretta</span>
+          <strong><a class="edc-email" href="#" data-user="info" data-domain="dicosta.it">···</a></strong>
+        </div>
+        <div class="edc-contact__line">
+          <span class="edc-mono" data-i18n="contatto_line2_label">Email — commerciale</span>
+          <strong>
+            <a class="edc-email" href="#" data-user="commercialeitalia" data-domain="dicosta.it">···</a> · <span data-i18n="contatto_italia">Italia</span><br />
+            <a class="edc-email" href="#" data-user="commercialeestero" data-domain="dicosta.it">···</a> · <span data-i18n="contatto_estero">estero</span>
+          </strong>
+        </div>
+        <div class="edc-contact__line">
+          <span class="edc-mono" data-i18n="contatto_line3_label">Telefono — stabilimento Di Costa S.p.A.</span>
+          <strong><a href="tel:+390942982580">+39 0942 982580</a></strong>
+        </div>
+        <div class="edc-contact__line">
+          <span class="edc-mono" data-i18n="contatto_line4_label">Sito corporativo</span>
+          <strong><a href="https://www.dicosta.it" target="_blank" rel="noopener">www.dicosta.it</a></strong>
+        </div>
+        <div class="edc-contact__line">
+          <span class="edc-mono" data-i18n="contatto_line5_label">Instagram ufficiale</span>
+          <strong><a href="https://instagram.com/marieangedicosta" target="_blank" rel="noopener">@marieangedicosta</a></strong>
+        </div>
+        <div class="edc-contact__line">
+          <span class="edc-mono" data-i18n="contatto_line6_label">Sede legale &amp; stabilimento</span>
+          <strong>Contrada Barbazza e Contrada Santa Caterina<br />98034 Francavilla di Sicilia (ME) · IT</strong>
+          <a class="edc-map" href="https://www.google.com/maps/search/?api=1&amp;query=Di+Costa+S.p.A.%2C+Francavilla+di+Sicilia+ME%2C+Italia" target="_blank" rel="noopener" aria-label="Apri la posizione di Di Costa S.p.A. in Google Maps">
+            <iframe src="https://maps.google.com/maps?q=Di+Costa+S.p.A.,+Francavilla+di+Sicilia+ME,+Italia&amp;z=8&amp;output=embed" loading="lazy" tabindex="-1" aria-hidden="true" title="Posizione di Di Costa S.p.A. in Sicilia"></iframe>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="edc-foot">
+    <div class="edc-wrap">
+      <div class="edc-foot__grid">
+        <div class="edc-foot__col">
+          <div class="edc-mono" style="color: var(--edc-ink-mute); margin-bottom: 0.6rem;">— Vincenzo Di Costa</div>
+          <div class="edc-foot__claim" data-i18n="foot_claim">Dalla Sicilia al mondo, con il cuore.</div>
+          <div style="color: var(--edc-ink-soft); font-size: 0.9rem;" data-i18n="foot_sub">Il Re del Cioccolato Siciliano · fondatore Di Costa S.p.A. · creatore Marie Ange.</div>
+        </div>
+        <div class="edc-foot__col">
+          <h4 data-i18n="foot_menu_h4">Menu secondario</h4>
+          <a href="#" data-i18n="foot_legal">Avviso legale</a>
+          <a href="#" data-i18n="foot_privacy">Privacy</a>
+          <a href="#" data-i18n="foot_cookies">Cookies</a>
+        </div>
+        <div class="edc-foot__col">
+          <h4 data-i18n="foot_lang_h4">Lingue disponibili</h4>
+          <a href="#" data-lang-btn="it" data-i18n="foot_lang_it">Italiano · principale</a>
+          <a href="#" data-lang-btn="en" data-i18n="foot_lang_en">English · disponibile</a>
+          <a href="#" data-lang-btn="es" data-i18n="foot_lang_es">Español · disponibile</a>
+          <a href="#" data-lang-btn="de" data-i18n="foot_lang_de">Deutsch · disponibile</a>
+          <a href="#" data-lang-btn="pt" data-i18n="foot_lang_pt">Português · disponibile</a>
+        </div>
+      </div>
+      <div class="edc-foot__rule">
+        <span>© <span id="edc-year"></span> · Vincenzo "Enzo" Di Costa</span>
+        <span data-i18n="foot_briefing">Briefing editoriale · vista IT</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ TWEAKS PANEL ============ -->
+  <aside class="edc-tweaks" id="edc-tweaks" aria-hidden="true">
+    <div class="edc-tweaks__head">
+      <h4>Tweaks</h4>
+      <button type="button" class="edc-tweaks__close" id="edc-tweaks-close" aria-label="Chiudi tweaks">×</button>
+    </div>
+    <div class="edc-tweaks__group">
+      <label>Palette</label>
+      <div class="edc-tweaks__swatches" id="edc-tweaks-palette">
+        <button class="edc-tweaks__swatch is-active" data-palette="warm"  style="background: #f3ead9; border-color: #b25a2c;" aria-label="Warm cream"></button>
+        <button class="edc-tweaks__swatch" data-palette="cool"  style="background: #f1efe9; border-color: #5e6b6b;" aria-label="Cool ivory"></button>
+        <button class="edc-tweaks__swatch" data-palette="cocoa" style="background: #ede1cf; border-color: #5b3a26;" aria-label="Deep cocoa accent"></button>
+        <button class="edc-tweaks__swatch" data-palette="bold"  style="background: #f3ead9; border-color: #8a2a1f;" aria-label="Bold rosso"></button>
+      </div>
+    </div>
+    <div class="edc-tweaks__group">
+      <label>Densità</label>
+      <div class="edc-tweaks__seg" id="edc-tweaks-density">
+        <button data-density="dense"  type="button">Densa</button>
+        <button data-density="normal" type="button" class="is-active">Normale</button>
+        <button data-density="airy"   type="button">Arieggiata</button>
+      </div>
+    </div>
+    <div class="edc-tweaks__group">
+      <label>Tema</label>
+      <div class="edc-tweaks__seg" id="edc-tweaks-theme">
+        <button data-theme="light" type="button" class="is-active">Chiaro</button>
+        <button data-theme="dark"  type="button">Scuro</button>
+      </div>
+    </div>
+    <div class="edc-tweaks__group">
+      <label>Hero — sticker rotazione</label>
+      <div class="edc-tweaks__seg" id="edc-tweaks-sticker">
+        <button data-sticker="on" type="button" class="is-active">Visibile</button>
+        <button data-sticker="off" type="button">Nascosto</button>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- ============ EMBED MODAL ============ -->
+<div class="edc-embed" id="edc-embed" role="dialog" aria-modal="true" aria-labelledby="edc-embed-title" aria-hidden="true">
+  <div class="edc-embed__shell">
+    <div class="edc-embed__head">
+      <div class="edc-embed__title"><span id="edc-embed-title">Lettura esterna</span></div>
+      <div class="edc-embed__actions">
+        <a class="edc-embed__btn" id="edc-embed-open" href="#" target="_blank" rel="noopener">Apri in scheda nuova ↗</a>
+        <button type="button" class="edc-embed__close" id="edc-embed-close" aria-label="Chiudi">×</button>
+      </div>
+    </div>
+    <div class="edc-embed__frame-wrap">
+      <iframe class="edc-embed__frame" id="edc-embed-frame" title="Contenuto esterno" referrerpolicy="no-referrer-when-downgrade" loading="lazy" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+      <div class="edc-embed__fallback">
+        <div class="edc-embed__fallback-inner">
+          <h4>La pagina non consente l'embed diretto.</h4>
+          <p>Alcune testate bloccano l'inclusione dei loro articoli all'interno di altri siti. Potete leggere il contenuto integrale aprendolo in una scheda separata.</p>
+          <a class="edc-embed__btn" id="edc-embed-fallback-open" href="#" target="_blank" rel="noopener" style="border-color: var(--edc-accent); color: var(--edc-accent);">Apri l'articolo ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="edc-embed__foot">
+      <span>— Lettura ospitata · fonte esterna</span>
+      <a href="#" id="edc-embed-src" target="_blank" rel="noopener">visita la fonte ↗</a>
+    </div>
+  </div>
+</div>
+
+<script id="edc-script">
+(function () {
+  var root = document.getElementById('edc-root');
+  if (!root) return;
+
+  /* ---- smooth scroll polyfill for hash links (with offset for sticky nav) ---- */
+  function scrollToId(id, behavior) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var rect = el.getBoundingClientRect();
+    var top = rect.top + window.pageYOffset - 56;
+    window.scrollTo({ top: top, behavior: behavior || 'smooth' });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var hash = a.getAttribute('href');
+    if (hash.length < 2) return;
+    var id = hash.slice(1);
+    if (!document.getElementById(id)) return;
+    e.preventDefault();
+    scrollToId(id);
+    history.replaceState(null, '', hash);
+    // close menu if open
+    closeMenu();
+  });
+
+  /* ---- nav scroll state + active link ---- */
+  var nav = document.getElementById('edc-nav');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.edc-nav__link[data-anchor]'));
+  var sections = links.map(function (l) { return document.getElementById(l.getAttribute('data-anchor')); }).filter(Boolean);
+
+  function onScroll() {
+    var y = window.pageYOffset;
+    if (nav) nav.classList.toggle('is-scrolled', y > 12);
+    // active link
+    var cur = null;
+    for (var i = 0; i < sections.length; i++) {
+      var s = sections[i];
+      if (!s) continue;
+      if (s.getBoundingClientRect().top <= 120) cur = s.id;
+    }
+    links.forEach(function (l) {
+      l.classList.toggle('is-active', l.getAttribute('data-anchor') === cur);
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- menu toggle ---- */
+  var menu = document.getElementById('edc-menu');
+  var menuBtn = document.getElementById('edc-menu-btn');
+
+  function openMenu() {
+    if (!menu) return;
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden', 'false');
+    menuBtn.classList.add('is-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    if (!menu) return;
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    menuBtn.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      if (menu.classList.contains('is-open')) closeMenu(); else openMenu();
+    });
+  }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  /* ---- language switcher --------------------------------------------------
+     IT is the source language and lives directly in the HTML — it's captured
+     automatically into I18N_IT_CACHE the first time each [data-i18n] element
+     is seen, so it never needs to be retyped here (zero transcription risk).
+     Only translations INTO other languages need to be authored below.
+     To add a language: add its key to I18N (and a matching button/menu entry
+     in the HTML with data-lang-btn="xx"). Missing keys fall back to Italian
+     automatically, so a language pack can be filled in gradually. ---------- */
+  var I18N = {
+    en: {
+      nav_bio: 'Biography', nav_empresa: 'Company', nav_ferias: 'Fairs', nav_calcio: 'Football &amp; TV', nav_pensiero: 'Philosophy', nav_stampa: 'Press', nav_contatto: 'Contact',
+      menu_label: '— Menu', menu_home: 'Home', menu_bio: 'Biography', menu_empresa: 'Company', menu_anna: 'Anna Di Costa', menu_ferias: 'Fairs &amp; Markets', menu_calcio: 'Football &amp; TV', menu_pensiero: 'Philosophy', menu_stampa: 'Press', menu_contatto: 'Contact', menu_contact_label: '— Direct Contact',
+
+      hero_eyebrow: 'Francavilla di Sicilia · Italy',
+      hero_lema: "The King of Sicilian Chocolate. Leadership, family, and the passion for bringing Sicily&rsquo;s sweet beauty to the world.",
+      hero_cta1: 'Discover My Story', hero_cta2: 'Visit Marie Ange',
+      hero_meta_fondato: 'Founded', hero_meta_mercati: 'Markets', hero_meta_mercati_val: '54 countries', hero_meta_marchio: 'Brand',
+      hero_fig_caption: 'Official portrait of Enzo Di Costa', hero_sticker: 'from Sicily to the world',
+      hero_img: 'Vincenzo &quot;Enzo&quot; Di Costa — official portrait',
+
+      pensiero_eyebrow: 'Philosophy', pensiero_title: 'In a <em class="edc-accent-italic">few words</em>.',
+      pensiero_label1: 'On business', pensiero_quote1: '&ldquo;Success is not a matter of chance, but of merit, hard work, and refusing every form of self-pity.&rdquo;',
+      pensiero_label2: 'On ingredients', pensiero_quote2: '&ldquo;Living ingredients are selected, worked, respected. Everything else comes after.&rdquo;',
+      pensiero_label3: 'On family', pensiero_quote3: '&ldquo;My sister Anna, our land, our people. Without them, none of this would make sense.&rdquo;',
+      pensiero_label4: 'On football', pensiero_quote4: '&ldquo;Inter is a faith. Football, a conversation I love.&rdquo;',
+
+      passioni_eyebrow: 'Three Passions', passioni_title: 'A life built <em class="edc-accent-italic">around</em> what matters.',
+      passioni_kicker: 'Chocolate, family, and football: three threads running through every decision, from Francavilla di Sicilia to international markets.',
+      passioni_card1_title: 'Chocolate', passioni_card1_quote: '&ldquo;Living ingredients. Selected, worked, respected.&rdquo;', passioni_card1_link: 'Company →',
+      passioni_card2_title: 'Family', passioni_card2_quote: '&ldquo;My sister Anna, our land, our people.&rdquo;',
+      passioni_card3_title: 'Football', passioni_card3_quote: '&ldquo;Inter is a faith. Football, a conversation I love.&rdquo;', passioni_card3_quote_full: '&ldquo;Inter is a faith. Football, a conversation I love.&rdquo;', passioni_card3_link: 'Football &amp; TV →',
+
+      numeri_eyebrow: 'Numbers that tell a story', numeri_title: 'A story spanning <em class="edc-accent-italic">four decades</em>.',
+      numeri_stat1_label: 'Year the company was founded',
+      numeri_stat2_suffix: 'countries', numeri_stat2_label: 'Active export markets',
+      numeri_stat3_label: 'Years of experience in the industry',
+      numeri_stat4_suffix: 'vision', numeri_stat4_label: "Bringing Sicily&rsquo;s sweet beauty to the world",
+
+      lead_eyebrow: 'Leadership forged through effort', lead_title: 'Success is not a matter of chance, but of <em class="edc-accent-italic">merit</em>.',
+      lead_p1: "From his first steps in New York, where he learned the value of sacrifice and renunciation, to building Di Costa S.p.A. into a multinational company present in more than 50 countries — Enzo Di Costa&rsquo;s journey is a testament to consistency.",
+      lead_p2: 'His entrepreneurial vision proves that results come from hard work and the refusal of any form of self-pity.',
+
+      pilastri_eyebrow: 'Pillars of a Life', pilastri_title: 'Three foundations, <em class="edc-accent-italic">one direction</em>.',
+      pillar1_title: 'Family as the driving force', pillar1_p: "Together with my sister and business partner, Anna Di Costa, I built an industrial legacy without ever abandoning my roots in Francavilla di Sicilia.",
+      pillar2_title: 'The pursuit of excellence', pillar2_p: 'Personal selection of raw materials and the creation of exclusive recipes that combine tradition and innovation.',
+      pillar3_title: 'Passion and sport', pillar3_p: 'A deep connoisseur of Italian football and a passionate Inter fan, I regularly appear on television as a sports commentator.',
+
+      bio_label: '— About me',
+      bio_h2: 'From Sicily to the world:<br><em class="edc-accent-italic" style="font-weight: 400;">a life devoted</em><br>to &ldquo;Sweet Beauty&rdquo;',
+      bio_fig_caption: 'Black and white portrait.', bio_img: 'Enzo Di Costa — black and white portrait',
+      ch1_title: 'The origin of a dream',
+      ch1_p: "Enzo (Vincenzo) Di Costa&rsquo;s story begins with an early calling. At 17, he decided to pour all his strength and passion into the world of confectionery. Rather than settle for what was close to home, he set off on an apprenticeship across <em>Belgium, France, and northern Italy</em> to master the secrets of chocolate and pastry. Back in Sicily, he founded a small artisan workshop that would, over time, grow into an industry benchmark.",
+      ch2_title: 'Building a family empire',
+      ch2_p: "In <strong>1986</strong>, the company we know today as Di Costa S.p.A. was formally born. Enzo and his family&rsquo;s boldest decision was to bet on their home region: rather than relocate to traditional industrial hubs, in <strong>1995</strong> they opened a modern plant in Francavilla di Sicilia, in the Alcantara Valley.",
+      ch3_title: 'An international benchmark',
+      ch3_p: 'Four decades later, the company exports to <strong>54 countries</strong>, with Marie Ange as its premium brand and a team united by respect for raw ingredients.',
+
+      imp_eyebrow: 'Company · Di Costa S.p.A.', imp_title: 'A sweet multinational with its heart <em class="edc-accent-italic">in Francavilla di Sicilia</em>.',
+      imp_kicker: 'Since 1986 we have produced chocolate and sweet specialties with obsessive attention to raw ingredients and traditional processes. A modern plant in the Alcantara Valley, a sales network spanning 54 countries.',
+      imp_stat1_label: 'Headquarters', imp_stat1_sub: 'Alcantara Valley, Italy',
+      imp_stat2_label: 'Industrial plant', imp_stat2_val: 'since 1995', imp_stat2_sub: 'Modern, integrated',
+      imp_stat3_label: 'Exports', imp_stat3_sub: 'Europe · Americas · Asia',
+      imp_stat4_label: 'Category', imp_stat4_sub: 'Tradition + innovation',
+      imp_quote: '&ldquo;The material is alive. Selected, worked, respected: every step is a choice, and every choice tells who we are.&rdquo;',
+      imp_fig_strong: 'Di Costa S.p.A. Plant · Francavilla di Sicilia', imp_fig_caption: 'Real aerial view of the production plant, Alcantara Valley.',
+      imp_img: 'Aerial view of the Di Costa S.p.A. plant in Francavilla di Sicilia',
+
+      marie_ig_strong: 'Official feed @marieangedicosta',
+      marie_ig_caption: "Live Instagram embed (124k followers). The feed updates automatically with the brand&rsquo;s latest posts. For WordPress: the embed works with the &quot;Instagram Feed&quot; plugin or by pasting the code into a custom HTML block.",
+      marie_eyebrow: 'The premium brand', marie_title: 'Marie Ange,<br>signature <em class="edc-accent-italic">sweetness</em>.',
+      marie_kicker: "The premium brand of the Di Costa project: exclusive recipes, personally selected raw materials, packaging that tells the story of Sicily with a contemporary voice.",
+      marie_li1: 'Exclusive recipes, personally developed by Enzo', marie_li2: 'Personal selection of raw materials', marie_li3: 'Distribution in 54 countries', marie_li4: 'Story on Instagram · @marieangedicosta',
+
+      anna_eyebrow: 'Family &amp; Business', anna_title: 'Anna Di Costa<br><em class="edc-accent-italic">— sister and business partner</em>',
+      anna_kicker: 'Family as the driving force. Together with his sister and business partner Anna Di Costa, Enzo built an industrial legacy without ever abandoning his roots in Francavilla di Sicilia.',
+      anna_quote: '&ldquo;My sister Anna, our land, our people. Without them, none of this would make sense.&rdquo;',
+      anna_fig_caption: "Anna Di Costa, Enzo&rsquo;s sister and business partner.",
+
+      ferie_eyebrow: 'Trade Fairs &amp; Markets', ferie_title: '54 countries, <em class="edc-accent-italic">one single standard</em>.',
+      ferie_kicker: "The international trade fairs where I share our sweet beauty. An Italian voice in the world of premium chocolate.",
+      fair1_place: 'Bologna, <em>Italy</em>',
+      fair2_place: 'Cologne, <em>Germany</em>', fair2_event: 'ISM · World Sweets Fair', fair2_month: 'January / February',
+      fair3_place: 'Shanghai, <em>China</em>', fair3_month: 'Spring',
+      fair4_place: 'Parma, <em>Italy</em>', fair4_event: 'Cibus · International Food Exhibition', fair4_month: 'May',
+      fair5_place: 'Milan, <em>Italy</em>',
+      fair6_place: 'Paris, <em>France</em>', fair6_month: 'October',
+      fair1_month: 'January',
+      freq_annuale: 'annual', freq_biennale: 'biennial', freq_periodica: 'recurring', freq_agenda: 'upcoming',
+      agenda_label: '— Upcoming Participation',
+      ag1_month: 'October / November',
+      ag2_place: 'Dubai, <em>UAE</em>', fair3_month_alt: 'February',
+      ag3_place: 'Tokyo, <em>Japan</em>', ag3_month: 'March',
+      ag4_place: 'Chicago, <em>USA</em>',
+      ag5_place: 'São Paulo, <em>Brazil</em>', ag5_month: 'June',
+
+      calcio_eyebrow: 'Football &amp; TV', calcio_title: 'A faith called <em class="edc-accent-italic">Inter</em>.',
+      calcio_kicker: 'A deep connoisseur of Italian football and a passionate Inter fan. I regularly appear on television as a sports commentator, where I talk about the game the way you&rsquo;d talk about a family story.',
+      calcio_stat1_label: 'Team of my heart', calcio_stat2_label: 'TV role', calcio_stat2_val: 'Commentator · panelist', calcio_stat3_label: 'Topics', calcio_stat3_val: 'Tactics · football culture',
+
+      opin_eyebrow: 'Commentator · panelist', opin_title: "Enzo&rsquo;s voice on <em class=\"edc-accent-italic\">Italian football</em>: press, TV, podcasts.",
+      opin_kicker: "A collection of the publications and appearances where I talk about Inter, Serie A, and Italian football culture.",
+      opin_cta_video: 'Watch the video →',
+
+      opin1_type: 'Interview · long-form',
+      opin1_headline: "Enzo Di Costa, the chocolate king who made his passion for Inter even sweeter",
+      opin1_quote: '&ldquo;My passion for Inter goes back a long way, and it has become a religion — pure faith.&rdquo;',
+      opin1_summary_eyebrow: "In brief — for those who don&rsquo;t have time to read it all",
+      opin1_p1: "A reportage-interview by market journalist <strong>Alfredo Pedullà</strong> (Sportitalia) in the summer of 2024. The piece tells of Enzo&rsquo;s double love: chocolate and Inter — &ldquo;two passions, one single faith: always put your heart into it&rdquo;.",
+      opin1_p2: "Enzo describes himself as a <em>true fan</em>: he watches matches in absolute silence, alone, because &ldquo;you suffer through your team&rsquo;s matches on your own&rdquo;. No folklore — Nerazzurri faith as a private religion, lived from within.",
+      opin1_p3: "Pedullà draws a running parallel between the Francavilla confectionery business — highly mechanized, yet with personally selected raw materials — and <strong>Inzaghi&rsquo;s 3-5-2</strong>: every piece in its place, obsessive attention to detail. A chocolate is like a Calhanoglu strike, a praline is like a Mkhitaryan skill move, the torroncini are like Lautaro&rsquo;s goals.",
+      opin1_p4: "On Inter&rsquo;s future, Enzo is clear: <strong>the double star is immense joy, but it&rsquo;s not enough</strong>. He dreams of following Inter across Europe, of seeing them live on the eve of a Super Champions night — he who already spends half the year travelling between New York, South America, and international markets.",
+      opin1_cta: 'Read the full interview here →',
+
+      opin2_type: 'TV · video interview',
+      opin2_headline: 'From Sicily to a taste multinational: Di Costa tells his story',
+      opin2_excerpt: "A video interview on the entrepreneurial journey and the passions that come with it — including Italian football and his Inter faith — aired on Panorama&rsquo;s television portal.",
+
+      opin3_source: 'Excerpt', opin3_type: 'Tactical reading',
+      opin3_headline: "Chocolate and 3-5-2: Enzo&rsquo;s Nerazzurri reading",
+      opin3_quote: "&ldquo;A chocolate is like a Calhanoglu strike into the top corner. The soft-centred praline is a Mkhitaryan skill move: pure flavour, out of nowhere.&rdquo;",
+      opin3_cta: 'Excerpt · A. Pedullà, 2024',
+
+      opin4_type: 'TV · transfer market panel',
+      opin4_headline: 'Guest on Sportitalia Mercato',
+      opin4_excerpt: "At the panel table hosted by Michele Criscitiello, among the regular voices on the transfer market and Nerazzurri news. Video excerpt from 28 May 2025.",
+
+      stampa_eyebrow: 'Press', stampa_title: 'What they&rsquo;re <em class="edc-accent-italic">saying</em>.',
+      stampa1_source: 'National TV', stampa1_year: 'ongoing',
+      stampa1_h3: 'Football commentator — panelist on Inter and Serie A', stampa1_p: 'Regular appearances.',
+
+      contatto_eyebrow: 'Contact', contatto_title: "Let&rsquo;s talk <em class=\"edc-accent-italic\">chocolate</em>.",
+      contatto_kicker: 'For business, press, or sports-programme enquiries, write to me directly.',
+      contatto_line1_label: 'Email — direct',
+      contatto_line2_label: 'Email — commercial', contatto_italia: 'Italy', contatto_estero: 'international',
+      contatto_line3_label: 'Phone — Di Costa S.p.A. plant',
+      contatto_line4_label: 'Corporate website',
+      contatto_line5_label: 'Official Instagram',
+      contatto_line6_label: 'Registered office &amp; plant',
+
+      foot_claim: 'From Sicily to the world, with heart.',
+      foot_sub: 'The King of Sicilian Chocolate · founder of Di Costa S.p.A. · creator of Marie Ange.',
+      foot_menu_h4: 'Secondary menu', foot_legal: 'Legal notice', foot_privacy: 'Privacy', foot_cookies: 'Cookies',
+      foot_lang_h4: 'Available languages', foot_lang_it: 'Italiano · principale', foot_lang_en: 'English · available', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · available', foot_lang_pt: 'Português · available',
+      foot_briefing: 'Editorial briefing · EN view'
+    },
+    es: {
+      nav_bio: 'Biografía', nav_empresa: 'Empresa', nav_ferias: 'Ferias', nav_calcio: 'Fútbol y TV', nav_pensiero: 'Filosofía', nav_stampa: 'Prensa', nav_contatto: 'Contacto',
+      menu_label: '— Menú', menu_home: 'Inicio', menu_bio: 'Biografía', menu_empresa: 'Empresa', menu_anna: 'Anna Di Costa', menu_ferias: 'Ferias y mercados', menu_calcio: 'Fútbol y TV', menu_pensiero: 'Filosofía', menu_stampa: 'Prensa', menu_contatto: 'Contacto', menu_contact_label: '— Contacto directo',
+
+      hero_eyebrow: 'Francavilla di Sicilia · Italia',
+      hero_lema: 'El Rey del Chocolate Siciliano. Liderazgo, familia y la pasión de llevar la dulce belleza de Sicilia al mundo.',
+      hero_cta1: 'Conoce mi historia', hero_cta2: 'Visita Marie Ange',
+      hero_meta_fondato: 'Fundado', hero_meta_mercati: 'Mercados', hero_meta_mercati_val: '54 países', hero_meta_marchio: 'Marca',
+      hero_fig_caption: 'Retrato oficial de Enzo Di Costa', hero_sticker: 'de Sicilia al mundo',
+      hero_img: 'Vincenzo &quot;Enzo&quot; Di Costa — retrato oficial',
+
+      pensiero_eyebrow: 'Filosofía', pensiero_title: 'En <em class="edc-accent-italic">pocas palabras</em>.',
+      pensiero_label1: 'Sobre la empresa', pensiero_quote1: '&ldquo;El éxito no es fruto del azar, sino del mérito, el trabajo duro y el rechazo a cualquier forma de victimismo.&rdquo;',
+      pensiero_label2: 'Sobre los ingredientes', pensiero_quote2: '&ldquo;La materia viva se selecciona, se trabaja, se respeta. Todo lo demás viene después.&rdquo;',
+      pensiero_label3: 'Sobre la familia', pensiero_quote3: '&ldquo;Mi hermana Anna, nuestra tierra, nuestra gente. Sin ellos, nada de esto tendría sentido.&rdquo;',
+      pensiero_label4: 'Sobre el fútbol', pensiero_quote4: '&ldquo;El Inter es una fe. El fútbol, una conversación que amo.&rdquo;',
+
+      passioni_eyebrow: 'Tres pasiones', passioni_title: 'Una vida organizada <em class="edc-accent-italic">alrededor</em> de lo que importa.',
+      passioni_kicker: 'Chocolate, familia y fútbol: tres hilos que atraviesan cada decisión, desde Francavilla di Sicilia hasta los mercados internacionales.',
+      passioni_card1_title: 'Chocolate', passioni_card1_quote: '&ldquo;Materia viva. Seleccionada, trabajada, respetada.&rdquo;', passioni_card1_link: 'Empresa →',
+      passioni_card2_title: 'Familia', passioni_card2_quote: '&ldquo;Mi hermana Anna, nuestra tierra, nuestra gente.&rdquo;',
+      passioni_card3_title: 'Fútbol', passioni_card3_quote: '&ldquo;El Inter es una fe. El fútbol, una conversación que amo.&rdquo;', passioni_card3_quote_full: '&ldquo;El Inter es una fe. El fútbol, una conversación que amo.&rdquo;', passioni_card3_link: 'Fútbol y TV →',
+
+      numeri_eyebrow: 'Números que cuentan una historia', numeri_title: 'Una historia de <em class="edc-accent-italic">cuatro décadas</em>.',
+      numeri_stat1_label: 'Año de fundación de la empresa',
+      numeri_stat2_suffix: 'países', numeri_stat2_label: 'Mercados de exportación activos',
+      numeri_stat3_label: 'Años de experiencia en el sector',
+      numeri_stat4_suffix: 'visión', numeri_stat4_label: 'Llevar la dulce belleza de Sicilia al mundo',
+
+      lead_eyebrow: 'Un liderazgo forjado con esfuerzo', lead_title: 'El éxito no es fruto del azar, sino del <em class="edc-accent-italic">mérito</em>.',
+      lead_p1: 'Desde sus primeros pasos en Nueva York, donde conoció el valor del sacrificio y la renuncia, hasta la consolidación de Di Costa S.p.A. como empresa multinacional presente en más de 50 países — la trayectoria de Enzo Di Costa es un testimonio de constancia.',
+      lead_p2: 'Su visión empresarial demuestra que el resultado es fruto del trabajo duro y del rechazo a cualquier forma de victimismo.',
+
+      pilastri_eyebrow: 'Pilares de una vida', pilastri_title: 'Tres bases, una <em class="edc-accent-italic">sola dirección</em>.',
+      pillar1_title: 'La familia como motor', pillar1_p: 'Junto a mi hermana y socia, Anna Di Costa, construí un legado industrial sin abandonar nunca mis raíces en Francavilla di Sicilia.',
+      pillar2_title: 'La búsqueda de la excelencia', pillar2_p: 'Selección personal de materias primas y creación de recetas exclusivas que combinan tradición e innovación.',
+      pillar3_title: 'Pasión y deporte', pillar3_p: 'Profundo conocedor del fútbol italiano y fervoroso hincha del Inter, participo habitualmente como comentarista en televisión.',
+
+      bio_label: '— Sobre mí',
+      bio_h2: 'De Sicilia al mundo:<br><em class="edc-accent-italic" style="font-weight: 400;">una vida dedicada</em><br>a la &ldquo;Dulce Belleza&rdquo;',
+      bio_fig_caption: 'Retrato en blanco y negro.', bio_img: 'Enzo Di Costa — retrato en blanco y negro',
+      ch1_title: 'El origen de un sueño',
+      ch1_p: 'La historia de Enzo (Vincenzo) Di Costa comienza con una vocación precoz. A los 17 años decidió volcar toda su fuerza y pasión en el mundo de la confitería. Lejos de conformarse con lo local, emprendió un viaje de aprendizaje por <em>Bélgica, Francia y el norte de Italia</em> para dominar los secretos del chocolate y la pastelería. De regreso en Sicilia, fundó un pequeño taller artesanal que, con el tiempo, se convertiría en una referencia de la industria.',
+      ch2_title: 'La construcción de un imperio familiar',
+      ch2_p: 'En <strong>1986</strong> nace formalmente la empresa que hoy conocemos como Di Costa S.p.A. La decisión más valiente de Enzo y su familia fue apostar por su tierra natal: en lugar de trasladar la actividad a polos industriales tradicionales, en <strong>1995</strong> inauguraron una planta moderna en Francavilla di Sicilia, en el Valle del Alcántara.',
+      ch3_title: 'Una referencia internacional',
+      ch3_p: 'Cuatro décadas después, la empresa exporta a <strong>54 países</strong>, con Marie Ange como marca premium y un equipo unido por el respeto a la materia prima.',
+
+      imp_eyebrow: 'Empresa · Di Costa S.p.A.', imp_title: 'Una multinacional dulce con el corazón <em class="edc-accent-italic">en Francavilla di Sicilia</em>.',
+      imp_kicker: 'Desde 1986 producimos chocolate y especialidades dulces con una atención obsesiva a la materia prima y a los procesos tradicionales. Una planta moderna en el Valle del Alcántara, una red comercial en 54 países.',
+      imp_stat1_label: 'Sede', imp_stat1_sub: 'Valle del Alcántara, Italia',
+      imp_stat2_label: 'Planta industrial', imp_stat2_val: 'desde 1995', imp_stat2_sub: 'Moderna, integrada',
+      imp_stat3_label: 'Exportación', imp_stat3_sub: 'Europa · América · Asia',
+      imp_stat4_label: 'Categoría', imp_stat4_sub: 'Tradición + innovación',
+      imp_quote: '&ldquo;La materia está viva. Seleccionada, trabajada, respetada: cada paso es una elección, y cada elección cuenta quiénes somos.&rdquo;',
+      imp_fig_strong: 'Planta de Di Costa S.p.A. · Francavilla di Sicilia', imp_fig_caption: 'Vista aérea real de la planta productiva, Valle del Alcántara.',
+      imp_img: 'Vista aérea de la planta de Di Costa S.p.A. en Francavilla di Sicilia',
+
+      marie_ig_strong: 'Feed oficial @marieangedicosta',
+      marie_ig_caption: 'Feed en vivo de Instagram (124 mil seguidores). El feed se actualiza automáticamente con las publicaciones más recientes de la marca. Para WordPress: el embed funciona con el plugin &quot;Instagram Feed&quot; o pegando el código en un bloque HTML personalizado.',
+      marie_eyebrow: 'La marca premium', marie_title: 'Marie Ange,<br>la dulzura <em class="edc-accent-italic">con firma</em>.',
+      marie_kicker: 'La marca premium del proyecto Di Costa: recetas exclusivas, materias primas seleccionadas personalmente, un packaging que cuenta a Sicilia con voz contemporánea.',
+      marie_li1: 'Recetas exclusivas, desarrolladas personalmente por Enzo', marie_li2: 'Selección personal de materias primas', marie_li3: 'Distribución en 54 países', marie_li4: 'Historia en Instagram · @marieangedicosta',
+
+      anna_eyebrow: 'Familia y empresa', anna_title: 'Anna Di Costa<br><em class="edc-accent-italic">— hermana y socia</em>',
+      anna_kicker: 'La familia como motor. Junto a su hermana y socia Anna Di Costa, Enzo construyó un legado industrial sin abandonar nunca sus raíces en Francavilla di Sicilia.',
+      anna_quote: '&ldquo;Mi hermana Anna, nuestra tierra, nuestra gente. Sin ellos, nada de esto tendría sentido.&rdquo;',
+      anna_fig_caption: 'Anna Di Costa, hermana y socia de Enzo.',
+
+      ferie_eyebrow: 'Ferias y mercados', ferie_title: '54 países, <em class="edc-accent-italic">un solo estándar</em>.',
+      ferie_kicker: 'Las ferias internacionales donde comparto nuestra dulce belleza. Una voz italiana en el mundo del chocolate premium.',
+      fair1_place: 'Bolonia, <em>Italia</em>',
+      fair2_place: 'Colonia, <em>Alemania</em>', fair2_event: 'ISM · Feria Mundial del Dulce', fair2_month: 'Enero / Febrero',
+      fair3_place: 'Shanghái, <em>China</em>', fair3_month: 'Primavera',
+      fair4_place: 'Parma, <em>Italia</em>', fair4_event: 'Cibus · Salón Internacional de la Alimentación', fair4_month: 'Mayo',
+      fair5_place: 'Milán, <em>Italia</em>',
+      fair6_place: 'París, <em>Francia</em>', fair6_month: 'Octubre',
+      fair1_month: 'Enero',
+      freq_annuale: 'anual', freq_biennale: 'bienal', freq_periodica: 'periódica', freq_agenda: 'en agenda',
+      agenda_label: '— Agenda de participación',
+      ag1_month: 'Octubre / Noviembre',
+      ag2_place: 'Dubái, <em>EAU</em>', fair3_month_alt: 'Febrero',
+      ag3_place: 'Tokio, <em>Japón</em>', ag3_month: 'Marzo',
+      ag4_place: 'Chicago, <em>EE. UU.</em>',
+      ag5_place: 'São Paulo, <em>Brasil</em>', ag5_month: 'Junio',
+
+      calcio_eyebrow: 'Fútbol y TV', calcio_title: 'Una fe llamada <em class="edc-accent-italic">Inter</em>.',
+      calcio_kicker: 'Profundo conocedor del fútbol italiano y fervoroso hincha del Inter. Participo habitualmente como comentarista en televisión, donde cuento el juego como se cuenta una historia de familia.',
+      calcio_stat1_label: 'Equipo del corazón', calcio_stat2_label: 'Rol en TV', calcio_stat2_val: 'Comentarista · panelista', calcio_stat3_label: 'Temas', calcio_stat3_val: 'Táctica · cultura futbolística',
+
+      opin_eyebrow: 'Comentarista · panelista', opin_title: 'La voz de Enzo sobre el <em class="edc-accent-italic">fútbol italiano</em>: prensa, TV, podcasts.',
+      opin_kicker: 'Una recopilación de las publicaciones y apariciones donde hablo del Inter, la Serie A y la cultura futbolística italiana.',
+      opin_cta_video: 'Ver el video →',
+
+      opin1_type: 'Entrevista · nota extensa',
+      opin1_headline: 'Enzo Di Costa, el rey del chocolate que endulzó aún más su pasión por el Inter',
+      opin1_quote: '&ldquo;Mi pasión por el Inter viene de lejos y hoy se ha convertido en una religión, una fe pura.&rdquo;',
+      opin1_summary_eyebrow: 'En breve — para quienes no tienen tiempo de leerla entera',
+      opin1_p1: 'Reportaje-entrevista firmado por el periodista de mercado <strong>Alfredo Pedullà</strong> (Sportitalia) en el verano de 2024. La nota cuenta el doble amor de Enzo: el chocolate y el Inter — &ldquo;dos pasiones, una sola fe: poner siempre el corazón&rdquo;.',
+      opin1_p2: 'Enzo se define como <em>hincha de los de verdad</em>: mira los partidos en silencio absoluto y solo, porque &ldquo;los partidos de tu equipo se sufren solo&rdquo;. Nada de folclore: la fe nerazzurra como una religión privada, vivida desde adentro.',
+      opin1_p3: 'Pedullà traza un paralelismo constante entre la fábrica de dulces de Francavilla — altamente mecanizada, pero con materias primas seleccionadas personalmente — y el <strong>3-5-2 de Inzaghi</strong>: cada pieza en su lugar, atención obsesiva al detalle. Un bombón es como un remate de Calhanoglu, una praliné es como una gambeta de Mkhitaryan, los torroncini son como los goles de Lautaro.',
+      opin1_p4: 'Sobre el futuro nerazzurro, Enzo es claro: <strong>la doble estrella es una alegría inmensa, pero no alcanza</strong>. Sueña con seguir al Inter por toda Europa, con verlo en vivo la víspera de una Superchampions — él, que ya viaja medio año entre Nueva York, Sudamérica y los mercados internacionales.',
+      opin1_cta: 'Leer la entrevista completa aquí →',
+
+      opin2_type: 'TV · videoentrevista',
+      opin2_headline: 'De Sicilia a multinacional del sabor: Di Costa cuenta su historia',
+      opin2_excerpt: 'Entrevista en video sobre el recorrido empresarial y las pasiones que lo acompañan — entre ellas el fútbol italiano y su fe interista — emitida en el portal televisivo de Panorama.',
+
+      opin3_source: 'Extracto', opin3_type: 'Lectura táctica',
+      opin3_headline: 'Chocolate y 3-5-2: la lectura nerazzurra de Enzo',
+      opin3_quote: '&ldquo;Un bombón es como un remate de Calhanoglu al ángulo. La praliné de corazón blando es una gambeta de Mkhitaryan: puro sabor, de repente.&rdquo;',
+      opin3_cta: 'Extracto · A. Pedullà, 2024',
+
+      opin4_type: 'TV · panel de mercado de pases',
+      opin4_headline: 'Invitado en Sportitalia Mercato',
+      opin4_excerpt: 'En la mesa del panel conducido por Michele Criscitiello, entre las voces habituales sobre el mercado de pases y la actualidad nerazzurra. Extracto en video del 28 de mayo de 2025.',
+
+      stampa_eyebrow: 'Prensa', stampa_title: 'Lo que <em class="edc-accent-italic">dicen</em> de mí.',
+      stampa1_source: 'TV nacional', stampa1_year: 'en curso',
+      stampa1_h3: 'Comentarista de fútbol — panelista sobre Inter y Serie A', stampa1_p: 'Participaciones regulares.',
+
+      contatto_eyebrow: 'Contacto', contatto_title: 'Hablemos de <em class="edc-accent-italic">chocolate</em>.',
+      contatto_kicker: 'Para consultas comerciales, de prensa o de participación en programas deportivos, escríbeme directamente.',
+      contatto_line1_label: 'Email — directo',
+      contatto_line2_label: 'Email — comercial', contatto_italia: 'Italia', contatto_estero: 'internacional',
+      contatto_line3_label: 'Teléfono — planta de Di Costa S.p.A.',
+      contatto_line4_label: 'Sitio corporativo',
+      contatto_line5_label: 'Instagram oficial',
+      contatto_line6_label: 'Sede legal y planta',
+
+      foot_claim: 'De Sicilia al mundo, con el corazón.',
+      foot_sub: 'El Rey del Chocolate Siciliano · fundador de Di Costa S.p.A. · creador de Marie Ange.',
+      foot_menu_h4: 'Menú secundario', foot_legal: 'Aviso legal', foot_privacy: 'Privacidad', foot_cookies: 'Cookies',
+      foot_lang_h4: 'Idiomas disponibles', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponible', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · disponible', foot_lang_pt: 'Português · disponible',
+      foot_briefing: 'Resumen editorial · vista ES'
+    },
+    de: {
+      nav_bio: 'Biografie', nav_empresa: 'Unternehmen', nav_ferias: 'Messen', nav_calcio: 'Fußball &amp; TV', nav_pensiero: 'Philosophie', nav_stampa: 'Presse', nav_contatto: 'Kontakt',
+      menu_label: '— Menü', menu_home: 'Startseite', menu_bio: 'Biografie', menu_empresa: 'Unternehmen', menu_anna: 'Anna Di Costa', menu_ferias: 'Messen &amp; Märkte', menu_calcio: 'Fußball &amp; TV', menu_pensiero: 'Philosophie', menu_stampa: 'Presse', menu_contatto: 'Kontakt', menu_contact_label: '— Direktkontakt',
+
+      hero_eyebrow: 'Francavilla di Sicilia · Italien',
+      hero_lema: 'Der König der sizilianischen Schokolade. Führungsstärke, Familie und die Leidenschaft, Siziliens süße Schönheit in die Welt zu tragen.',
+      hero_cta1: 'Meine Geschichte entdecken', hero_cta2: 'Marie Ange besuchen',
+      hero_meta_fondato: 'Gegründet', hero_meta_mercati: 'Märkte', hero_meta_mercati_val: '54 Länder', hero_meta_marchio: 'Marke',
+      hero_fig_caption: 'Offizielles Porträt von Enzo Di Costa', hero_sticker: 'von Sizilien in die Welt',
+      hero_img: 'Vincenzo &quot;Enzo&quot; Di Costa — offizielles Porträt',
+
+      pensiero_eyebrow: 'Philosophie', pensiero_title: 'In <em class="edc-accent-italic">wenigen Worten</em>.',
+      pensiero_label1: 'Über das Unternehmen', pensiero_quote1: '&ldquo;Erfolg ist keine Frage des Zufalls, sondern von Verdienst, harter Arbeit und der Ablehnung jeder Form von Selbstmitleid.&rdquo;',
+      pensiero_label2: 'Über die Zutaten', pensiero_quote2: '&ldquo;Lebendige Rohstoffe werden ausgewählt, verarbeitet, respektiert. Alles andere kommt danach.&rdquo;',
+      pensiero_label3: 'Über die Familie', pensiero_quote3: '&ldquo;Meine Schwester Anna, unser Land, unsere Leute. Ohne sie hätte all das keinen Sinn.&rdquo;',
+      pensiero_label4: 'Über den Fußball', pensiero_quote4: '&ldquo;Inter ist ein Glaube. Fußball, ein Gespräch, das ich liebe.&rdquo;',
+
+      passioni_eyebrow: 'Drei Leidenschaften', passioni_title: 'Ein Leben, das sich <em class="edc-accent-italic">um</em> das Wesentliche dreht.',
+      passioni_kicker: 'Schokolade, Familie und Fußball: drei rote Fäden, die jede Entscheidung durchziehen, von Francavilla di Sicilia bis zu den internationalen Märkten.',
+      passioni_card1_title: 'Schokolade', passioni_card1_quote: '&ldquo;Lebendiger Rohstoff. Ausgewählt, verarbeitet, respektiert.&rdquo;', passioni_card1_link: 'Unternehmen →',
+      passioni_card2_title: 'Familie', passioni_card2_quote: '&ldquo;Meine Schwester Anna, unser Land, unsere Leute.&rdquo;',
+      passioni_card3_title: 'Fußball', passioni_card3_quote: '&ldquo;Inter ist ein Glaube. Fußball, ein Gespräch, das ich liebe.&rdquo;', passioni_card3_quote_full: '&ldquo;Inter ist ein Glaube. Fußball, ein Gespräch, das ich liebe.&rdquo;', passioni_card3_link: 'Fußball &amp; TV →',
+
+      numeri_eyebrow: 'Zahlen, die eine Geschichte erzählen', numeri_title: 'Eine Geschichte über <em class="edc-accent-italic">vier Jahrzehnte</em>.',
+      numeri_stat1_label: 'Gründungsjahr des Unternehmens',
+      numeri_stat2_suffix: 'Länder', numeri_stat2_label: 'Aktive Exportmärkte',
+      numeri_stat3_label: 'Jahre Erfahrung in der Branche',
+      numeri_stat4_suffix: 'Vision', numeri_stat4_label: 'Siziliens süße Schönheit in die Welt tragen',
+
+      lead_eyebrow: 'Führungsstärke, erarbeitet durch Einsatz', lead_title: 'Erfolg ist keine Frage des Zufalls, sondern des <em class="edc-accent-italic">Verdienstes</em>.',
+      lead_p1: 'Von seinen ersten Schritten in New York, wo er den Wert von Aufopferung und Verzicht kennenlernte, bis zum Aufbau von Di Costa S.p.A. zu einem multinationalen Unternehmen mit Präsenz in mehr als 50 Ländern — der Weg von Enzo Di Costa ist ein Zeugnis von Beständigkeit.',
+      lead_p2: 'Seine unternehmerische Vision beweist, dass Ergebnisse aus harter Arbeit und der Ablehnung jeder Form von Selbstmitleid entstehen.',
+
+      pilastri_eyebrow: 'Säulen eines Lebens', pilastri_title: 'Drei Grundlagen, <em class="edc-accent-italic">eine Richtung</em>.',
+      pillar1_title: 'Die Familie als Antrieb', pillar1_p: 'Gemeinsam mit meiner Schwester und Geschäftspartnerin Anna Di Costa habe ich ein industrielles Erbe aufgebaut, ohne je meine Wurzeln in Francavilla di Sicilia aufzugeben.',
+      pillar2_title: 'Das Streben nach Exzellenz', pillar2_p: 'Persönliche Auswahl der Rohstoffe und die Entwicklung exklusiver Rezepturen, die Tradition und Innovation verbinden.',
+      pillar3_title: 'Leidenschaft und Sport', pillar3_p: 'Als profunder Kenner des italienischen Fußballs und leidenschaftlicher Inter-Fan trete ich regelmäßig als Sportkommentator im Fernsehen auf.',
+
+      bio_label: '— Über mich',
+      bio_h2: 'Von Sizilien in die Welt:<br><em class="edc-accent-italic" style="font-weight: 400;">ein Leben gewidmet</em><br>der &ldquo;Süßen Schönheit&rdquo;',
+      bio_fig_caption: 'Schwarz-Weiß-Porträt.', bio_img: 'Enzo Di Costa — Schwarz-Weiß-Porträt',
+      ch1_title: 'Der Ursprung eines Traums',
+      ch1_p: 'Die Geschichte von Enzo (Vincenzo) Di Costa beginnt mit einer frühen Berufung. Mit 17 Jahren beschloss er, all seine Kraft und Leidenschaft in die Welt der Confiserie zu stecken. Statt sich mit dem Naheliegenden zu begnügen, begab er sich auf eine Lehrzeit durch <em>Belgien, Frankreich und Norditalien</em>, um die Geheimnisse von Schokolade und Patisserie zu meistern. Zurück in Sizilien gründete er eine kleine Handwerksmanufaktur, die sich mit der Zeit zu einem Maßstab der Branche entwickeln sollte.',
+      ch2_title: 'Der Aufbau eines Familienimperiums',
+      ch2_p: 'Im Jahr <strong>1986</strong> wurde offiziell das Unternehmen gegründet, das wir heute als Di Costa S.p.A. kennen. Die mutigste Entscheidung von Enzo und seiner Familie war es, auf ihre Heimatregion zu setzen: Anstatt die Produktion in klassische Industriezentren zu verlagern, eröffneten sie <strong>1995</strong> ein modernes Werk in Francavilla di Sicilia, im Alcantara-Tal.',
+      ch3_title: 'Ein internationaler Maßstab',
+      ch3_p: 'Vier Jahrzehnte später exportiert das Unternehmen in <strong>54 Länder</strong>, mit Marie Ange als Premiummarke und einem Team, das der Respekt vor dem Rohstoff eint.',
+
+      imp_eyebrow: 'Unternehmen · Di Costa S.p.A.', imp_title: 'Ein süßer Weltkonzern mit dem Herzen <em class="edc-accent-italic">in Francavilla di Sicilia</em>.',
+      imp_kicker: 'Seit 1986 produzieren wir Schokolade und süße Spezialitäten mit obsessiver Aufmerksamkeit für Rohstoffe und traditionelle Verfahren. Ein modernes Werk im Alcantara-Tal, ein Vertriebsnetz in 54 Ländern.',
+      imp_stat1_label: 'Sitz', imp_stat1_sub: 'Alcantara-Tal, Italien',
+      imp_stat2_label: 'Produktionswerk', imp_stat2_val: 'seit 1995', imp_stat2_sub: 'Modern, integriert',
+      imp_stat3_label: 'Export', imp_stat3_sub: 'Europa · Amerika · Asien',
+      imp_stat4_label: 'Kategorie', imp_stat4_sub: 'Tradition + Innovation',
+      imp_quote: '&ldquo;Der Rohstoff lebt. Ausgewählt, verarbeitet, respektiert: jeder Schritt ist eine Entscheidung, und jede Entscheidung erzählt, wer wir sind.&rdquo;',
+      imp_fig_strong: 'Werk von Di Costa S.p.A. · Francavilla di Sicilia', imp_fig_caption: 'Reale Luftaufnahme des Produktionswerks, Alcantara-Tal.',
+      imp_img: 'Luftaufnahme des Di Costa S.p.A. Werks in Francavilla di Sicilia',
+
+      marie_ig_strong: 'Offizieller Feed @marieangedicosta',
+      marie_ig_caption: 'Live-Instagram-Einbettung (124.000 Follower). Der Feed aktualisiert sich automatisch mit den neuesten Beiträgen der Marke. Für WordPress: Die Einbettung funktioniert mit dem Plugin &quot;Instagram Feed&quot; oder durch Einfügen des Codes in einen benutzerdefinierten HTML-Block.',
+      marie_eyebrow: 'Die Premiummarke', marie_title: 'Marie Ange,<br>Süße <em class="edc-accent-italic">mit Signatur</em>.',
+      marie_kicker: 'Die Premiummarke des Di-Costa-Projekts: exklusive Rezepturen, persönlich ausgewählte Rohstoffe, eine Verpackung, die Sizilien mit zeitgenössischer Stimme erzählt.',
+      marie_li1: 'Exklusive Rezepturen, persönlich von Enzo entwickelt', marie_li2: 'Persönliche Auswahl der Rohstoffe', marie_li3: 'Vertrieb in 54 Ländern', marie_li4: 'Geschichte auf Instagram · @marieangedicosta',
+
+      anna_eyebrow: 'Familie &amp; Unternehmen', anna_title: 'Anna Di Costa<br><em class="edc-accent-italic">— Schwester und Geschäftspartnerin</em>',
+      anna_kicker: 'Die Familie als Antrieb. Gemeinsam mit seiner Schwester und Geschäftspartnerin Anna Di Costa hat Enzo ein industrielles Erbe aufgebaut, ohne je seine Wurzeln in Francavilla di Sicilia aufzugeben.',
+      anna_quote: '&ldquo;Meine Schwester Anna, unser Land, unsere Leute. Ohne sie hätte all das keinen Sinn.&rdquo;',
+      anna_fig_caption: 'Anna Di Costa, Schwester und Geschäftspartnerin von Enzo.',
+
+      ferie_eyebrow: 'Messen &amp; Märkte', ferie_title: '54 Länder, <em class="edc-accent-italic">ein einziger Maßstab</em>.',
+      ferie_kicker: 'Die internationalen Messen, auf denen ich unsere süße Schönheit teile. Eine italienische Stimme in der Welt der Premium-Schokolade.',
+      fair1_place: 'Bologna, <em>Italien</em>',
+      fair2_place: 'Köln, <em>Deutschland</em>', fair2_event: 'ISM · Weltleitmesse der Süßwaren', fair2_month: 'Januar / Februar',
+      fair3_place: 'Shanghai, <em>China</em>', fair3_month: 'Frühjahr',
+      fair4_place: 'Parma, <em>Italien</em>', fair4_event: 'Cibus · Internationale Lebensmittelmesse', fair4_month: 'Mai',
+      fair5_place: 'Mailand, <em>Italien</em>',
+      fair6_place: 'Paris, <em>Frankreich</em>', fair6_month: 'Oktober',
+      fair1_month: 'Januar',
+      freq_annuale: 'jährlich', freq_biennale: 'alle zwei Jahre', freq_periodica: 'wiederkehrend', freq_agenda: 'geplant',
+      agenda_label: '— Geplante Teilnahmen',
+      ag1_month: 'Oktober / November',
+      ag2_place: 'Dubai, <em>VAE</em>', fair3_month_alt: 'Februar',
+      ag3_place: 'Tokio, <em>Japan</em>', ag3_month: 'März',
+      ag4_place: 'Chicago, <em>USA</em>',
+      ag5_place: 'São Paulo, <em>Brasilien</em>', ag5_month: 'Juni',
+
+      calcio_eyebrow: 'Fußball &amp; TV', calcio_title: 'Ein Glaube namens <em class="edc-accent-italic">Inter</em>.',
+      calcio_kicker: 'Als profunder Kenner des italienischen Fußballs und leidenschaftlicher Inter-Fan trete ich regelmäßig als Sportkommentator im Fernsehen auf, wo ich über das Spiel spreche, wie man von einer Familiengeschichte spricht.',
+      calcio_stat1_label: 'Herzensverein', calcio_stat2_label: 'TV-Rolle', calcio_stat2_val: 'Kommentator · Experte', calcio_stat3_label: 'Themen', calcio_stat3_val: 'Taktik · Fußballkultur',
+
+      opin_eyebrow: 'Kommentator · Experte', opin_title: 'Enzos Stimme zum <em class="edc-accent-italic">italienischen Fußball</em>: Presse, TV, Podcasts.',
+      opin_kicker: 'Eine Zusammenstellung der Veröffentlichungen und Auftritte, in denen ich über Inter, die Serie A und die italienische Fußballkultur spreche.',
+      opin_cta_video: 'Video ansehen →',
+
+      opin1_type: 'Interview · Langform',
+      opin1_headline: 'Enzo Di Costa, der Schokoladenkönig, der seine Leidenschaft für Inter noch süßer machte',
+      opin1_quote: '&ldquo;Meine Leidenschaft für Inter reicht weit zurück und ist zu einer Religion geworden — reiner Glaube.&rdquo;',
+      opin1_summary_eyebrow: 'Kurz gefasst — für alle, die keine Zeit haben, alles zu lesen',
+      opin1_p1: 'Eine Reportage-Interview des Transfermarkt-Journalisten <strong>Alfredo Pedullà</strong> (Sportitalia) im Sommer 2024. Der Beitrag erzählt von Enzos doppelter Liebe: Schokolade und Inter — &ldquo;zwei Leidenschaften, ein einziger Glaube: immer mit dem Herzen dabei sein&rdquo;.',
+      opin1_p2: 'Enzo beschreibt sich selbst als <em>echten Fan</em>: Er schaut sich Spiele in absoluter Stille an, allein, denn &ldquo;die Spiele der eigenen Mannschaft leidet man allein durch&rdquo;. Kein Folklore — der nerazzurro Glaube als private Religion, von innen gelebt.',
+      opin1_p3: 'Pedullà zieht eine durchgehende Parallele zwischen dem Confiserie-Betrieb in Francavilla — hochgradig mechanisiert, aber mit persönlich ausgewählten Rohstoffen — und dem <strong>3-5-2 von Inzaghi</strong>: jedes Element an seinem Platz, obsessive Liebe zum Detail. Eine Praline ist wie ein Torabschluss von Calhanoglu, ein Weichkern-Konfekt ist wie ein Dribbling von Mkhitaryan, die Torroncini sind wie die Tore von Lautaro.',
+      opin1_p4: 'Über die Zukunft von Inter äußert sich Enzo klar: <strong>der Doppel-Stern ist eine immense Freude, aber er reicht nicht</strong>. Er träumt davon, Inter durch ganz Europa zu begleiten, sie live am Vorabend einer großen Champions-Nacht zu sehen — er, der bereits ein halbes Jahr zwischen New York, Südamerika und den internationalen Märkten unterwegs ist.',
+      opin1_cta: 'Das vollständige Interview hier lesen →',
+
+      opin2_type: 'TV · Videointerview',
+      opin2_headline: 'Von Sizilien zum Geschmacks-Weltkonzern: Di Costa erzählt seine Geschichte',
+      opin2_excerpt: 'Ein Videointerview über den unternehmerischen Werdegang und die Leidenschaften, die ihn begleiten — darunter der italienische Fußball und sein Inter-Glaube — ausgestrahlt auf dem Fernsehportal von Panorama.',
+
+      opin3_source: 'Auszug', opin3_type: 'Taktische Lesart',
+      opin3_headline: 'Schokolade und 3-5-2: Enzos nerazzurra Lesart',
+      opin3_quote: '&ldquo;Eine Praline ist wie ein Calhanoglu-Schuss ins obere Eck. Das weiche Konfekt ist ein Dribbling von Mkhitaryan: purer Geschmack, aus dem Nichts.&rdquo;',
+      opin3_cta: 'Auszug · A. Pedullà, 2024',
+
+      opin4_type: 'TV · Transfermarkt-Runde',
+      opin4_headline: 'Gast bei Sportitalia Mercato',
+      opin4_excerpt: 'Am Diskussionstisch, geleitet von Michele Criscitiello, unter den festen Stimmen zum Transfermarkt und den nerazzurro Neuigkeiten. Videoauszug vom 28. Mai 2025.',
+
+      stampa_eyebrow: 'Presse', stampa_title: 'Was man über mich <em class="edc-accent-italic">sagt</em>.',
+      stampa1_source: 'Nationales Fernsehen', stampa1_year: 'laufend',
+      stampa1_h3: 'Fußballkommentator — Experte zu Inter und Serie A', stampa1_p: 'Regelmäßige Auftritte.',
+
+      contatto_eyebrow: 'Kontakt', contatto_title: 'Reden wir über <em class="edc-accent-italic">Schokolade</em>.',
+      contatto_kicker: 'Für geschäftliche Anfragen, Presseanfragen oder die Teilnahme an Sportsendungen schreiben Sie mir direkt.',
+      contatto_line1_label: 'E-Mail — direkt',
+      contatto_line2_label: 'E-Mail — geschäftlich', contatto_italia: 'Italien', contatto_estero: 'international',
+      contatto_line3_label: 'Telefon — Werk von Di Costa S.p.A.',
+      contatto_line4_label: 'Unternehmenswebsite',
+      contatto_line5_label: 'Offizielles Instagram',
+      contatto_line6_label: 'Firmensitz &amp; Werk',
+
+      foot_claim: 'Von Sizilien in die Welt, mit Herz.',
+      foot_sub: 'Der König der sizilianischen Schokolade · Gründer von Di Costa S.p.A. · Schöpfer von Marie Ange.',
+      foot_menu_h4: 'Sekundärmenü', foot_legal: 'Impressum', foot_privacy: 'Datenschutz', foot_cookies: 'Cookies',
+      foot_lang_h4: 'Verfügbare Sprachen', foot_lang_it: 'Italiano · Hauptsprache', foot_lang_en: 'English · verfügbar', foot_lang_es: 'Español · verfügbar', foot_lang_de: 'Deutsch · verfügbar', foot_lang_pt: 'Português · verfügbar',
+      foot_briefing: 'Redaktionelles Briefing · Ansicht DE'
+    },
+    pt: {
+      nav_bio: 'Biografia', nav_empresa: 'Empresa', nav_ferias: 'Feiras', nav_calcio: 'Futebol &amp; TV', nav_pensiero: 'Filosofia', nav_stampa: 'Imprensa', nav_contatto: 'Contato',
+      menu_label: '— Menu', menu_home: 'Início', menu_bio: 'Biografia', menu_empresa: 'Empresa', menu_anna: 'Anna Di Costa', menu_ferias: 'Feiras &amp; mercados', menu_calcio: 'Futebol &amp; TV', menu_pensiero: 'Filosofia', menu_stampa: 'Imprensa', menu_contatto: 'Contato', menu_contact_label: '— Contato direto',
+
+      hero_eyebrow: 'Francavilla di Sicilia · Itália',
+      hero_lema: 'O Rei do Chocolate Siciliano. Liderança, família e a paixão de levar a doce beleza da Sicília ao mundo.',
+      hero_cta1: 'Conheça minha história', hero_cta2: 'Visite Marie Ange',
+      hero_meta_fondato: 'Fundado', hero_meta_mercati: 'Mercados', hero_meta_mercati_val: '54 países', hero_meta_marchio: 'Marca',
+      hero_fig_caption: 'Retrato oficial de Enzo Di Costa', hero_sticker: 'da Sicília para o mundo',
+      hero_img: 'Vincenzo &quot;Enzo&quot; Di Costa — retrato oficial',
+
+      pensiero_eyebrow: 'Filosofia', pensiero_title: 'Em <em class="edc-accent-italic">poucas palavras</em>.',
+      pensiero_label1: 'Sobre os negócios', pensiero_quote1: '&ldquo;O sucesso não é fruto do acaso, mas de mérito, trabalho duro e a recusa de qualquer forma de vitimismo.&rdquo;',
+      pensiero_label2: 'Sobre os ingredientes', pensiero_quote2: '&ldquo;A matéria viva é selecionada, trabalhada, respeitada. Tudo o mais vem depois.&rdquo;',
+      pensiero_label3: 'Sobre a família', pensiero_quote3: '&ldquo;Minha irmã Anna, nossa terra, nossa gente. Sem eles, nada disso faria sentido.&rdquo;',
+      pensiero_label4: 'Sobre o futebol', pensiero_quote4: '&ldquo;A Inter é uma fé. O futebol, uma conversa que amo.&rdquo;',
+
+      passioni_eyebrow: 'Três paixões', passioni_title: 'Uma vida organizada <em class="edc-accent-italic">ao redor</em> do que importa.',
+      passioni_kicker: 'Chocolate, família e futebol: três fios que atravessam cada decisão, de Francavilla di Sicilia aos mercados internacionais.',
+      passioni_card1_title: 'Chocolate', passioni_card1_quote: '&ldquo;Matéria viva. Selecionada, trabalhada, respeitada.&rdquo;', passioni_card1_link: 'Empresa →',
+      passioni_card2_title: 'Família', passioni_card2_quote: '&ldquo;Minha irmã Anna, nossa terra, nossa gente.&rdquo;',
+      passioni_card3_title: 'Futebol', passioni_card3_quote: '&ldquo;A Inter é uma fé. O futebol, uma conversa que amo.&rdquo;', passioni_card3_quote_full: '&ldquo;A Inter é uma fé. O futebol, uma conversa que amo.&rdquo;', passioni_card3_link: 'Futebol &amp; TV →',
+
+      numeri_eyebrow: 'Números que contam uma história', numeri_title: 'Uma história de <em class="edc-accent-italic">quatro décadas</em>.',
+      numeri_stat1_label: 'Ano de fundação da empresa',
+      numeri_stat2_suffix: 'países', numeri_stat2_label: 'Mercados de exportação ativos',
+      numeri_stat3_label: 'Anos de experiência no setor',
+      numeri_stat4_suffix: 'visão', numeri_stat4_label: 'Levar a doce beleza da Sicília ao mundo',
+
+      lead_eyebrow: 'Uma liderança forjada com esforço', lead_title: 'O sucesso não é fruto do acaso, mas do <em class="edc-accent-italic">mérito</em>.',
+      lead_p1: 'Desde seus primeiros passos em Nova York, onde conheceu o valor do sacrifício e da renúncia, até a consolidação da Di Costa S.p.A. como empresa multinacional presente em mais de 50 países — a trajetória de Enzo Di Costa é um testemunho de constância.',
+      lead_p2: 'Sua visão empreendedora prova que o resultado vem do trabalho duro e da recusa de qualquer forma de vitimismo.',
+
+      pilastri_eyebrow: 'Pilares de uma vida', pilastri_title: 'Três bases, uma <em class="edc-accent-italic">única direção</em>.',
+      pillar1_title: 'A família como motor', pillar1_p: 'Junto com minha irmã e sócia, Anna Di Costa, construí um legado industrial sem nunca abandonar minhas raízes em Francavilla di Sicilia.',
+      pillar2_title: 'A busca pela excelência', pillar2_p: 'Seleção pessoal de matérias-primas e criação de receitas exclusivas que combinam tradição e inovação.',
+      pillar3_title: 'Paixão e esporte', pillar3_p: 'Profundo conhecedor do futebol italiano e fervoroso torcedor da Inter, participo regularmente como comentarista na televisão.',
+
+      bio_label: '— Sobre mim',
+      bio_h2: 'Da Sicília para o mundo:<br><em class="edc-accent-italic" style="font-weight: 400;">uma vida dedicada</em><br>à &ldquo;Doce Beleza&rdquo;',
+      bio_fig_caption: 'Retrato em preto e branco.', bio_img: 'Enzo Di Costa — retrato em preto e branco',
+      ch1_title: 'A origem de um sonho',
+      ch1_p: 'A história de Enzo (Vincenzo) Di Costa começa com uma vocação precoce. Aos 17 anos, decidiu dedicar toda sua força e paixão ao mundo da confeitaria. Longe de se contentar com o que era próximo, partiu em uma jornada de aprendizado pela <em>Bélgica, França e norte da Itália</em> para dominar os segredos do chocolate e da confeitaria fina. De volta à Sicília, fundou uma pequena oficina artesanal que, com o tempo, se tornaria uma referência da indústria.',
+      ch2_title: 'A construção de um império familiar',
+      ch2_p: 'Em <strong>1986</strong> nasce formalmente a empresa que hoje conhecemos como Di Costa S.p.A. A decisão mais corajosa de Enzo e sua família foi apostar em sua terra natal: em vez de transferir a atividade para polos industriais tradicionais, em <strong>1995</strong> inauguraram uma planta moderna em Francavilla di Sicilia, no Vale do Alcântara.',
+      ch3_title: 'Uma referência internacional',
+      ch3_p: 'Quatro décadas depois, a empresa exporta para <strong>54 países</strong>, com Marie Ange como marca premium e uma equipe unida pelo respeito à matéria-prima.',
+
+      imp_eyebrow: 'Empresa · Di Costa S.p.A.', imp_title: 'Uma multinacional doce com o coração <em class="edc-accent-italic">em Francavilla di Sicilia</em>.',
+      imp_kicker: 'Desde 1986 produzimos chocolate e especialidades doces com atenção obsessiva à matéria-prima e aos processos tradicionais. Uma planta moderna no Vale do Alcântara, uma rede comercial em 54 países.',
+      imp_stat1_label: 'Sede', imp_stat1_sub: 'Vale do Alcântara, Itália',
+      imp_stat2_label: 'Planta industrial', imp_stat2_val: 'desde 1995', imp_stat2_sub: 'Moderna, integrada',
+      imp_stat3_label: 'Exportação', imp_stat3_sub: 'Europa · Américas · Ásia',
+      imp_stat4_label: 'Categoria', imp_stat4_sub: 'Tradição + inovação',
+      imp_quote: '&ldquo;A matéria está viva. Selecionada, trabalhada, respeitada: cada passo é uma escolha, e cada escolha conta quem somos.&rdquo;',
+      imp_fig_strong: 'Planta da Di Costa S.p.A. · Francavilla di Sicilia', imp_fig_caption: 'Vista aérea real da planta produtiva, Vale do Alcântara.',
+      imp_img: 'Vista aérea da planta da Di Costa S.p.A. em Francavilla di Sicilia',
+
+      marie_ig_strong: 'Feed oficial @marieangedicosta',
+      marie_ig_caption: 'Feed do Instagram ao vivo (124 mil seguidores). O feed é atualizado automaticamente com as publicações mais recentes da marca. Para WordPress: o embed funciona com o plugin &quot;Instagram Feed&quot; ou colando o código em um bloco HTML personalizado.',
+      marie_eyebrow: 'A marca premium', marie_title: 'Marie Ange,<br>doçura <em class="edc-accent-italic">com assinatura</em>.',
+      marie_kicker: 'A marca premium do projeto Di Costa: receitas exclusivas, matérias-primas selecionadas pessoalmente, uma embalagem que conta a Sicília com voz contemporânea.',
+      marie_li1: 'Receitas exclusivas, desenvolvidas pessoalmente por Enzo', marie_li2: 'Seleção pessoal de matérias-primas', marie_li3: 'Distribuição em 54 países', marie_li4: 'História no Instagram · @marieangedicosta',
+
+      anna_eyebrow: 'Família &amp; empresa', anna_title: 'Anna Di Costa<br><em class="edc-accent-italic">— irmã e sócia</em>',
+      anna_kicker: 'A família como motor. Junto com sua irmã e sócia Anna Di Costa, Enzo construiu um legado industrial sem nunca abandonar suas raízes em Francavilla di Sicilia.',
+      anna_quote: '&ldquo;Minha irmã Anna, nossa terra, nossa gente. Sem eles, nada disso faria sentido.&rdquo;',
+      anna_fig_caption: 'Anna Di Costa, irmã e sócia de Enzo.',
+
+      ferie_eyebrow: 'Feiras &amp; mercados', ferie_title: '54 países, <em class="edc-accent-italic">um único padrão</em>.',
+      ferie_kicker: 'As feiras internacionais onde compartilho nossa doce beleza. Uma voz italiana no mundo do chocolate premium.',
+      fair1_place: 'Bolonha, <em>Itália</em>',
+      fair2_place: 'Colônia, <em>Alemanha</em>', fair2_event: 'ISM · Feira Mundial dos Doces', fair2_month: 'Janeiro / Fevereiro',
+      fair3_place: 'Xangai, <em>China</em>', fair3_month: 'Primavera',
+      fair4_place: 'Parma, <em>Itália</em>', fair4_event: 'Cibus · Salão Internacional da Alimentação', fair4_month: 'Maio',
+      fair5_place: 'Milão, <em>Itália</em>',
+      fair6_place: 'Paris, <em>França</em>', fair6_month: 'Outubro',
+      fair1_month: 'Janeiro',
+      freq_annuale: 'anual', freq_biennale: 'bienal', freq_periodica: 'periódica', freq_agenda: 'na agenda',
+      agenda_label: '— Agenda de participação',
+      ag1_month: 'Outubro / Novembro',
+      ag2_place: 'Dubai, <em>EAU</em>', fair3_month_alt: 'Fevereiro',
+      ag3_place: 'Tóquio, <em>Japão</em>', ag3_month: 'Março',
+      ag4_place: 'Chicago, <em>EUA</em>',
+      ag5_place: 'São Paulo, <em>Brasil</em>', ag5_month: 'Junho',
+
+      calcio_eyebrow: 'Futebol &amp; TV', calcio_title: 'Uma fé chamada <em class="edc-accent-italic">Inter</em>.',
+      calcio_kicker: 'Profundo conhecedor do futebol italiano e fervoroso torcedor da Inter. Participo regularmente como comentarista na televisão, onde falo do jogo como se conta uma história de família.',
+      calcio_stat1_label: 'Time do coração', calcio_stat2_label: 'Papel na TV', calcio_stat2_val: 'Comentarista · painelista', calcio_stat3_label: 'Temas', calcio_stat3_val: 'Tática · cultura futebolística',
+
+      opin_eyebrow: 'Comentarista · painelista', opin_title: 'A voz de Enzo sobre o <em class="edc-accent-italic">futebol italiano</em>: imprensa, TV, podcasts.',
+      opin_kicker: 'Uma coletânea das publicações e participações onde falo sobre a Inter, a Serie A e a cultura futebolística italiana.',
+      opin_cta_video: 'Assistir ao vídeo →',
+
+      opin1_type: 'Entrevista · reportagem longa',
+      opin1_headline: 'Enzo Di Costa, o rei do chocolate que adoçou ainda mais sua paixão pela Inter',
+      opin1_quote: '&ldquo;Minha paixão pela Inter vem de longe e hoje se tornou uma religião — fé pura.&rdquo;',
+      opin1_summary_eyebrow: 'Em resumo — para quem não tem tempo de ler tudo',
+      opin1_p1: 'Reportagem-entrevista assinada pelo jornalista de mercado <strong>Alfredo Pedullà</strong> (Sportitalia) no verão de 2024. A matéria conta o duplo amor de Enzo: o chocolate e a Inter — &ldquo;duas paixões, uma só fé: colocar sempre o coração&rdquo;.',
+      opin1_p2: 'Enzo se define como <em>torcedor de verdade</em>: assiste às partidas em silêncio absoluto e sozinho, porque &ldquo;as partidas do seu time se sofre sozinho&rdquo;. Nada de folclore — a fé nerazzurra como uma religião privada, vivida por dentro.',
+      opin1_p3: 'Pedullà traça um paralelo constante entre a fábrica de doces de Francavilla — altamente mecanizada, mas com matérias-primas selecionadas pessoalmente — e o <strong>3-5-2 de Inzaghi</strong>: cada peça em seu lugar, atenção obsessiva aos detalhes. Um bombom é como um chute de Calhanoglu, um praliné é como um drible de Mkhitaryan, os torroncini são como os gols de Lautaro.',
+      opin1_p4: 'Sobre o futuro nerazzurro, Enzo é claro: <strong>a dupla estrela é uma alegria imensa, mas não basta</strong>. Sonha em acompanhar a Inter por toda a Europa, em vê-la ao vivo na véspera de uma noite de Super Champions — ele, que já viaja metade do ano entre Nova York, América do Sul e os mercados internacionais.',
+      opin1_cta: 'Ler a entrevista completa aqui →',
+
+      opin2_type: 'TV · videoentrevista',
+      opin2_headline: 'Da Sicília a multinacional do sabor: Di Costa conta sua história',
+      opin2_excerpt: 'Uma entrevista em vídeo sobre a trajetória empreendedora e as paixões que a acompanham — entre elas o futebol italiano e sua fé interista — exibida no portal de televisão da Panorama.',
+
+      opin3_source: 'Trecho', opin3_type: 'Leitura tática',
+      opin3_headline: 'Chocolate e 3-5-2: a leitura nerazzurra de Enzo',
+      opin3_quote: '&ldquo;Um bombom é como um chute de Calhanoglu no ângulo. O praliné de recheio macio é um drible de Mkhitaryan: puro sabor, do nada.&rdquo;',
+      opin3_cta: 'Trecho · A. Pedullà, 2024',
+
+      opin4_type: 'TV · painel de mercado da bola',
+      opin4_headline: 'Convidado no Sportitalia Mercato',
+      opin4_excerpt: 'Na mesa do painel conduzido por Michele Criscitiello, entre as vozes habituais sobre o mercado da bola e as novidades nerazzurre. Trecho em vídeo de 28 de maio de 2025.',
+
+      stampa_eyebrow: 'Imprensa', stampa_title: 'O que <em class="edc-accent-italic">dizem</em> sobre mim.',
+      stampa1_source: 'TV nacional', stampa1_year: 'em andamento',
+      stampa1_h3: 'Comentarista de futebol — painelista sobre Inter e Serie A', stampa1_p: 'Participações regulares.',
+
+      contatto_eyebrow: 'Contato', contatto_title: 'Vamos falar de <em class="edc-accent-italic">chocolate</em>.',
+      contatto_kicker: 'Para consultas comerciais, de imprensa ou de participação em programas esportivos, escreva-me diretamente.',
+      contatto_line1_label: 'E-mail — direto',
+      contatto_line2_label: 'E-mail — comercial', contatto_italia: 'Itália', contatto_estero: 'internacional',
+      contatto_line3_label: 'Telefone — planta da Di Costa S.p.A.',
+      contatto_line4_label: 'Site corporativo',
+      contatto_line5_label: 'Instagram oficial',
+      contatto_line6_label: 'Sede legal &amp; planta',
+
+      foot_claim: 'Da Sicília para o mundo, com o coração.',
+      foot_sub: 'O Rei do Chocolate Siciliano · fundador da Di Costa S.p.A. · criador da Marie Ange.',
+      foot_menu_h4: 'Menu secundário', foot_legal: 'Aviso legal', foot_privacy: 'Privacidade', foot_cookies: 'Cookies',
+      foot_lang_h4: 'Idiomas disponíveis', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponível', foot_lang_es: 'Español · disponível', foot_lang_de: 'Deutsch · disponível', foot_lang_pt: 'Português · disponível',
+      foot_briefing: 'Resumo editorial · vista PT'
+    }
+  };
+  var I18N_IT_CACHE = {};
+  function setLang(lang) {
+    root.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    var dict = I18N[lang] || {};
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (!(key in I18N_IT_CACHE)) I18N_IT_CACHE[key] = el.innerHTML;
+      el.innerHTML = (lang === 'it') ? I18N_IT_CACHE[key] : (dict[key] != null ? dict[key] : I18N_IT_CACHE[key]);
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-alt');
+      if (!el.hasAttribute('data-alt-it')) el.setAttribute('data-alt-it', el.getAttribute('alt') || '');
+      var itVal = el.getAttribute('data-alt-it');
+      el.setAttribute('alt', (lang === 'it') ? itVal : (dict[key] != null ? dict[key] : itVal));
+    });
+    // active state of buttons
+    document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-lang-btn') === lang);
+    });
+    // carry the current language onto links to the fair sub-pages
+    document.querySelectorAll('a.edc-fair[href^="ferie/"]').forEach(function (a) {
+      var href = a.getAttribute('href').split('?')[0];
+      a.setAttribute('href', href + (lang === 'it' ? '' : '?lang=' + lang));
+    });
+  }
+  document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      if (b.tagName === 'A') e.preventDefault();
+      setLang(b.getAttribute('data-lang-btn'));
+    });
+  });
+
+  /* ---- initial language: honor ?lang= so returning from a fair sub-page keeps it ---- */
+  (function () {
+    var urlLang = new URLSearchParams(location.search).get('lang');
+    if (urlLang === 'en' || urlLang === 'es' || urlLang === 'de' || urlLang === 'pt') setLang(urlLang);
+  })();
+
+  /* ---- email links (built at runtime so raw HTML never exposes the address to scrapers) ---- */
+  document.querySelectorAll('.edc-email').forEach(function (el) {
+    var user = el.getAttribute('data-user');
+    var domain = el.getAttribute('data-domain');
+    if (!user || !domain) return;
+    var addr = user + '@' + domain;
+    el.textContent = addr;
+    el.setAttribute('href', 'mailto:' + addr);
+  });
+
+  /* ---- year ---- */
+  var yEl = document.getElementById('edc-year');
+  if (yEl) yEl.textContent = new Date().getFullYear();
+
+  /* ---- embed modal (in-page reader for external links) ---- */
+  (function () {
+    var modal     = document.getElementById('edc-embed');
+    var frame     = document.getElementById('edc-embed-frame');
+    var titleEl   = document.getElementById('edc-embed-title');
+    var openExt   = document.getElementById('edc-embed-open');
+    var srcLink   = document.getElementById('edc-embed-src');
+    var fbOpen    = document.getElementById('edc-embed-fallback-open');
+    var closeBtn  = document.getElementById('edc-embed-close');
+    if (!modal || !frame) return;
+
+    var blockTimer = null;
+
+    function openEmbed(url, title) {
+      modal.classList.remove('is-blocked');
+      titleEl.textContent = title || 'Lettura esterna';
+      openExt.href = url;
+      srcLink.href = url;
+      if (fbOpen) fbOpen.href = url;
+      try { var u = new URL(url); srcLink.textContent = u.hostname + ' ↗'; } catch (e) {}
+      frame.src = 'about:blank';
+      // assign in next tick so the load event fires reliably
+      requestAnimationFrame(function () { frame.src = url; });
+      modal.classList.add('is-on');
+      modal.setAttribute('aria-hidden', 'false');
+      document.documentElement.style.overflow = 'hidden';
+
+      // detect X-Frame-Options / CSP blocks — if no load event after 4.5s, show fallback
+      clearTimeout(blockTimer);
+      var loaded = false;
+      function onLoad() { loaded = true; }
+      frame.addEventListener('load', onLoad, { once: true });
+      blockTimer = setTimeout(function () {
+        if (!loaded) modal.classList.add('is-blocked');
+      }, 4500);
+    }
+
+    function closeEmbed() {
+      modal.classList.remove('is-on');
+      modal.classList.remove('is-blocked');
+      modal.setAttribute('aria-hidden', 'true');
+      frame.src = 'about:blank';
+      document.documentElement.style.overflow = '';
+      clearTimeout(blockTimer);
+    }
+
+    document.addEventListener('click', function (e) {
+      var trig = e.target.closest('[data-embed-url]');
+      if (trig) {
+        e.preventDefault();
+        openEmbed(trig.getAttribute('data-embed-url'), trig.getAttribute('data-embed-title'));
+        return;
+      }
+      if (e.target === modal) closeEmbed();
+    });
+    closeBtn.addEventListener('click', closeEmbed);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-on')) closeEmbed();
+    });
+  })();
+
+  /* =========================================================
+     TWEAKS PANEL — design exploration only.
+     For WordPress production: delete the <aside class="edc-tweaks">
+     block and the section below this comment.
+     ========================================================= */
+
+  var PALETTES = {
+    warm:  { bg: '#f3ead9', soft: '#ece1c9', card: '#f8f1e2', deep: '#1d130c', ink: '#1a120c', accent: '#b25a2c', line: '#d8c5a0', lineSoft: '#e3d2b2', inkSoft: '#4a3a2c', inkMute: '#7a6a59' },
+    cool:  { bg: '#f1efe9', soft: '#e6e3da', card: '#f6f4ee', deep: '#16181a', ink: '#181a1c', accent: '#5e6b6b', line: '#cfd0c9', lineSoft: '#dedfd8', inkSoft: '#3f4445', inkMute: '#74787a' },
+    cocoa: { bg: '#ede1cf', soft: '#e2d4be', card: '#f1e6d3', deep: '#1a0f06', ink: '#241608', accent: '#7d4220', line: '#cbb59a', lineSoft: '#d8c4ab', inkSoft: '#4a3422', inkMute: '#76624e' },
+    bold:  { bg: '#f3ead9', soft: '#eadfca', card: '#f7eeda', deep: '#1a0a08', ink: '#1a120c', accent: '#8a2a1f', line: '#d8c5a0', lineSoft: '#e3d2b2', inkSoft: '#4a3a2c', inkMute: '#7a6a59' }
+  };
+  function setPalette(key) {
+    var p = PALETTES[key]; if (!p) return;
+    root.style.setProperty('--edc-bg', p.bg);
+    root.style.setProperty('--edc-bg-soft', p.soft);
+    root.style.setProperty('--edc-bg-card', p.card);
+    root.style.setProperty('--edc-bg-deep', p.deep);
+    root.style.setProperty('--edc-ink', p.ink);
+    root.style.setProperty('--edc-ink-soft', p.inkSoft);
+    root.style.setProperty('--edc-ink-mute', p.inkMute);
+    root.style.setProperty('--edc-line', p.line);
+    root.style.setProperty('--edc-line-soft', p.lineSoft);
+    root.style.setProperty('--edc-accent', p.accent);
+    document.querySelectorAll('#edc-tweaks-palette .edc-tweaks__swatch').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-palette') === key);
+    });
+  }
+  document.querySelectorAll('#edc-tweaks-palette .edc-tweaks__swatch').forEach(function (b) {
+    b.addEventListener('click', function () { setPalette(b.getAttribute('data-palette')); persist('palette', b.getAttribute('data-palette')); });
+  });
+  document.querySelectorAll('#edc-tweaks-density button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-density');
+      root.setAttribute('data-density', v);
+      document.querySelectorAll('#edc-tweaks-density button').forEach(function (x) { x.classList.toggle('is-active', x === b); });
+      persist('density', v);
+    });
+  });
+  document.querySelectorAll('#edc-tweaks-theme button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-theme');
+      root.setAttribute('data-theme', v);
+      document.querySelectorAll('#edc-tweaks-theme button').forEach(function (x) { x.classList.toggle('is-active', x === b); });
+      persist('theme', v);
+    });
+  });
+  document.querySelectorAll('#edc-tweaks-sticker button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-sticker');
+      document.querySelector('.edc-hero__sticker').style.display = (v === 'off') ? 'none' : '';
+      document.querySelectorAll('#edc-tweaks-sticker button').forEach(function (x) { x.classList.toggle('is-active', x === b); });
+      persist('sticker', v);
+    });
+  });
+
+  var tweaks = document.getElementById('edc-tweaks');
+  var tweaksClose = document.getElementById('edc-tweaks-close');
+
+  function openTweaks() {
+    tweaks.classList.add('is-open');
+    tweaks.setAttribute('aria-hidden', 'false');
+  }
+  function closeTweaks() {
+    tweaks.classList.remove('is-open');
+    tweaks.setAttribute('aria-hidden', 'true');
+    try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch (e) {}
+  }
+  tweaksClose && tweaksClose.addEventListener('click', closeTweaks);
+
+  /* host edit-mode protocol */
+  var TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "palette": "bold",
+    "density": "normal",
+    "theme": "light",
+    "sticker": "on"
+  }/*EDITMODE-END*/;
+
+  function applyAll(s) {
+    if (s.palette) setPalette(s.palette);
+    if (s.density) {
+      root.setAttribute('data-density', s.density);
+      document.querySelectorAll('#edc-tweaks-density button').forEach(function (x) { x.classList.toggle('is-active', x.getAttribute('data-density') === s.density); });
+    }
+    if (s.theme) {
+      root.setAttribute('data-theme', s.theme);
+      document.querySelectorAll('#edc-tweaks-theme button').forEach(function (x) { x.classList.toggle('is-active', x.getAttribute('data-theme') === s.theme); });
+    }
+    if (s.sticker) {
+      document.querySelector('.edc-hero__sticker').style.display = (s.sticker === 'off') ? 'none' : '';
+      document.querySelectorAll('#edc-tweaks-sticker button').forEach(function (x) { x.classList.toggle('is-active', x.getAttribute('data-sticker') === s.sticker); });
+    }
+  }
+  applyAll(TWEAK_DEFAULTS);
+
+  function persist(key, value) {
+    var edits = {}; edits[key] = value;
+    try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits: edits }, '*'); } catch (e) {}
+  }
+
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.type === '__activate_edit_mode') openTweaks();
+    if (d.type === '__deactivate_edit_mode') closeTweaks();
+  });
+  try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (e) {}
+
+})();
+</script>
+
+<!-- Instagram embed runtime (loads only if embeds present) -->
+<script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>
