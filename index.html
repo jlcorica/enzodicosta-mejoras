@@ -685,6 +685,7 @@
 [data-lang="en"] .edc-map::after { content: "Open in Google Maps ↗"; }
 [data-lang="es"] .edc-map::after { content: "Abrir en Google Maps ↗"; }
 [data-lang="de"] .edc-map::after { content: "In Google Maps öffnen ↗"; }
+[data-lang="pt"] .edc-map::after { content: "Abrir no Google Maps ↗"; }
 .edc-contact__line--todo { cursor: default; }
 .edc-contact__line--todo:hover { padding-left: 0; }
 .edc-contact__line--todo strong {
@@ -1255,6 +1256,7 @@
           <button data-lang-btn="en" type="button">en</button>
           <button data-lang-btn="es" type="button">es</button>
           <button data-lang-btn="de" type="button">de</button>
+          <button data-lang-btn="pt" type="button">pt</button>
         </div>
         <button class="edc-menu-btn" id="edc-menu-btn" type="button" aria-label="Apri menu" aria-controls="edc-menu" aria-expanded="false">
           <span class="edc-menu-btn__icon" aria-hidden="true"><span></span><span></span></span>
@@ -1911,6 +1913,7 @@
           <a href="#" data-lang-btn="en" data-i18n="foot_lang_en">English · disponibile</a>
           <a href="#" data-lang-btn="es" data-i18n="foot_lang_es">Español · disponibile</a>
           <a href="#" data-lang-btn="de" data-i18n="foot_lang_de">Deutsch · disponibile</a>
+          <a href="#" data-lang-btn="pt" data-i18n="foot_lang_pt">Português · disponibile</a>
         </div>
       </div>
       <div class="edc-foot__rule">
@@ -2206,7 +2209,7 @@
       foot_claim: 'From Sicily to the world, with heart.',
       foot_sub: 'The King of Sicilian Chocolate · founder of Di Costa S.p.A. · creator of Marie Ange.',
       foot_menu_h4: 'Secondary menu', foot_legal: 'Legal notice', foot_privacy: 'Privacy', foot_cookies: 'Cookies',
-      foot_lang_h4: 'Available languages', foot_lang_it: 'Italiano · principale', foot_lang_en: 'English · available', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · available',
+      foot_lang_h4: 'Available languages', foot_lang_it: 'Italiano · principale', foot_lang_en: 'English · available', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · available', foot_lang_pt: 'Português · available',
       foot_briefing: 'Editorial briefing · EN view'
     },
     es: {
@@ -2342,7 +2345,7 @@
       foot_claim: 'De Sicilia al mundo, con el corazón.',
       foot_sub: 'El Rey del Chocolate Siciliano · fundador de Di Costa S.p.A. · creador de Marie Ange.',
       foot_menu_h4: 'Menú secundario', foot_legal: 'Aviso legal', foot_privacy: 'Privacidad', foot_cookies: 'Cookies',
-      foot_lang_h4: 'Idiomas disponibles', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponible', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · disponible',
+      foot_lang_h4: 'Idiomas disponibles', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponible', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · disponible', foot_lang_pt: 'Português · disponible',
       foot_briefing: 'Resumen editorial · vista ES'
     },
     de: {
@@ -2478,8 +2481,144 @@
       foot_claim: 'Von Sizilien in die Welt, mit Herz.',
       foot_sub: 'Der König der sizilianischen Schokolade · Gründer von Di Costa S.p.A. · Schöpfer von Marie Ange.',
       foot_menu_h4: 'Sekundärmenü', foot_legal: 'Impressum', foot_privacy: 'Datenschutz', foot_cookies: 'Cookies',
-      foot_lang_h4: 'Verfügbare Sprachen', foot_lang_it: 'Italiano · Hauptsprache', foot_lang_en: 'English · verfügbar', foot_lang_es: 'Español · verfügbar', foot_lang_de: 'Deutsch · verfügbar',
+      foot_lang_h4: 'Verfügbare Sprachen', foot_lang_it: 'Italiano · Hauptsprache', foot_lang_en: 'English · verfügbar', foot_lang_es: 'Español · verfügbar', foot_lang_de: 'Deutsch · verfügbar', foot_lang_pt: 'Português · verfügbar',
       foot_briefing: 'Redaktionelles Briefing · Ansicht DE'
+    },
+    pt: {
+      nav_bio: 'Biografia', nav_empresa: 'Empresa', nav_ferias: 'Feiras', nav_calcio: 'Futebol &amp; TV', nav_pensiero: 'Filosofia', nav_stampa: 'Imprensa', nav_contatto: 'Contato',
+      menu_label: '— Menu', menu_home: 'Início', menu_bio: 'Biografia', menu_empresa: 'Empresa', menu_anna: 'Anna Di Costa', menu_ferias: 'Feiras &amp; mercados', menu_calcio: 'Futebol &amp; TV', menu_pensiero: 'Filosofia', menu_stampa: 'Imprensa', menu_contatto: 'Contato', menu_contact_label: '— Contato direto',
+
+      hero_eyebrow: 'Francavilla di Sicilia · Itália',
+      hero_lema: 'O Rei do Chocolate Siciliano. Liderança, família e a paixão de levar a doce beleza da Sicília ao mundo.',
+      hero_cta1: 'Conheça minha história', hero_cta2: 'Visite Marie Ange',
+      hero_meta_fondato: 'Fundado', hero_meta_mercati: 'Mercados', hero_meta_mercati_val: '54 países', hero_meta_marchio: 'Marca',
+      hero_fig_caption: 'Retrato oficial de Enzo Di Costa', hero_sticker: 'da Sicília para o mundo',
+      hero_img: 'Vincenzo &quot;Enzo&quot; Di Costa — retrato oficial',
+
+      pensiero_eyebrow: 'Filosofia', pensiero_title: 'Em <em class="edc-accent-italic">poucas palavras</em>.',
+      pensiero_label1: 'Sobre os negócios', pensiero_quote1: '&ldquo;O sucesso não é fruto do acaso, mas de mérito, trabalho duro e a recusa de qualquer forma de vitimismo.&rdquo;',
+      pensiero_label2: 'Sobre os ingredientes', pensiero_quote2: '&ldquo;A matéria viva é selecionada, trabalhada, respeitada. Tudo o mais vem depois.&rdquo;',
+      pensiero_label3: 'Sobre a família', pensiero_quote3: '&ldquo;Minha irmã Anna, nossa terra, nossa gente. Sem eles, nada disso faria sentido.&rdquo;',
+      pensiero_label4: 'Sobre o futebol', pensiero_quote4: '&ldquo;A Inter é uma fé. O futebol, uma conversa que amo.&rdquo;',
+
+      passioni_eyebrow: 'Três paixões', passioni_title: 'Uma vida organizada <em class="edc-accent-italic">ao redor</em> do que importa.',
+      passioni_kicker: 'Chocolate, família e futebol: três fios que atravessam cada decisão, de Francavilla di Sicilia aos mercados internacionais.',
+      passioni_card1_title: 'Chocolate', passioni_card1_quote: '&ldquo;Matéria viva. Selecionada, trabalhada, respeitada.&rdquo;', passioni_card1_link: 'Empresa →',
+      passioni_card2_title: 'Família', passioni_card2_quote: '&ldquo;Minha irmã Anna, nossa terra, nossa gente.&rdquo;',
+      passioni_card3_title: 'Futebol', passioni_card3_quote: '&ldquo;A Inter é uma fé. O futebol, uma conversa que amo.&rdquo;', passioni_card3_quote_full: '&ldquo;A Inter é uma fé. O futebol, uma conversa que amo.&rdquo;', passioni_card3_link: 'Futebol &amp; TV →',
+
+      numeri_eyebrow: 'Números que contam uma história', numeri_title: 'Uma história de <em class="edc-accent-italic">quatro décadas</em>.',
+      numeri_stat1_label: 'Ano de fundação da empresa',
+      numeri_stat2_suffix: 'países', numeri_stat2_label: 'Mercados de exportação ativos',
+      numeri_stat3_label: 'Anos de experiência no setor',
+      numeri_stat4_suffix: 'visão', numeri_stat4_label: 'Levar a doce beleza da Sicília ao mundo',
+
+      lead_eyebrow: 'Uma liderança forjada com esforço', lead_title: 'O sucesso não é fruto do acaso, mas do <em class="edc-accent-italic">mérito</em>.',
+      lead_p1: 'Desde seus primeiros passos em Nova York, onde conheceu o valor do sacrifício e da renúncia, até a consolidação da Di Costa S.p.A. como empresa multinacional presente em mais de 50 países — a trajetória de Enzo Di Costa é um testemunho de constância.',
+      lead_p2: 'Sua visão empreendedora prova que o resultado vem do trabalho duro e da recusa de qualquer forma de vitimismo.',
+
+      pilastri_eyebrow: 'Pilares de uma vida', pilastri_title: 'Três bases, uma <em class="edc-accent-italic">única direção</em>.',
+      pillar1_title: 'A família como motor', pillar1_p: 'Junto com minha irmã e sócia, Anna Di Costa, construí um legado industrial sem nunca abandonar minhas raízes em Francavilla di Sicilia.',
+      pillar2_title: 'A busca pela excelência', pillar2_p: 'Seleção pessoal de matérias-primas e criação de receitas exclusivas que combinam tradição e inovação.',
+      pillar3_title: 'Paixão e esporte', pillar3_p: 'Profundo conhecedor do futebol italiano e fervoroso torcedor da Inter, participo regularmente como comentarista na televisão.',
+
+      bio_label: '— Sobre mim',
+      bio_h2: 'Da Sicília para o mundo:<br><em class="edc-accent-italic" style="font-weight: 400;">uma vida dedicada</em><br>à &ldquo;Doce Beleza&rdquo;',
+      bio_fig_caption: 'Retrato em preto e branco.', bio_img: 'Enzo Di Costa — retrato em preto e branco',
+      ch1_title: 'A origem de um sonho',
+      ch1_p: 'A história de Enzo (Vincenzo) Di Costa começa com uma vocação precoce. Aos 17 anos, decidiu dedicar toda sua força e paixão ao mundo da confeitaria. Longe de se contentar com o que era próximo, partiu em uma jornada de aprendizado pela <em>Bélgica, França e norte da Itália</em> para dominar os segredos do chocolate e da confeitaria fina. De volta à Sicília, fundou uma pequena oficina artesanal que, com o tempo, se tornaria uma referência da indústria.',
+      ch2_title: 'A construção de um império familiar',
+      ch2_p: 'Em <strong>1986</strong> nasce formalmente a empresa que hoje conhecemos como Di Costa S.p.A. A decisão mais corajosa de Enzo e sua família foi apostar em sua terra natal: em vez de transferir a atividade para polos industriais tradicionais, em <strong>1995</strong> inauguraram uma planta moderna em Francavilla di Sicilia, no Vale do Alcântara.',
+      ch3_title: 'Uma referência internacional',
+      ch3_p: 'Quatro décadas depois, a empresa exporta para <strong>54 países</strong>, com Marie Ange como marca premium e uma equipe unida pelo respeito à matéria-prima.',
+
+      imp_eyebrow: 'Empresa · Di Costa S.p.A.', imp_title: 'Uma multinacional doce com o coração <em class="edc-accent-italic">em Francavilla di Sicilia</em>.',
+      imp_kicker: 'Desde 1986 produzimos chocolate e especialidades doces com atenção obsessiva à matéria-prima e aos processos tradicionais. Uma planta moderna no Vale do Alcântara, uma rede comercial em 54 países.',
+      imp_stat1_label: 'Sede', imp_stat1_sub: 'Vale do Alcântara, Itália',
+      imp_stat2_label: 'Planta industrial', imp_stat2_val: 'desde 1995', imp_stat2_sub: 'Moderna, integrada',
+      imp_stat3_label: 'Exportação', imp_stat3_sub: 'Europa · Américas · Ásia',
+      imp_stat4_label: 'Categoria', imp_stat4_sub: 'Tradição + inovação',
+      imp_quote: '&ldquo;A matéria está viva. Selecionada, trabalhada, respeitada: cada passo é uma escolha, e cada escolha conta quem somos.&rdquo;',
+      imp_fig_strong: 'Planta da Di Costa S.p.A. · Francavilla di Sicilia', imp_fig_caption: 'Vista aérea real da planta produtiva, Vale do Alcântara.',
+      imp_img: 'Vista aérea da planta da Di Costa S.p.A. em Francavilla di Sicilia',
+
+      marie_ig_strong: 'Feed oficial @marieangedicosta',
+      marie_ig_caption: 'Feed do Instagram ao vivo (124 mil seguidores). O feed é atualizado automaticamente com as publicações mais recentes da marca. Para WordPress: o embed funciona com o plugin &quot;Instagram Feed&quot; ou colando o código em um bloco HTML personalizado.',
+      marie_eyebrow: 'A marca premium', marie_title: 'Marie Ange,<br>doçura <em class="edc-accent-italic">com assinatura</em>.',
+      marie_kicker: 'A marca premium do projeto Di Costa: receitas exclusivas, matérias-primas selecionadas pessoalmente, uma embalagem que conta a Sicília com voz contemporânea.',
+      marie_li1: 'Receitas exclusivas, desenvolvidas pessoalmente por Enzo', marie_li2: 'Seleção pessoal de matérias-primas', marie_li3: 'Distribuição em 54 países', marie_li4: 'História no Instagram · @marieangedicosta',
+
+      anna_eyebrow: 'Família &amp; empresa', anna_title: 'Anna Di Costa<br><em class="edc-accent-italic">— irmã e sócia</em>',
+      anna_kicker: 'A família como motor. Junto com sua irmã e sócia Anna Di Costa, Enzo construiu um legado industrial sem nunca abandonar suas raízes em Francavilla di Sicilia.',
+      anna_quote: '&ldquo;Minha irmã Anna, nossa terra, nossa gente. Sem eles, nada disso faria sentido.&rdquo;',
+      anna_fig_caption: 'Anna Di Costa, irmã e sócia de Enzo.',
+
+      ferie_eyebrow: 'Feiras &amp; mercados', ferie_title: '54 países, <em class="edc-accent-italic">um único padrão</em>.',
+      ferie_kicker: 'As feiras internacionais onde compartilho nossa doce beleza. Uma voz italiana no mundo do chocolate premium.',
+      fair1_place: 'Bolonha, <em>Itália</em>',
+      fair2_place: 'Colônia, <em>Alemanha</em>', fair2_event: 'ISM · Feira Mundial dos Doces', fair2_month: 'Janeiro / Fevereiro',
+      fair3_place: 'Xangai, <em>China</em>', fair3_month: 'Primavera',
+      fair4_place: 'Parma, <em>Itália</em>', fair4_event: 'Cibus · Salão Internacional da Alimentação', fair4_month: 'Maio',
+      fair5_place: 'Milão, <em>Itália</em>',
+      fair6_place: 'Paris, <em>França</em>', fair6_month: 'Outubro',
+      fair1_month: 'Janeiro',
+      freq_annuale: 'anual', freq_biennale: 'bienal', freq_periodica: 'periódica', freq_agenda: 'na agenda',
+      agenda_label: '— Agenda de participação',
+      ag1_month: 'Outubro / Novembro',
+      ag2_place: 'Dubai, <em>EAU</em>', fair3_month_alt: 'Fevereiro',
+      ag3_place: 'Tóquio, <em>Japão</em>', ag3_month: 'Março',
+      ag4_place: 'Chicago, <em>EUA</em>',
+      ag5_place: 'São Paulo, <em>Brasil</em>', ag5_month: 'Junho',
+
+      calcio_eyebrow: 'Futebol &amp; TV', calcio_title: 'Uma fé chamada <em class="edc-accent-italic">Inter</em>.',
+      calcio_kicker: 'Profundo conhecedor do futebol italiano e fervoroso torcedor da Inter. Participo regularmente como comentarista na televisão, onde falo do jogo como se conta uma história de família.',
+      calcio_stat1_label: 'Time do coração', calcio_stat2_label: 'Papel na TV', calcio_stat2_val: 'Comentarista · painelista', calcio_stat3_label: 'Temas', calcio_stat3_val: 'Tática · cultura futebolística',
+
+      opin_eyebrow: 'Comentarista · painelista', opin_title: 'A voz de Enzo sobre o <em class="edc-accent-italic">futebol italiano</em>: imprensa, TV, podcasts.',
+      opin_kicker: 'Uma coletânea das publicações e participações onde falo sobre a Inter, a Serie A e a cultura futebolística italiana.',
+      opin_cta_video: 'Assistir ao vídeo →',
+
+      opin1_type: 'Entrevista · reportagem longa',
+      opin1_headline: 'Enzo Di Costa, o rei do chocolate que adoçou ainda mais sua paixão pela Inter',
+      opin1_quote: '&ldquo;Minha paixão pela Inter vem de longe e hoje se tornou uma religião — fé pura.&rdquo;',
+      opin1_summary_eyebrow: 'Em resumo — para quem não tem tempo de ler tudo',
+      opin1_p1: 'Reportagem-entrevista assinada pelo jornalista de mercado <strong>Alfredo Pedullà</strong> (Sportitalia) no verão de 2024. A matéria conta o duplo amor de Enzo: o chocolate e a Inter — &ldquo;duas paixões, uma só fé: colocar sempre o coração&rdquo;.',
+      opin1_p2: 'Enzo se define como <em>torcedor de verdade</em>: assiste às partidas em silêncio absoluto e sozinho, porque &ldquo;as partidas do seu time se sofre sozinho&rdquo;. Nada de folclore — a fé nerazzurra como uma religião privada, vivida por dentro.',
+      opin1_p3: 'Pedullà traça um paralelo constante entre a fábrica de doces de Francavilla — altamente mecanizada, mas com matérias-primas selecionadas pessoalmente — e o <strong>3-5-2 de Inzaghi</strong>: cada peça em seu lugar, atenção obsessiva aos detalhes. Um bombom é como um chute de Calhanoglu, um praliné é como um drible de Mkhitaryan, os torroncini são como os gols de Lautaro.',
+      opin1_p4: 'Sobre o futuro nerazzurro, Enzo é claro: <strong>a dupla estrela é uma alegria imensa, mas não basta</strong>. Sonha em acompanhar a Inter por toda a Europa, em vê-la ao vivo na véspera de uma noite de Super Champions — ele, que já viaja metade do ano entre Nova York, América do Sul e os mercados internacionais.',
+      opin1_cta: 'Ler a entrevista completa aqui →',
+
+      opin2_type: 'TV · videoentrevista',
+      opin2_headline: 'Da Sicília a multinacional do sabor: Di Costa conta sua história',
+      opin2_excerpt: 'Uma entrevista em vídeo sobre a trajetória empreendedora e as paixões que a acompanham — entre elas o futebol italiano e sua fé interista — exibida no portal de televisão da Panorama.',
+
+      opin3_source: 'Trecho', opin3_type: 'Leitura tática',
+      opin3_headline: 'Chocolate e 3-5-2: a leitura nerazzurra de Enzo',
+      opin3_quote: '&ldquo;Um bombom é como um chute de Calhanoglu no ângulo. O praliné de recheio macio é um drible de Mkhitaryan: puro sabor, do nada.&rdquo;',
+      opin3_cta: 'Trecho · A. Pedullà, 2024',
+
+      opin4_type: 'TV · painel de mercado da bola',
+      opin4_headline: 'Convidado no Sportitalia Mercato',
+      opin4_excerpt: 'Na mesa do painel conduzido por Michele Criscitiello, entre as vozes habituais sobre o mercado da bola e as novidades nerazzurre. Trecho em vídeo de 28 de maio de 2025.',
+
+      stampa_eyebrow: 'Imprensa', stampa_title: 'O que <em class="edc-accent-italic">dizem</em> sobre mim.',
+      stampa1_source: 'TV nacional', stampa1_year: 'em andamento',
+      stampa1_h3: 'Comentarista de futebol — painelista sobre Inter e Serie A', stampa1_p: 'Participações regulares.',
+
+      contatto_eyebrow: 'Contato', contatto_title: 'Vamos falar de <em class="edc-accent-italic">chocolate</em>.',
+      contatto_kicker: 'Para consultas comerciais, de imprensa ou de participação em programas esportivos, escreva-me diretamente.',
+      contatto_line1_label: 'E-mail — direto',
+      contatto_line2_label: 'E-mail — comercial', contatto_italia: 'Itália', contatto_estero: 'internacional',
+      contatto_line3_label: 'Telefone — planta da Di Costa S.p.A.',
+      contatto_line4_label: 'Site corporativo',
+      contatto_line5_label: 'Instagram oficial',
+      contatto_line6_label: 'Sede legal &amp; planta',
+
+      foot_claim: 'Da Sicília para o mundo, com o coração.',
+      foot_sub: 'O Rei do Chocolate Siciliano · fundador da Di Costa S.p.A. · criador da Marie Ange.',
+      foot_menu_h4: 'Menu secundário', foot_legal: 'Aviso legal', foot_privacy: 'Privacidade', foot_cookies: 'Cookies',
+      foot_lang_h4: 'Idiomas disponíveis', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponível', foot_lang_es: 'Español · disponível', foot_lang_de: 'Deutsch · disponível', foot_lang_pt: 'Português · disponível',
+      foot_briefing: 'Resumo editorial · vista PT'
     }
   };
   var I18N_IT_CACHE = {};
@@ -2518,7 +2657,7 @@
   /* ---- initial language: honor ?lang= so returning from a fair sub-page keeps it ---- */
   (function () {
     var urlLang = new URLSearchParams(location.search).get('lang');
-    if (urlLang === 'en' || urlLang === 'es' || urlLang === 'de') setLang(urlLang);
+    if (urlLang === 'en' || urlLang === 'es' || urlLang === 'de' || urlLang === 'pt') setLang(urlLang);
   })();
 
   /* ---- email links (built at runtime so raw HTML never exposes the address to scrapers) ---- */
