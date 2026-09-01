@@ -365,6 +365,8 @@
   background: transparent; color: var(--edc-ink);
   cursor: pointer; display: grid; place-items: center;
 }
+/* redundant on desktop — the full nav links are already visible there */
+@media (min-width: 1080px) { .edc-menu-btn { display: none; } }
 .edc-menu-btn__icon {
   display: block; width: 16px; height: 10px; position: relative;
 }
@@ -396,7 +398,7 @@
   display: flex; justify-content: space-between; align-items: baseline;
   padding: 0.8rem 0;
   font-family: var(--edc-f-serif);
-  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-size: clamp(1.35rem, 4.5vw, 1.95rem);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.015em;
