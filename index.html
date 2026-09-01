@@ -842,6 +842,13 @@
   padding: 1.6rem;
   min-height: 220px;
 }
+.edc-opinion__featured-media a {
+  transition: opacity .2s ease;
+}
+.edc-opinion__featured-media a:hover,
+.edc-opinion__featured-media a:focus-visible {
+  opacity: 0.85;
+}
 .edc-opinion__featured-body {
   display: grid;
   gap: 1rem;
@@ -1761,9 +1768,9 @@
           <!-- Featured: Pedullà long interview (opens in in-page modal) -->
           <article class="edc-opinion__card" data-kind="featured">
             <div class="edc-opinion__featured-media" style="padding: 1.2rem; display: block; min-height: 0; background: var(--edc-bg-soft);">
-              <div style="width: 100%; margin: 0 auto; aspect-ratio: 210 / 297; background: #fff; box-shadow: 0 12px 30px -12px rgba(0,0,0,.35); overflow: hidden;">
+              <a href="stampa/pedulla-inter.html" aria-label="Leggi l'intervista integrale" style="display: block; width: 100%; margin: 0 auto; aspect-ratio: 210 / 297; background: #fff; box-shadow: 0 12px 30px -12px rgba(0,0,0,.35); overflow: hidden;">
                 <img src="fotos recibidas/Stampa/pedulla-inter-fullpage.png" alt="Cattura della pagina completa — Alfredo Pedullà, agosto 2024" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: contain; object-position: center;" />
-              </div>
+              </a>
               <div style="text-align: center; padding-top: 0.8rem;">
                 <div class="edc-opinion__byline" style="margin-top: 0;">Alfredo Pedullà · agosto 2024</div>
               </div>
@@ -2626,8 +2633,8 @@
     document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
       b.classList.toggle('is-active', b.getAttribute('data-lang-btn') === lang);
     });
-    // carry the current language onto links to the fair sub-pages
-    document.querySelectorAll('a.edc-fair[href^="ferie/"]').forEach(function (a) {
+    // carry the current language onto links to the fair and press sub-pages
+    document.querySelectorAll('a[href^="ferie/"], a[href^="stampa/"]').forEach(function (a) {
       var href = a.getAttribute('href').split('?')[0];
       a.setAttribute('href', href + (lang === 'it' ? '' : '?lang=' + lang));
     });

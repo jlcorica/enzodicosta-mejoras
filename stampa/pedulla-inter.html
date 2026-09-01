@@ -78,5 +78,20 @@
       <a class="sub-back sub-back--bottom" href="../enzodicosta_v06.html#calcio">← Torna a enzodicosta.com</a>
     </div>
   </main>
+  <script>
+    // This page has no translations of its own — it just forwards the visitor's
+    // language back to the main site so it doesn't reset to Italian on return.
+    (function () {
+      var lang = new URLSearchParams(location.search).get('lang');
+      if (!lang || lang === 'it') return;
+      document.querySelectorAll('a.sub-back').forEach(function (a) {
+        var href = a.getAttribute('href').split('?')[0];
+        var hash = '';
+        var hashIdx = href.indexOf('#');
+        if (hashIdx !== -1) { hash = href.slice(hashIdx); href = href.slice(0, hashIdx); }
+        a.setAttribute('href', href + '?lang=' + lang + hash);
+      });
+    })();
+  </script>
 </body>
 </html>
