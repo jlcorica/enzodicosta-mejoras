@@ -75,12 +75,10 @@ html, body {
   line-height: 1;
   padding: 0.3rem 0.4rem;
   border-radius: 999px;
-  opacity: 0.5;
   transition: all .2s ease;
   font: inherit;
 }
-.fiera-lang button:hover { opacity: 0.8; }
-.fiera-lang button.is-active { background: var(--edc-ink); opacity: 1; }
+.fiera-lang button.is-active { background: var(--edc-ink); }
 
 .fiera-eyebrow {
   display: inline-flex; align-items: center; gap: 0.7rem;
