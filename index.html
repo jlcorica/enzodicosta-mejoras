@@ -2916,5 +2916,53 @@
 
 <!-- Instagram embed runtime (loads only if embeds present) -->
 <script async src="//www.instagram.com/embed.js"></script>
+
+<!-- Umami — analytics propio autoalojado (stats.enzodicosta.com) -->
+<script defer src="https://stats.enzodicosta.com/script.js" data-website-id="1f9c0b7a-6cb8-4c30-b1ad-028d31230646"></script>
+<script>
+(function () {
+  function track(name, data) {
+    if (window.umami && typeof window.umami.track === 'function') {
+      window.umami.track(name, data);
+    }
+  }
+
+  // Qué sección se lee — una vez por sección, cuando entra a la vista
+  var seenSections = {};
+  function initSectionTracking() {
+    var sections = document.querySelectorAll('.edc-section[data-screen-label]');
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var label = entry.target.getAttribute('data-screen-label');
+        if (seenSections[label]) return;
+        seenSections[label] = true;
+        track('section_view', { section: label });
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(function (s) { observer.observe(s); });
+  }
+
+  // Qué bandera de idioma se clickea
+  document.addEventListener('click', function (e) {
+    var langBtn = e.target.closest('[data-lang-btn]');
+    if (langBtn) {
+      track('lang_switch', { lang: langBtn.getAttribute('data-lang-btn') });
+      return;
+    }
+    var outLink = e.target.closest('a[href^="ferie/"], a[href^="stampa/"]');
+    if (outLink) {
+      track('outbound_page', { href: outLink.getAttribute('href') });
+    }
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSectionTracking);
+  } else {
+    initSectionTracking();
+  }
+})();
+</script>
 </body>
 </html>
