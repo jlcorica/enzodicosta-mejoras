@@ -747,7 +747,7 @@
 @media (min-width: 980px) { .edc-contact__grid { grid-template-columns: 1fr 1.1fr; gap: 5rem; } }
 .edc-contact__lines { display: grid; gap: 0; margin-top: 1.6rem; }
 .edc-contact__line {
-  display: grid; gap: 0.25rem; padding: 0.9rem 0;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.25rem; padding: 0.9rem 0;
   border-top: 1px solid var(--edc-line);
   transition: padding-left .25s ease;
 }
@@ -777,7 +777,13 @@
   overflow: hidden;
   border: 1px solid var(--edc-line);
 }
-.edc-map iframe { width: 100%; height: 100%; border: 0; display: block; pointer-events: none; }
+.edc-map img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.edc-map:hover img { transform: scale(1.02); }
+.edc-map__credit {
+  position: absolute; left: 0.5rem; bottom: 0.4rem;
+  font-family: var(--edc-f-sans); font-size: 0.6rem; color: var(--edc-ink-mute);
+  background: rgba(255, 255, 255, 0.7); padding: 0.1rem 0.35rem;
+}
 .edc-map__open {
   position: absolute; right: 0.8rem; bottom: 0.8rem; z-index: 3;
   background: var(--edc-accent); color: #fff;
@@ -785,7 +791,7 @@
   padding: 0.55rem 1rem; border-radius: 999px;
   transition: background .2s ease;
 }
-.edc-map__open:hover { background: var(--edc-ink); color: #fff; }
+.edc-map:hover .edc-map__open { background: var(--edc-ink); color: #fff; }
 .edc-contact__line--todo { cursor: default; }
 .edc-contact__line--todo:hover { padding-left: 0; }
 .edc-contact__line--todo strong {
@@ -1966,10 +1972,11 @@
         <div class="edc-contact__line">
           <span class="edc-mono" data-i18n="contatto_line6_label">Sede legale &amp; stabilimenti</span>
           <strong>Contrada Barbazza e Contrada Santa Caterina<br />98034 Francavilla di Sicilia (ME) · IT</strong>
-          <div class="edc-map edc-consent" data-consent-service="Google Maps">
-            <iframe data-consent-src="https://maps.google.com/maps?q=Di+Costa+S.p.A.,+Francavilla+di+Sicilia+ME,+Italia&amp;z=8&amp;output=embed" loading="lazy" tabindex="-1" aria-hidden="true" title="Posizione di Di Costa S.p.A. in Sicilia"></iframe>
-            <a class="edc-map__open edc-consent__keep" href="https://www.google.com/maps/search/?api=1&amp;query=Di+Costa+S.p.A.%2C+Francavilla+di+Sicilia+ME%2C+Italia" target="_blank" rel="noopener" data-i18n="map_open">Apri in Google Maps ↗</a>
-          </div>
+          <a class="edc-map" href="https://www.google.com/maps/search/?api=1&amp;query=Di+Costa+S.p.A.%2C+Francavilla+di+Sicilia+ME%2C+Italia" target="_blank" rel="noopener" aria-label="Apri la posizione di Di Costa S.p.A. in Google Maps">
+            <img src="fotos recibidas/mappa-di-costa.jpg" alt="Mappa della Sicilia con la posizione di Di Costa S.p.A. a Francavilla di Sicilia" loading="lazy" data-i18n-alt="map_alt" />
+            <span class="edc-map__open" data-i18n="map_open">Apri in Google Maps ↗</span>
+            <span class="edc-map__credit">© OpenStreetMap contributors</span>
+          </a>
         </div>
       </div>
     </div>
@@ -2289,7 +2296,8 @@
       foot_menu_h4: 'Secondary menu', foot_legal: 'Legal notice', foot_privacy: 'Privacy', foot_cookies: 'Cookies',
       foot_lang_h4: 'Available languages', foot_lang_it: 'Italiano · principale', foot_lang_en: 'English · available', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · available', foot_lang_pt: 'Português · available',
       foot_briefing: 'Editorial briefing · EN view',
-      map_open: 'Open in Google Maps ↗'
+      map_open: 'Open in Google Maps ↗',
+      map_alt: 'Map of Sicily showing Di Costa S.p.A. in Francavilla di Sicilia'
     },
     es: {
       nav_bio: 'Biografía', nav_empresa: 'Empresa', nav_ferias: 'Ferias', nav_calcio: 'Fútbol y TV', nav_pensiero: 'Filosofía', nav_contatto: 'Contacto',
@@ -2421,7 +2429,8 @@
       foot_menu_h4: 'Menú secundario', foot_legal: 'Aviso legal', foot_privacy: 'Privacidad', foot_cookies: 'Cookies',
       foot_lang_h4: 'Idiomas disponibles', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponible', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · disponible', foot_lang_pt: 'Português · disponible',
       foot_briefing: 'Resumen editorial · vista ES',
-      map_open: 'Abrir en Google Maps ↗'
+      map_open: 'Abrir en Google Maps ↗',
+      map_alt: 'Mapa de Sicilia con la ubicación de Di Costa S.p.A. en Francavilla di Sicilia'
     },
     de: {
       nav_bio: 'Biografie', nav_empresa: 'Unternehmen', nav_ferias: 'Messen', nav_calcio: 'Fußball &amp; TV', nav_pensiero: 'Philosophie', nav_contatto: 'Kontakt',
@@ -2553,7 +2562,8 @@
       foot_menu_h4: 'Sekundärmenü', foot_legal: 'Impressum', foot_privacy: 'Datenschutz', foot_cookies: 'Cookies',
       foot_lang_h4: 'Verfügbare Sprachen', foot_lang_it: 'Italiano · Hauptsprache', foot_lang_en: 'English · verfügbar', foot_lang_es: 'Español · verfügbar', foot_lang_de: 'Deutsch · verfügbar', foot_lang_pt: 'Português · verfügbar',
       foot_briefing: 'Redaktionelles Briefing · Ansicht DE',
-      map_open: 'In Google Maps öffnen ↗'
+      map_open: 'In Google Maps öffnen ↗',
+      map_alt: 'Karte von Sizilien mit dem Standort der Di Costa S.p.A. in Francavilla di Sicilia'
     },
     pt: {
       nav_bio: 'Biografia', nav_empresa: 'Empresa', nav_ferias: 'Feiras', nav_calcio: 'Futebol &amp; TV', nav_pensiero: 'Filosofia', nav_contatto: 'Contato',
@@ -2685,7 +2695,8 @@
       foot_menu_h4: 'Menu secundário', foot_legal: 'Aviso legal', foot_privacy: 'Privacidade', foot_cookies: 'Cookies',
       foot_lang_h4: 'Idiomas disponíveis', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponível', foot_lang_es: 'Español · disponível', foot_lang_de: 'Deutsch · disponível', foot_lang_pt: 'Português · disponível',
       foot_briefing: 'Resumo editorial · vista PT',
-      map_open: 'Abrir no Google Maps ↗'
+      map_open: 'Abrir no Google Maps ↗',
+      map_alt: 'Mapa da Sicília com a localização da Di Costa S.p.A. em Francavilla di Sicilia'
     }
   };
   var I18N_IT_CACHE = {};
