@@ -107,9 +107,7 @@
 =========================================================
 -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Public+Sans:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="fonts/fonts.css" rel="stylesheet" />
 
 <script type="application/ld+json">
 {
@@ -780,19 +778,14 @@
   border: 1px solid var(--edc-line);
 }
 .edc-map iframe { width: 100%; height: 100%; border: 0; display: block; pointer-events: none; }
-.edc-map::after {
-  content: "Apri in Google Maps ↗";
-  position: absolute; right: 0.8rem; bottom: 0.8rem;
+.edc-map__open {
+  position: absolute; right: 0.8rem; bottom: 0.8rem; z-index: 3;
   background: var(--edc-accent); color: #fff;
   font-family: var(--edc-f-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 0.55rem 1rem; border-radius: 999px;
   transition: background .2s ease;
 }
-.edc-map:hover::after { background: var(--edc-ink); }
-[data-lang="en"] .edc-map::after { content: "Open in Google Maps ↗"; }
-[data-lang="es"] .edc-map::after { content: "Abrir en Google Maps ↗"; }
-[data-lang="de"] .edc-map::after { content: "In Google Maps öffnen ↗"; }
-[data-lang="pt"] .edc-map::after { content: "Abrir no Google Maps ↗"; }
+.edc-map__open:hover { background: var(--edc-ink); color: #fff; }
 .edc-contact__line--todo { cursor: default; }
 .edc-contact__line--todo:hover { padding-left: 0; }
 .edc-contact__line--todo strong {
@@ -1662,7 +1655,7 @@
     <div class="edc-wrap">
       <div class="edc-grid-2" style="align-items: stretch;">
         <div>
-          <div class="edc-ig">
+          <div class="edc-ig edc-consent" data-consent-service="Instagram" data-consent-script="https://www.instagram.com/embed.js">
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/marieangedicosta/" data-instgrm-version="14" style="width: 100%;"></blockquote>
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CsVs1-ZsZYN/" data-instgrm-version="14" style="width: 100%;"></blockquote>
           </div>
@@ -1973,9 +1966,10 @@
         <div class="edc-contact__line">
           <span class="edc-mono" data-i18n="contatto_line6_label">Sede legale &amp; stabilimenti</span>
           <strong>Contrada Barbazza e Contrada Santa Caterina<br />98034 Francavilla di Sicilia (ME) · IT</strong>
-          <a class="edc-map" href="https://www.google.com/maps/search/?api=1&amp;query=Di+Costa+S.p.A.%2C+Francavilla+di+Sicilia+ME%2C+Italia" target="_blank" rel="noopener" aria-label="Apri la posizione di Di Costa S.p.A. in Google Maps">
-            <iframe src="https://maps.google.com/maps?q=Di+Costa+S.p.A.,+Francavilla+di+Sicilia+ME,+Italia&amp;z=8&amp;output=embed" loading="lazy" tabindex="-1" aria-hidden="true" title="Posizione di Di Costa S.p.A. in Sicilia"></iframe>
-          </a>
+          <div class="edc-map edc-consent" data-consent-service="Google Maps">
+            <iframe data-consent-src="https://maps.google.com/maps?q=Di+Costa+S.p.A.,+Francavilla+di+Sicilia+ME,+Italia&amp;z=8&amp;output=embed" loading="lazy" tabindex="-1" aria-hidden="true" title="Posizione di Di Costa S.p.A. in Sicilia"></iframe>
+            <a class="edc-map__open edc-consent__keep" href="https://www.google.com/maps/search/?api=1&amp;query=Di+Costa+S.p.A.%2C+Francavilla+di+Sicilia+ME%2C+Italia" target="_blank" rel="noopener" data-i18n="map_open">Apri in Google Maps ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1992,9 +1986,9 @@
         </div>
         <div class="edc-foot__col">
           <h4 data-i18n="foot_menu_h4">Menu secondario</h4>
-          <a href="#" data-i18n="foot_legal">Avviso legale</a>
-          <a href="#" data-i18n="foot_privacy">Privacy</a>
-          <a href="#" data-i18n="foot_cookies">Cookies</a>
+          <a href="legal.html#avviso" data-i18n="foot_legal">Avviso legale</a>
+          <a href="legal.html#privacy" data-i18n="foot_privacy">Privacy</a>
+          <a href="legal.html#cookies" data-i18n="foot_cookies">Cookies</a>
         </div>
         <div class="edc-foot__col">
           <h4 data-i18n="foot_lang_h4">Lingue disponibili</h4>
@@ -2294,7 +2288,8 @@
       foot_sub: 'The King of Sicilian Chocolate · founder of Di Costa S.p.A. · creator of Marie Ange.',
       foot_menu_h4: 'Secondary menu', foot_legal: 'Legal notice', foot_privacy: 'Privacy', foot_cookies: 'Cookies',
       foot_lang_h4: 'Available languages', foot_lang_it: 'Italiano · principale', foot_lang_en: 'English · available', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · available', foot_lang_pt: 'Português · available',
-      foot_briefing: 'Editorial briefing · EN view'
+      foot_briefing: 'Editorial briefing · EN view',
+      map_open: 'Open in Google Maps ↗'
     },
     es: {
       nav_bio: 'Biografía', nav_empresa: 'Empresa', nav_ferias: 'Ferias', nav_calcio: 'Fútbol y TV', nav_pensiero: 'Filosofía', nav_contatto: 'Contacto',
@@ -2425,7 +2420,8 @@
       foot_sub: 'El Rey del Chocolate Siciliano · fundador de Di Costa S.p.A. · creador de Marie Ange.',
       foot_menu_h4: 'Menú secundario', foot_legal: 'Aviso legal', foot_privacy: 'Privacidad', foot_cookies: 'Cookies',
       foot_lang_h4: 'Idiomas disponibles', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponible', foot_lang_es: 'Español · disponible', foot_lang_de: 'Deutsch · disponible', foot_lang_pt: 'Português · disponible',
-      foot_briefing: 'Resumen editorial · vista ES'
+      foot_briefing: 'Resumen editorial · vista ES',
+      map_open: 'Abrir en Google Maps ↗'
     },
     de: {
       nav_bio: 'Biografie', nav_empresa: 'Unternehmen', nav_ferias: 'Messen', nav_calcio: 'Fußball &amp; TV', nav_pensiero: 'Philosophie', nav_contatto: 'Kontakt',
@@ -2556,7 +2552,8 @@
       foot_sub: 'Der König der sizilianischen Schokolade · Gründer von Di Costa S.p.A. · Schöpfer von Marie Ange.',
       foot_menu_h4: 'Sekundärmenü', foot_legal: 'Impressum', foot_privacy: 'Datenschutz', foot_cookies: 'Cookies',
       foot_lang_h4: 'Verfügbare Sprachen', foot_lang_it: 'Italiano · Hauptsprache', foot_lang_en: 'English · verfügbar', foot_lang_es: 'Español · verfügbar', foot_lang_de: 'Deutsch · verfügbar', foot_lang_pt: 'Português · verfügbar',
-      foot_briefing: 'Redaktionelles Briefing · Ansicht DE'
+      foot_briefing: 'Redaktionelles Briefing · Ansicht DE',
+      map_open: 'In Google Maps öffnen ↗'
     },
     pt: {
       nav_bio: 'Biografia', nav_empresa: 'Empresa', nav_ferias: 'Feiras', nav_calcio: 'Futebol &amp; TV', nav_pensiero: 'Filosofia', nav_contatto: 'Contato',
@@ -2687,7 +2684,8 @@
       foot_sub: 'O Rei do Chocolate Siciliano · fundador da Di Costa S.p.A. · criador da Marie Ange.',
       foot_menu_h4: 'Menu secundário', foot_legal: 'Aviso legal', foot_privacy: 'Privacidade', foot_cookies: 'Cookies',
       foot_lang_h4: 'Idiomas disponíveis', foot_lang_it: 'Italiano · principal', foot_lang_en: 'English · disponível', foot_lang_es: 'Español · disponível', foot_lang_de: 'Deutsch · disponível', foot_lang_pt: 'Português · disponível',
-      foot_briefing: 'Resumo editorial · vista PT'
+      foot_briefing: 'Resumo editorial · vista PT',
+      map_open: 'Abrir no Google Maps ↗'
     }
   };
   var I18N_IT_CACHE = {};
@@ -2710,10 +2708,14 @@
     document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
       b.classList.toggle('is-active', b.getAttribute('data-lang-btn') === lang);
     });
-    // carry the current language onto links to the fair and press sub-pages
-    document.querySelectorAll('a[href^="ferie/"], a[href^="stampa/"]').forEach(function (a) {
-      var href = a.getAttribute('href').split('?')[0];
-      a.setAttribute('href', href + (lang === 'it' ? '' : '?lang=' + lang));
+    // carry the current language onto links to the fair, press and legal sub-pages
+    document.querySelectorAll('a[href^="ferie/"], a[href^="stampa/"], a[href^="legal.html"]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      var hash = '';
+      var hashIdx = href.indexOf('#');
+      if (hashIdx !== -1) { hash = href.slice(hashIdx); href = href.slice(0, hashIdx); }
+      href = href.split('?')[0];
+      a.setAttribute('href', href + (lang === 'it' ? '' : '?lang=' + lang) + hash);
     });
   }
   document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
@@ -2915,7 +2917,7 @@
 </script>
 
 <!-- Instagram embed runtime (loads only if embeds present) -->
-<script async src="//www.instagram.com/embed.js"></script>
+<script src="consent-embed.js"></script>
 
 <!-- Umami — analytics propio autoalojado (stats.enzodicosta.com) -->
 <script defer src="https://stats.enzodicosta.com/script.js" data-website-id="1f9c0b7a-6cb8-4c30-b1ad-028d31230646"></script>
